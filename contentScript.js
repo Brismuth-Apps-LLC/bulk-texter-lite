@@ -42,7 +42,7 @@ window.addEventListener("message", function(event) {
 
 // clicks the "start SMS" button on the number dropdown
 function startChat() {
-	var attempts = 20;
+	var attempts = 50;
 	var keepTrying = setInterval(function() {
 		var startChatButton = document.querySelector('div[googlevoice="nolinks"] a[title="Click to send SMS"]');
 		if (startChatButton) {
