@@ -1,9 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "Google Voice Autotexter",
+  "name": "Google Voice Bulk Texter",
   "description": "This extension enables bulk SMS via Google Voice from within the Google Inbox or Hangouts web apps.",
   "version": "0.1",
+
+  "background": {
+    "scripts": ["background.js"]
+  },
 
   "browser_action": {
     "default_title": "Bulk SMS",
@@ -20,9 +24,7 @@
       "all_frames": true
     }
   ],
-  "web_accessible_resources": ["script.js"],
   "permissions": [
-    "storage",
     "clipboardWrite",
     "clipboardRead"
   ]

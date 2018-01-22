@@ -1,49 +1,55 @@
 <!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
+	<head>
+		<title>Google Voice Bulk Texter Popup</title>
+		<style type="text/css">
+			body {
+				margin: 10px;
+				white-space: nowrap;
+			}
 
-      h1 {
-        font-size: 15px;
-      }
+			h1 {
+				font-size: 15px;
+			}
 
-      #container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-      }
-    </style>
+			#container {
+				align-items: center;
+			}
+			#container .input-group {
+				margin-bottom: 12px;
+			}
+			#container .input-group span {
+				display: block;
+				margin-bottom: 4px;
+			}
+			#container .input-group textarea {
+				display: block;
+				width: 200px;
+				min-height: 100px;
+				resize: vertical;
+			}
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
-    <script src="popup.js"></script>
-  </head>
+		</style>
 
-  <body>
-    <h1>Background Color Changer</h1>
-    <div id="container">
-      <span>Choose a color</span>
-      <select id="dropdown">
-        <option selected disabled hidden value=''></option>
-        <option value="white">White</option>
-        <option value="pink">Pink</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-      </select>
-    </div>
-  </body>
+		<script src="popup.js"></script>
+	</head>
+
+	<body>
+		<h1>Google Voice Bulk Texter</h1>
+		<div id="container">
+			<div class="input-group">
+				<span>Numbers and names</span>
+				<textarea id="NumbersAndNames"></textarea>
+				<span>Example:<br>(123) 456-7890, John Doe<br>(987) 654 3210, Jane Doe</span>
+			</div>
+			<div class="input-group">
+				<span>Message template</span>
+				<textarea id="Message">Hey {name}, this is a test.</textarea>
+				<span>Example:<br>Hey {name}, this is a test.</span>
+			</div>
+			<div class="input-group">
+				<button id="SendMessagesButton">Send</button>
+			</div>
+		</div>
+	</body>
 </html>
