@@ -26,6 +26,9 @@ class ListViewManager {
 
 			if (message.type === 'THREAD_VIEW_READY') {
 				that.sendMessage(message.number);
+
+				// proceed next message
+				that.sendFromQueue();
 			}
 		});
 	}
@@ -89,7 +92,6 @@ class ListViewManager {
 			var startChatButton = document.querySelector('div[googlevoice="nolinks"] a[title="Click to send SMS"]');
 			if (startChatButton) {
 				startChatButton.click();
-				that.sendFromQueue();
 				return true;
 			}
 		}
