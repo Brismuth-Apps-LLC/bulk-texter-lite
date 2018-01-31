@@ -32,6 +32,9 @@
 				min-height: 100px;
 				resize: vertical;
 			}
+			.input-group textarea#numbers-and-names {
+				font-family: monospace;
+			}
 			div.errors {
 				color: red;
 			}
@@ -40,13 +43,12 @@
 				white-space: initial;
 				min-width: 250px;
 			}
-
-			.input-group #numbers-and-names {
-				font-family: monospace;
+			div.tip pre {
+				margin-bottom: 0;
 			}
 
-			.input-group pre {
-				margin-bottom: 0;
+			#wrong-page-message a:focus {
+				outline: 0;
 			}
 		</style>
 
@@ -81,6 +83,11 @@
 				Google Voice Bulk Texter currently only supports bulk texting on
 				<a href="https://inbox.google.com" target="_blank">https://inbox.google.com</a>
 				and <a href="https://hangouts.google.com" target="_blank">https://hangouts.google.com</a>.
+			</div>
+			<br>
+			<div class="tip">
+				You can submit feature requests at
+				<a href="https://github.com/brismuth/google-voice-bulk-texter/issues/new" target="_blank">https://github.com/brismuth/google-voice-bulk-texter/issues/new</a>.
 			</div>
 		</div>
 	</body>
