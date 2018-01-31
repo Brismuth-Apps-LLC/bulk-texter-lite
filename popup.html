@@ -2,33 +2,52 @@
 <html>
 	<head>
 		<title>Google Voice Bulk Texter Popup</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
 		<style type="text/css">
 			body {
 				margin: 10px;
 				white-space: nowrap;
+				font-size: 14px;
 			}
 
+			h1, h2 {
+				width: 100%;
+			}
 			h1 {
+				font-size: 20px;
+			}
+			h2 {
 				font-size: 15px;
 			}
 
-			#container {
+			#ui-wrapper {
 				align-items: center;
 			}
-			#container .input-group {
+			.input-group {
 				margin-bottom: 12px;
 			}
-			#container .input-group span {
+			textarea {
 				display: block;
-				margin-bottom: 4px;
-			}
-			#container .input-group textarea {
-				display: block;
-				width: 200px;
+				width: 300px;
 				min-height: 100px;
 				resize: vertical;
 			}
+			div.errors {
+				color: red;
+			}
+			div.tip {
+				font-style: italic;
+				white-space: initial;
+				min-width: 250px;
+			}
 
+			.input-group #numbers-and-names {
+				font-family: monospace;
+			}
+
+			.input-group pre {
+				margin-bottom: 0;
+			}
 		</style>
 
 		<script src="popup.js"></script>
@@ -36,19 +55,32 @@
 
 	<body>
 		<h1>Google Voice Bulk Texter</h1>
-		<div id="container">
+		<div id="ui-wrapper">
 			<div class="input-group">
-				<span>Numbers and names</span>
-				<textarea id="NumbersAndNames"></textarea>
-				<span>Example:<br>(123) 456-7890, John Doe<br>(987) 654 3210, Jane Doe</span>
+				<h2>Numbers, names</h2>
+				<textarea id="numbers-and-names"></textarea>
+				<div id="numbers-and-names-errors" class="errors"></div>
+				<div class="tip">Example:
+					<pre>(123) 456-7890, John Smith
+(111) 111 1111
+(987) 654 3210, Jane</pre>
+				</div>
 			</div>
 			<div class="input-group">
-				<span>Message template</span>
-				<textarea id="Message">Hey {name}, this is a test.</textarea>
-				<span>Example:<br>Hey {name}, this is a test.</span>
+				<h2>Message</h2>
+				<textarea id="message">Hi {name}!</textarea>
+				<div class="tip">If you add "{name}" to your message it will be replaced by the corresponding name.</div>
 			</div>
 			<div class="input-group">
-				<button id="SendMessagesButton">Send</button>
+				<button class="btn btn-success" id="send-messages-button" title="This will not send messages - it will just get them ready.">Prepare Messages</button>
+			</div>
+		</div>
+		<div id="wrong-page-message" style="display: none;">
+			<h2>Sorry.</h2>
+			<div class="tip">
+				Google Voice Bulk Texter currently only supports bulk texting on
+				<a href="https://inbox.google.com" target="_blank">https://inbox.google.com</a>
+				and <a href="https://hangouts.google.com" target="_blank">https://hangouts.google.com</a>.
 			</div>
 		</div>
 	</body>

@@ -55,7 +55,7 @@ class ListViewManager {
 
 	showNumberInput(cb) {
 		var that = this;
-		keepTrying(clickButton, 70, 50, cb);
+		keepTrying(clickButton, 70, 50, false, cb);
 
 		function clickButton() {
 			var showInputButton = document.querySelector('div[googlevoice="nolinks"] button');
@@ -86,7 +86,7 @@ class ListViewManager {
 	// clicks the "start SMS" button on the number dropdown
 	startChat() {
 		var that = this;
-		keepTrying(clickButton, 70, 50);
+		keepTrying(clickButton, 70, 50, false);
 
 		function clickButton() {
 			var startChatButton = document.querySelector('div[googlevoice="nolinks"] a[title="Click to send SMS"]');
@@ -177,17 +177,22 @@ function formatNumber(number) {
 
 /**
  * continually calls the given method until successful
- * @param  {Function}   method      should return true when successful, or false when we should give up early
- * @param  {int}        frequency   in ms
- * @param  {int}        tryCount    max # of tries
- * @param  {Function}   cb        	to be called with the results from method when we're done trying
+ * @param  {Function}   method          should return true when successful, or false when we should give up early
+ * @param  {int}        frequency       in ms
+ * @param  {int}        tryCount        max # of tries
+ * @param  {bool}       silenceErrors   true if we should not alert on errors
+ * @param  {Function}   cb        	    to be called with the results from method when we're done trying
  */
-function keepTrying(method, frequency, tryCount, cb) {
-	var keepTrying = setInterval(function() {
+function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
+	var keepTryingInterval = setInterval(function() {
 		var successful = method();
 		var giveUp = successful === false || tryCount-- < 0;
 		if (successful === true || giveUp) {
-			clearInterval(keepTrying);
+			clearInterval(keepTryingInterval);
+			// the app failed
+			if (!silenceErrors && tryCount < 1) {
+				alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice via Hangouts is enabled on this page?');
+			}
 			if (cb) {
 				cb(successful);
 			}
@@ -199,7 +204,7 @@ function keepTrying(method, frequency, tryCount, cb) {
 /*******************************************************************************************************************
 ********* Identifies whether we're in the listview or thread view, configures appropriately ************************
 ********************************************************************************************************************/
-keepTrying(findGoogleVoice, 200, 25);
+keepTrying(findGoogleVoice, 200, 25, true);
 function findGoogleVoice() {
 	// stop looking, wrong url
 	if (!window.location.href.includes('/webchat/')) {
