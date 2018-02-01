@@ -4,10 +4,12 @@
 		<title>Google Voice Bulk Texter Popup</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
 		<style type="text/css">
-			body {
+			body#popup-body {
 				margin: 10px;
 				white-space: nowrap;
 				font-size: 14px;
+				min-height: 465px;
+				width: 300px;
 			}
 
 			h1, h2 {
@@ -55,9 +57,17 @@
 		<script src="popup.js"></script>
 	</head>
 
-	<body>
+	<body id="popup-body">
 		<h1>Google Voice Bulk Texter</h1>
-		<div id="ui-wrapper">
+		<div id="loading-screen">
+			Loading...
+		</div>
+		<div id="ui-wrapper" style="display: none;">
+			<div class="input-group">
+				<h2>Message</h2>
+				<textarea id="message">Hi {name}!</textarea>
+				<div class="tip">If you add "{name}" to your message it will be replaced by the corresponding name.</div>
+			</div>
 			<div class="input-group">
 				<h2>Numbers, names</h2>
 				<textarea id="numbers-and-names"></textarea>
@@ -69,25 +79,23 @@
 				</div>
 			</div>
 			<div class="input-group">
-				<h2>Message</h2>
-				<textarea id="message">Hi {name}!</textarea>
-				<div class="tip">If you add "{name}" to your message it will be replaced by the corresponding name.</div>
-			</div>
-			<div class="input-group">
 				<button class="btn btn-success" id="send-messages-button" title="This will not send messages - it will just get them ready.">Prepare Messages</button>
 			</div>
 		</div>
 		<div id="wrong-page-message" style="display: none;">
-			<h2>Sorry.</h2>
 			<div class="tip">
-				Google Voice Bulk Texter currently only supports bulk texting on
-				<a href="https://inbox.google.com" target="_blank">https://inbox.google.com</a>
-				and <a href="https://hangouts.google.com" target="_blank">https://hangouts.google.com</a>.
+				Unable to find Hangouts on the page.
 			</div>
-			<br>
 			<div class="tip">
-				You can submit feature requests at
-				<a href="https://github.com/brismuth/google-voice-bulk-texter/issues/new" target="_blank">https://github.com/brismuth/google-voice-bulk-texter/issues/new</a>.
+				Try some of the following options:
+				<ul>
+					<li>Make sure you are currently on <a href="https://inbox.google.com" target="_blank">Google Inbox</a>
+				or <a href="https://hangouts.google.com" target="_blank">Google Hangouts</a></li>
+					<li>Make sure the Hangouts interface is on the page and finished loading</li>
+					<li>Try refreshing the page</li>
+					<li>Make sure Google Voice via Hangouts is enabled (<a href="https://support.google.com/voice/answer/6023920?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">instructions</a>)</li>
+					<li>If it still isn't working for you, please report the issue <a href="https://github.com/brismuth/google-voice-bulk-texter/issues/new" target="_blank">here</a></li>
+				</ul>
 			</div>
 		</div>
 	</body>

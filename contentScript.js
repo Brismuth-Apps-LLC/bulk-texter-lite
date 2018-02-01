@@ -19,9 +19,11 @@ class ListViewManager {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
 				that.addMessagesToQueue(message.messages);
 				that.sendFromQueue();
+			}
 
-				// response to popup.js
-				response();
+			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
+				var url = window.location.href;
+				response(url.startsWith('https://hangouts.google.com/') || url.startsWith('https://inbox.google.com/'));
 			}
 
 			if (message.type === 'THREAD_VIEW_READY') {

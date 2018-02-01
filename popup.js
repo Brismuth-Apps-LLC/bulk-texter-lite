@@ -76,10 +76,13 @@ function simplifyNumber(number) {
  * @return {[type]} [description]
  */
 function currentlyOnSupportedTab(cb) {
-	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-		var url = tabs[0].url;
-		cb(url.startsWith('https://hangouts.google.com/') || url.startsWith('https://inbox.google.com/'));
-	})
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'CHECK_GOOGLE_VOICE_SUPPORT'}, cb);
+	});
+	// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+	// 	var url = tabs[0].url;
+	// 	cb(url.startsWith('https://hangouts.google.com/') || url.startsWith('https://inbox.google.com/'));
+	// })
 }
 
 /**
@@ -97,20 +100,30 @@ function addUIListeners() {
 	});
 }
 
-function showIncorrectTabMessage() {
-	var uiWrapper = document.getElementById('ui-wrapper');
-	uiWrapper.style.display = 'none';
-	var wrongPageMessage = document.getElementById('wrong-page-message');
-	wrongPageMessage.style.display = 'block';
+/**
+ * hides the spinner and shows the relevant UI
+ * @param  {bool} isHangoutsTab 	true if it should show the bulk message UI
+ */
+function showUI(isHangoutsTab) {
+	if (isHangoutsTab) {
+		document.getElementById('ui-wrapper').style.display = 'block';
+	} else {
+		document.getElementById('wrong-page-message').style.display = 'block';
+		document.getElementById('popup-body').style['min-height'] = '275px';
+	}
+
+	document.getElementById('loading-screen').style.display = 'none';
 }
 
 // configure popup button event listener
 document.addEventListener('DOMContentLoaded', () => {
 	currentlyOnSupportedTab(function(supported) {
+		console.log('supported', supported);
 		if (supported) {
+			showUI(true);
 			addUIListeners();
 		} else {
-			showIncorrectTabMessage();
+			showUI(false);
 		}
 	});
 });

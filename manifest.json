@@ -26,7 +26,6 @@
   ],
 
   "permissions": [
-    "tabs",
     "clipboardWrite",
     "clipboardRead"
   ]
