@@ -3,6 +3,8 @@
 
   "name": "Google Voice Bulk Texter",
 
+  "short_name": "Bulk Texter",
+
   "description": "Send personalized bulk SMS messages via Google Voice from Google Inbox or Hangouts.",
 
   "version": "0.1.4",
