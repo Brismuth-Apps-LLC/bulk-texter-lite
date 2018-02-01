@@ -79,10 +79,6 @@ function currentlyOnSupportedTab(cb) {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'CHECK_GOOGLE_VOICE_SUPPORT'}, cb);
 	});
-	// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-	// 	var url = tabs[0].url;
-	// 	cb(url.startsWith('https://hangouts.google.com/') || url.startsWith('https://inbox.google.com/'));
-	// })
 }
 
 /**

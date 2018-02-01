@@ -5,7 +5,7 @@
 
   "description": "Send customized bulk SMS messages via Google Voice from Google Inbox or Hangouts. This tool is open source.",
 
-  "version": "0.1.1",
+  "version": "0.1.2",
 
   "background": {
     "scripts": ["background.js"]
