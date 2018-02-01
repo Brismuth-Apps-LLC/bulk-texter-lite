@@ -3,9 +3,9 @@
 
   "name": "Google Voice Bulk Texter",
 
-  "description": "Send customized bulk SMS messages via Google Voice from Google Inbox or Hangouts. This tool is open source.",
+  "description": "Send customized bulk SMS messages via Google Voice from Google Inbox or Hangouts.",
 
-  "version": "0.1.2",
+  "version": "0.1.3",
 
   "background": {
     "scripts": ["background.js"]
