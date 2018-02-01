@@ -25,6 +25,9 @@
     }
   ],
 
+  "icons": { "48": "icon48.png",
+             "128": "icon.png" },
+
   "permissions": [
     "clipboardWrite",
     "clipboardRead"
