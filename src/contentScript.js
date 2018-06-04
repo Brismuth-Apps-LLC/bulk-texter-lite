@@ -23,7 +23,9 @@ class ListViewManager {
 
 			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
 				var url = window.location.href;
-				response(url.startsWith('https://hangouts.google.com/') || url.startsWith('https://inbox.google.com/'));
+				response(url.startsWith('https://hangouts.google.com/')
+					|| url.startsWith('https://inbox.google.com/')
+					|| url.startsWith('https://voice.google.com/'));
 			}
 
 			if (message.type === 'THREAD_VIEW_READY') {
@@ -33,6 +35,43 @@ class ListViewManager {
 				that.sendFromQueue();
 			}
 		});
+	}
+
+	sendGoogleVoiceSiteMessages() {
+		// switch To Text View
+		document.querySelector('div[aria-label^="Message"][role="tab"]').click();
+		// start search
+		document.querySelector('div[gv-id="send-new-message"]').click();
+		// populate search
+		let numInput = document.querySelector('gv-recipient-picker input[placeholder="Type a name or phone number"]');
+		numInput.value = '123456789';
+
+		// this fires the necessary events for Google Voice to pick up
+		setTimeout(function() {
+			numInput.focus();
+			numInput.select();
+			document.execCommand('cut');
+			document.execCommand('paste');
+		}, 10);
+
+		// select recipient
+		document.querySelector('gv-contact-list div[ng-class="::ctrl.Css.SEARCH_LIST"] div[ng-class="[\'md-body-1\', ctrl.Css.SEND_TO_PHONE_NUMBER]"]').click();
+
+		// populate message
+		let textInput = document.querySelector('textarea[aria-label="Type a message"]');
+		textInput.value = 'Hello world';
+
+		// this fires the necessary events for Google Voice to pick up
+		setTimeout(function() {
+			textInput.focus();
+			textInput.select();
+			document.execCommand('cut');
+			document.execCommand('paste');
+		}, 10);
+
+
+		// send
+		// document.querySelector('gv-icon-button[icon-name="send"] button[aria-label="Send message"]').click();
 	}
 
 	addMessagesToQueue(messages) {
