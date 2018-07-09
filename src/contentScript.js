@@ -1,11 +1,66 @@
-/**
- * There are two components, the ListViewManager and the ThreadViewManager.
- * The ListViewManager runs on the Hangouts conversation listview.
- * The ThreadViewManager runs on the Hangouts thread.
- * These communicate via the chrome runtime message system because they are in separate iframes.
- */
+const siteIsGoogleVoice = window.location.href.startsWith('https://voice.google.com');
 
-class ListViewManager {
+// selectors
+const selectors = {
+	// google voice
+	gvMessagesTab: 'div[aria-label^="Message"][role="tab"]',
+	gvNumInputButton: 'div[gv-id="send-new-message"]',
+	gvNumInput: 'gv-recipient-picker input[placeholder="Type a name or phone number"]',
+	gvStartChatButton: 'gv-contact-list div[ng-class="::ctrl.Css.SEARCH_LIST"] div[ng-class="[\'md-body-1\', ctrl.Css.SEND_TO_PHONE_NUMBER]"]',
+	gvMessageEditor: 'textarea[aria-label="Type a message"]',
+	gvSendButton: 'gv-icon-button[icon-name="send"] button[aria-label="Send message"]',
+
+	// hangouts
+	hangoutsNumInputButton: 'div[googlevoice="nolinks"] button',
+	hangoutsNumInput: 'div[googlevoice="nolinks"] input[placeholder="Enter name, email, or phone"]',
+	hangoutsStartChat: 'div[googlevoice="nolinks"] a[title="Click to send SMS"]',
+	hangoutsCallButton: 'button[title^="Call "]',
+	hangoutsMessageEditor: 'div.editable[g_editable="true"][role="textbox"][contenteditable="true"]'
+}
+
+/*********************************************************************************************************************************************************
+********* Identifies whether we're in the hangouts listview or hangouts thread view or voice.google.com, configures appropriately ************************
+*********************************************************************************************************************************************************/
+keepTrying(findGoogleVoice, 200, 25, true);
+function findGoogleVoice() {
+	// stop looking, wrong url
+	if (!window.location.href.includes('/webchat/') && !window.location.href.startsWith('https://voice.google.com')) {
+		return false;
+	}
+
+	// check if this is the google voice site
+	var button = document.querySelector(selectors.gvMessagesTab);
+	if (button && siteIsGoogleVoice) {
+		console.log('Bulk SMS - configuring google voice site');
+		const googleVoiceSiteManager = new GoogleVoiceSiteManager();
+		googleVoiceSiteManager.initialize();
+		return true;
+	}
+
+	// check if this is the hangouts conversation list
+	var button = document.querySelector(selectors.hangoutsNumInputButton);
+	if (button) {
+		console.log('Bulk SMS - configuring list view');
+		const hangoutsListViewManager = new HangoutsListViewManager();
+		hangoutsListViewManager.initialize();
+		return true;
+	}
+
+	// check if this is the hangouts message editor
+	var messageEditor = document.querySelector(selectors.hangoutsMessageEditor);
+	if (messageEditor) {
+		console.log('Bulk SMS - configuring thread');
+		const hangoutsThreadViewManager = new HangoutsThreadViewManager();
+		hangoutsThreadViewManager.initialize();
+		return true;
+	}
+}
+
+
+/**
+ * This runs on voice.google.com
+ */
+class GoogleVoiceSiteManager {
 	constructor() {
 		this.messagesToSend = {};
 		this.numberQueue = [];
@@ -23,9 +78,140 @@ class ListViewManager {
 
 			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
 				var url = window.location.href;
-				response(url.startsWith('https://hangouts.google.com/')
-					|| url.startsWith('https://inbox.google.com/')
-					|| url.startsWith('https://voice.google.com/'));
+				response(url.startsWith('https://voice.google.com/') ? 'GV' : false);
+			}
+		});
+	}
+
+	addMessagesToQueue(messages) {
+		Object.assign(this.messagesToSend, messages.messages);
+		this.numberQueue = this.numberQueue.concat(messages.queue);
+	}
+
+	sendFromQueue() {
+		var that = this;
+
+		if (this.numberQueue.length > 0) {
+			this.currentNumberSending = this.numberQueue.shift();
+			this.showNumberInput(function(successful) {
+				if (!successful) {
+					return alert('Error: could not find phone number input.')
+				}
+				that.fillNumberInput(() => {
+					that.startChat(() => {
+						that.sendMessage();
+					});
+				});
+			});
+		}
+	}
+
+	showNumberInput(cb) {
+		// switch To Text View
+		document.querySelector(selectors.gvMessagesTab).click();
+
+		keepTrying(showNumInput, 70, 50, false, cb);
+		function showNumInput() {
+			var showInputButton = document.querySelector(selectors.gvNumInputButton);
+			if (showInputButton) {
+				showInputButton.click();
+				return true;
+			}
+		}
+	}
+
+	fillNumberInput(cb) {
+		var that = this;
+		if (this.messagesToSend.length < 1) {
+			return false;
+		}
+
+		keepTrying(fillInput, 70, 50, false, cb);
+		function fillInput() {
+			let numInput = document.querySelector(selectors.gvNumInput);
+			if (numInput) {
+				numInput.value = that.currentNumberSending;
+
+				// this fires the necessary events for Google Voice to pick up
+				setTimeout(function() {
+					numInput.focus();
+					numInput.select();
+					document.execCommand('cut');
+					document.execCommand('paste');
+				}, 10);
+
+				return true;
+			}
+		}
+	}
+
+	// clicks the "start SMS" button on the number dropdown
+	startChat(cb) {
+		keepTrying(clickStartChat, 70, 50, false, cb);
+		function clickStartChat() {
+			var startChatButton = document.querySelector(selectors.gvStartChatButton);
+			if (startChatButton) {
+				startChatButton.click();
+				return true;
+			}
+		}
+	}
+
+	sendMessage(cb) {
+		const number = this.currentNumberSending;
+		if (!this.messagesToSend[number]) {
+			return false;
+		}
+
+		const message = this.messagesToSend[number];
+
+		var messageEditor = document.querySelector(selectors.gvMessageEditor);
+		messageEditor.value = message;
+
+		// this fires the necessary events for Google Voice to pick up
+		setTimeout(() => {
+			messageEditor.focus();
+			messageEditor.select();
+			document.execCommand('cut');
+			document.execCommand('paste');
+
+			// click send button
+			document.querySelector(selectors.gvSendButton).click();
+
+			// continue with queue
+			delete this.messagesToSend[number];
+			this.sendFromQueue();
+		}, 10);
+	}
+}
+
+
+/**
+ * There are two components for hangouts messaging, the HangoutsListViewManager and the HangoutsThreadViewManager.
+ * The HangoutsListViewManager runs on the Hangouts conversation listview.
+ * The HangoutsThreadViewManager runs on the Hangouts thread.
+ * These communicate via the chrome runtime message system because they are in separate iframes.
+ */
+class HangoutsListViewManager {
+	constructor() {
+		this.messagesToSend = {};
+		this.numberQueue = [];
+		this.currentNumberSending = '';
+	}
+
+	initialize() {
+		var that = this;
+
+		chrome.runtime.onMessage.addListener(function (message, sender, response) {
+			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
+				that.addMessagesToQueue(message.messages);
+				that.sendFromQueue();
+			}
+
+			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
+				var url = window.location.href;
+				response((url.startsWith('https://hangouts.google.com/')
+					|| url.startsWith('https://inbox.google.com/')) ? 'HANGOUTS' : false);
 			}
 
 			if (message.type === 'THREAD_VIEW_READY') {
@@ -35,43 +221,6 @@ class ListViewManager {
 				that.sendFromQueue();
 			}
 		});
-	}
-
-	sendGoogleVoiceSiteMessages() {
-		// switch To Text View
-		document.querySelector('div[aria-label^="Message"][role="tab"]').click();
-		// start search
-		document.querySelector('div[gv-id="send-new-message"]').click();
-		// populate search
-		let numInput = document.querySelector('gv-recipient-picker input[placeholder="Type a name or phone number"]');
-		numInput.value = '123456789';
-
-		// this fires the necessary events for Google Voice to pick up
-		setTimeout(function() {
-			numInput.focus();
-			numInput.select();
-			document.execCommand('cut');
-			document.execCommand('paste');
-		}, 10);
-
-		// select recipient
-		document.querySelector('gv-contact-list div[ng-class="::ctrl.Css.SEARCH_LIST"] div[ng-class="[\'md-body-1\', ctrl.Css.SEND_TO_PHONE_NUMBER]"]').click();
-
-		// populate message
-		let textInput = document.querySelector('textarea[aria-label="Type a message"]');
-		textInput.value = 'Hello world';
-
-		// this fires the necessary events for Google Voice to pick up
-		setTimeout(function() {
-			textInput.focus();
-			textInput.select();
-			document.execCommand('cut');
-			document.execCommand('paste');
-		}, 10);
-
-
-		// send
-		// document.querySelector('gv-icon-button[icon-name="send"] button[aria-label="Send message"]').click();
 	}
 
 	addMessagesToQueue(messages) {
@@ -99,7 +248,7 @@ class ListViewManager {
 		keepTrying(clickButton, 70, 50, false, cb);
 
 		function clickButton() {
-			var showInputButton = document.querySelector('div[googlevoice="nolinks"] button');
+			var showInputButton = document.querySelector(selectors.hangoutsNumInputButton);
 			if (showInputButton) {
 				showInputButton.click();
 				return true;
@@ -112,7 +261,7 @@ class ListViewManager {
 			return false;
 		}
 
-		var numInput = document.querySelector('div[googlevoice="nolinks"] input[placeholder="Enter name, email, or phone"]');
+		var numInput = document.querySelector(selectors.hangoutsNumInput);
 		numInput.value = this.currentNumberSending;
 
 		// this fires the necessary events for Google Voice to pick up
@@ -130,7 +279,7 @@ class ListViewManager {
 		keepTrying(clickButton, 70, 50, false);
 
 		function clickButton() {
-			var startChatButton = document.querySelector('div[googlevoice="nolinks"] a[title="Click to send SMS"]');
+			var startChatButton = document.querySelector(selectors.hangoutsStartChat);
 			if (startChatButton) {
 				startChatButton.click();
 				return true;
@@ -153,7 +302,7 @@ class ListViewManager {
 	}
 }
 
-class ThreadViewManager {
+class HangoutsThreadViewManager {
 	initialize() {
 		var that = this;
 		this.number = this.getPhoneNumberForCurrentChat();
@@ -180,7 +329,7 @@ class ThreadViewManager {
 	}
 
 	fillMessageInput(message) {
-		var messageEditor = document.querySelector('div.editable[g_editable="true"][role="textbox"][contenteditable="true"]');
+		var messageEditor = document.querySelector(selectors.hangoutsMessageEditor);
 		this.hideDefaultText();
 		messageEditor.innerText = message;
 		messageEditor.focus();
@@ -195,17 +344,13 @@ class ThreadViewManager {
 	// todo - format all numbers consistently so they work well as keys
 	getPhoneNumberForCurrentChat() {
 		// get buttons that have a title that starts with "Call "
-		var callButton = document.querySelector('button[title^="Call "]')
+		var callButton = document.querySelector(selectors.hangoutsCallButton);
 		if (callButton) {
 			var number = callButton.title.replace('Call ', '');
 			return formatNumber(number);
 		}
 	}
 }
-
-
-const listViewManager = new ListViewManager();
-const threadViewManager = new ThreadViewManager();
 
 /**
  * removes all non-numeric characters from the number string
@@ -232,7 +377,11 @@ function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
 			clearInterval(keepTryingInterval);
 			// the app failed
 			if (!silenceErrors && tryCount < 1) {
-				alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice via Hangouts is enabled on this page?');
+				if (siteIsGoogleVoice) {
+					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.");
+				} else {
+	                alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
+				}
 			}
 			if (cb) {
 				cb(successful);
@@ -241,30 +390,3 @@ function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
 	}, frequency);
 }
 
-
-/*******************************************************************************************************************
-********* Identifies whether we're in the listview or thread view, configures appropriately ************************
-********************************************************************************************************************/
-keepTrying(findGoogleVoice, 200, 25, true);
-function findGoogleVoice() {
-	// stop looking, wrong url
-	if (!window.location.href.includes('/webchat/')) {
-		return false;
-	}
-
-	// check if this is the conversation list
-	var button = document.querySelector('div[googlevoice="nolinks"] button');
-	if (button) {
-		console.log('Bulk SMS - configuring list view');
-		listViewManager.initialize();
-		return true;
-	}
-
-	// check if this is the message editor
-	var messageEditor = document.querySelector('div.editable[g_editable="true"][role="textbox"][contenteditable="true"]');
-	if (messageEditor) {
-		console.log('Bulk SMS - configuring thread');
-		threadViewManager.initialize();
-		return true;
-	}
-}
