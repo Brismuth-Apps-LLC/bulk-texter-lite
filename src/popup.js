@@ -3,12 +3,13 @@
  */
 function sendMessages(messages) {
 	if (!messages) {
-		return;
+		return false;
 	}
 
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'SEND_MESSAGES', messages: messages});
 	});
+	return true;
 }
 
 /**
@@ -92,17 +93,23 @@ function addUIListeners() {
 	sendMessagesButton.addEventListener('click', () => {
 		clearError();
 		var messages = formatMessages(numbersAndNames.value, message.value);
-		sendMessages(messages);
+		if (sendMessages(messages)) {
+			sendMessagesButton.disabled = true;
+		}
 	});
 }
 
 /**
  * hides the spinner and shows the relevant UI
- * @param  {bool} isHangoutsTab 	true if it should show the bulk message UI
+ * @param  {string} supportLevel 	'GV', 'HANGOUTS', or false
  */
-function showUI(isHangoutsTab) {
-	if (isHangoutsTab) {
+function showUI(supportLevel) {
+	if (supportLevel) {
 		document.getElementById('ui-wrapper').style.display = 'block';
+		if (supportLevel === 'HANGOUTS') {
+			var sendMessagesButton = document.getElementById('send-messages-button');
+			sendMessagesButton.innerText = 'Prepare Messages';
+		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
 		document.getElementById('popup-body').style['min-height'] = '275px';
@@ -113,10 +120,10 @@ function showUI(isHangoutsTab) {
 
 // configure popup button event listener
 document.addEventListener('DOMContentLoaded', () => {
-	currentlyOnSupportedTab(function(supported) {
-		console.log('supported', supported);
-		if (supported) {
-			showUI(true);
+	currentlyOnSupportedTab(function(supportLevel) {
+		console.log('support level', supportLevel);
+		if (supportLevel !== false) {
+			showUI(supportLevel);
 			addUIListeners();
 		} else {
 			showUI(false);
