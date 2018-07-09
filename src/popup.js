@@ -3,12 +3,13 @@
  */
 function sendMessages(messages) {
 	if (!messages) {
-		return;
+		return false;
 	}
 
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'SEND_MESSAGES', messages: messages});
 	});
+	return true;
 }
 
 /**
@@ -90,10 +91,11 @@ function addUIListeners() {
 	var message = document.getElementById('message');
 
 	sendMessagesButton.addEventListener('click', () => {
-		sendMessagesButton.disabled = true;
 		clearError();
 		var messages = formatMessages(numbersAndNames.value, message.value);
-		sendMessages(messages);
+		if (sendMessages(messages)) {
+			sendMessagesButton.disabled = true;
+		}
 	});
 }
 
