@@ -7,6 +7,8 @@ const selectors = {
 	gvNumInputButton: 'div[gv-id="send-new-message"]',
 	gvNumInput: 'gv-recipient-picker input[placeholder="Type a name or phone number"]',
 	gvStartChatButton: 'gv-contact-list div[ng-class="::ctrl.Css.SEARCH_LIST"] div[ng-class="[\'md-body-1\', ctrl.Css.SEND_TO_PHONE_NUMBER]"]',
+	gvExpandRecipientButton: 'div[aria-label="Select recipients"] md-chips md-chip button',
+	gvRecipientNumber: 'span[gv-test-id="chip-menu-item-phone-number"]',
 	gvMessageEditor: 'textarea[aria-label="Type a message"]',
 	gvSendButton: 'gv-icon-button[icon-name="send"] button[aria-label="Send message"]',
 
@@ -95,7 +97,7 @@ class GoogleVoiceSiteManager {
 			this.currentNumberSending = this.numberQueue.shift();
 			this.showNumberInput(function(successful) {
 				if (!successful) {
-					return alert('Error: could not find phone number input.')
+					return alert('Google Voice bulk texter:\nError: could not find phone number input.')
 				}
 				that.fillNumberInput(() => {
 					that.startChat(() => {
@@ -157,7 +159,22 @@ class GoogleVoiceSiteManager {
 		}
 	}
 
+	confirmChatSwitched() {
+		const numberToSend = this.currentNumberSending;
+		document.querySelector(selectors.gvExpandRecipientButton).click();
+		var numberElem = document.querySelector(selectors.gvRecipientNumber);
+		var number = numberElem.innerText.trim().replace(/\D/g,'');
+
+		return numberToSend === number;
+	}
+
 	sendMessage(cb) {
+		if (!this.confirmChatSwitched()) {
+			alert('Google Voice bulk texter:\nAn error occurred, please try again.');
+			this.messagesToSend.length = 0;
+			return false;
+		}
+
 		const number = this.currentNumberSending;
 		if (!this.messagesToSend[number]) {
 			return false;
@@ -181,7 +198,7 @@ class GoogleVoiceSiteManager {
 			// continue with queue
 			delete this.messagesToSend[number];
 			this.sendFromQueue();
-		}, 10);
+		}, 600);
 	}
 }
 
@@ -235,7 +252,7 @@ class HangoutsListViewManager {
 			this.currentNumberSending = this.numberQueue.shift();
 			this.showNumberInput(function(successful) {
 				if (!successful) {
-					return alert('Error: could not find phone number input.')
+					return alert('Google Voice bulk texter:\nError: could not find phone number input.')
 				}
 				that.fillNumberInput();
 				that.startChat();
@@ -380,7 +397,7 @@ function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
 				if (siteIsGoogleVoice) {
 					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.");
 				} else {
-	                alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
+					alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
 				}
 			}
 			if (cb) {
@@ -389,4 +406,3 @@ function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
 		}
 	}, frequency);
 }
-
