@@ -7,7 +7,7 @@
 
   "description": "Send personalized bulk SMS messages via Google Voice from Google Inbox or Hangouts.",
 
-  "version": "0.2.1",
+  "version": "0.2.2",
 
   "background": {
     "scripts": ["background.js"]
