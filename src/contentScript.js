@@ -293,7 +293,7 @@ class HangoutsListViewManager {
 	// clicks the "start SMS" button on the number dropdown
 	startChat() {
 		var that = this;
-		keepTrying(clickButton, 70, 50, false);
+		keepTrying(clickButton, 500, 20, false);
 
 		function clickButton() {
 			var startChatButton = document.querySelector(selectors.hangoutsStartChat);
