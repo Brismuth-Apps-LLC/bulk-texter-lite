@@ -52,6 +52,10 @@
 			#wrong-page-message a:focus {
 				outline: 0;
 			}
+			
+			#hangouts-beta-warning {
+			  display: none;
+			}
 		</style>
 
 		<script src="popup.js"></script>
@@ -77,6 +81,13 @@
 (111) 111 1111
 (987) 654 3210, Jane</pre>
 				</div>
+			</div>
+			<div id="hangouts-beta-warning">
+			  <p>
+			    Support for messaging via Hangouts is in beta.<br>
+			    For the best experience, use this extension on <br>
+			    <a href="https://voice.google.com" target="_blank">voice.google.com</a>.
+		    </p>
 			</div>
 			<div class="input-group">
 				<button class="btn btn-success" id="send-messages-button" title="This will not send messages - it will just get them ready.">Send Messages</button>
