@@ -109,6 +109,7 @@ function showUI(supportLevel) {
 		if (supportLevel === 'HANGOUTS') {
 			var sendMessagesButton = document.getElementById('send-messages-button');
 			sendMessagesButton.innerText = 'Prepare Messages';
+			document.getElementById('hangouts-beta-warning').style.display = 'block';
 		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
