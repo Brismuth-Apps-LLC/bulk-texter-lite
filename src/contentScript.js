@@ -18,12 +18,12 @@ const selectors = {
 	hangoutsStartChat: 'div[googlevoice="nolinks"] a[title="Click to send SMS"]',
 	hangoutsCallButton: 'button[title^="Call "]',
 	hangoutsMessageEditor: 'div.editable[g_editable="true"][role="textbox"][contenteditable="true"]'
-}
+};
 
 /*********************************************************************************************************************************************************
 ********* Identifies whether we're in the hangouts listview or hangouts thread view or voice.google.com, configures appropriately ************************
 *********************************************************************************************************************************************************/
-keepTrying(findGoogleVoice, 200, 25, true);
+keepTryingAsPromised(findGoogleVoice, true);
 function findGoogleVoice() {
 	// stop looking, wrong url
 	if (!window.location.href.includes('/webchat/') && !window.location.href.startsWith('https://voice.google.com')) {
@@ -90,29 +90,32 @@ class GoogleVoiceSiteManager {
 		this.numberQueue = this.numberQueue.concat(messages.queue);
 	}
 
-	sendFromQueue() {
+	async sendFromQueue() {
 		var that = this;
 
 		if (this.numberQueue.length > 0) {
 			this.currentNumberSending = this.numberQueue.shift();
-			this.showNumberInput(function(successful) {
-				if (!successful) {
-					return alert('Google Voice bulk texter:\nError: could not find phone number input.')
-				}
-				that.fillNumberInput(() => {
-					that.startChat(() => {
-						that.sendMessage();
-					});
-				});
-			});
+			const successful = await this.showNumberInput();
+			if (!successful) {
+				return alert('Google Voice bulk texter:\nError: could not find phone number input.')
+			}
+			await that.fillNumberInput();
+			await that.startChat();
+			const chatSwitched = await that.confirmChatSwitched();
+			if (!chatSwitched) {
+				alert('Google Voice bulk texter:\nAn error occurred, please try again.');
+				this.messagesToSend.length = 0;
+				return false;
+			}
+			that.sendMessage();
 		}
 	}
 
-	showNumberInput(cb) {
+	async showNumberInput() {
 		// switch To Text View
 		document.querySelector(selectors.gvMessagesTab).click();
 
-		keepTrying(showNumInput, 70, 50, false, cb);
+		return await keepTryingAsPromised(showNumInput, false);
 		function showNumInput() {
 			var showInputButton = document.querySelector(selectors.gvNumInputButton);
 			if (showInputButton) {
@@ -122,13 +125,13 @@ class GoogleVoiceSiteManager {
 		}
 	}
 
-	fillNumberInput(cb) {
+	async fillNumberInput() {
 		var that = this;
 		if (this.messagesToSend.length < 1) {
 			return false;
 		}
 
-		keepTrying(fillInput, 70, 50, false, cb);
+		return await keepTryingAsPromised(fillInput, false);
 		function fillInput() {
 			let numInput = document.querySelector(selectors.gvNumInput);
 			if (numInput) {
@@ -148,8 +151,8 @@ class GoogleVoiceSiteManager {
 	}
 
 	// clicks the "start SMS" button on the number dropdown
-	startChat(cb) {
-		keepTrying(clickStartChat, 70, 50, false, cb);
+	async startChat() {
+		return await keepTryingAsPromised(clickStartChat, false);
 		function clickStartChat() {
 			var startChatButton = document.querySelector(selectors.gvStartChatButton);
 			if (startChatButton) {
@@ -159,22 +162,20 @@ class GoogleVoiceSiteManager {
 		}
 	}
 
-	confirmChatSwitched() {
-		const numberToSend = this.currentNumberSending;
-		document.querySelector(selectors.gvExpandRecipientButton).click();
-		var numberElem = document.querySelector(selectors.gvRecipientNumber);
-		var number = numberElem.innerText.trim().replace(/\D/g,'');
-
-		return numberToSend === number;
+	async confirmChatSwitched() {
+		var that = this;
+		return await keepTryingAsPromised(confirmSwitched, false);
+		
+		function confirmSwitched() {
+			const numberToSend = that.currentNumberSending;
+			document.querySelector(selectors.gvExpandRecipientButton).click();
+			var numberElem = document.querySelector(selectors.gvRecipientNumber);
+			var number = numberElem.innerText.trim().replace(/\D/g,'');
+			return numberToSend === number;
+		}
 	}
 
-	sendMessage(cb) {
-		if (!this.confirmChatSwitched()) {
-			alert('Google Voice bulk texter:\nAn error occurred, please try again.');
-			this.messagesToSend.length = 0;
-			return false;
-		}
-
+	sendMessage() {
 		const number = this.currentNumberSending;
 		if (!this.messagesToSend[number]) {
 			return false;
@@ -194,6 +195,7 @@ class GoogleVoiceSiteManager {
 
 			// click send button
 			document.querySelector(selectors.gvSendButton).click();
+			
 
 			// continue with queue
 			delete this.messagesToSend[number];
@@ -262,7 +264,7 @@ class HangoutsListViewManager {
 
 	showNumberInput(cb) {
 		var that = this;
-		keepTrying(clickButton, 70, 50, false, cb);
+		keepTrying(clickButton, false, cb);
 
 		function clickButton() {
 			var showInputButton = document.querySelector(selectors.hangoutsNumInputButton);
@@ -293,7 +295,7 @@ class HangoutsListViewManager {
 	// clicks the "start SMS" button on the number dropdown
 	startChat() {
 		var that = this;
-		keepTrying(clickButton, 500, 20, false);
+		keepTrying(clickButton, false);
 
 		function clickButton() {
 			var startChatButton = document.querySelector(selectors.hangoutsStartChat);
@@ -371,8 +373,8 @@ class HangoutsThreadViewManager {
 
 /**
  * removes all non-numeric characters from the number string
- * @param  {string} number   i.e. (123) 456-7890
- * @return {string}          i.e. 1234567890
+ * @param	{string}   number i.e. (123) 456-7890
+ * @return {string}         i.e. 1234567890
  */
 function formatNumber(number) {
 	return number.replace(/\D/g,'');
@@ -380,13 +382,13 @@ function formatNumber(number) {
 
 /**
  * continually calls the given method until successful
- * @param  {Function}   method          should return true when successful, or false when we should give up early
- * @param  {int}        frequency       in ms
- * @param  {int}        tryCount        max # of tries
- * @param  {bool}       silenceErrors   true if we should not alert on errors
- * @param  {Function}   cb        	    to be called with the results from method when we're done trying
+ * @param	{Function}   method         should return true when successful, or false when we should give up early
+ * @param	{bool}       silenceErrors  true if we should not alert on errors
+ * @param	{Function}   cb             to be called with the results from method when we're done trying
  */
-function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
+function keepTrying(method, silenceErrors, cb) {
+	const frequency = 200; // try every 200ms
+	let tryCount = 10 * 1000/frequency; // keep trying for 10 seconds
 	var keepTryingInterval = setInterval(function() {
 		var successful = method();
 		var giveUp = successful === false || tryCount-- < 0;
@@ -405,4 +407,19 @@ function keepTrying(method, frequency, tryCount, silenceErrors, cb) {
 			}
 		}
 	}, frequency);
+}
+
+/**
+ * continually calls the given method until successful
+ * Promisified for use with async/await
+ * @param	{Function}   method         should return true when successful, or false when we should give up early
+ * @param	{bool}       silenceErrors  true if we should not alert on errors
+ * @param	{Function}   cb             to be called with the results from method when we're done trying
+ */
+function keepTryingAsPromised(method, silenceErrors) {
+	return new Promise((resolve, reject) => {
+		keepTrying(method, silenceErrors, (successful) => {
+			resolve(successful);
+		});
+	});
 }
