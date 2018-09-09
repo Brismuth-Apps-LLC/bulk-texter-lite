@@ -373,7 +373,7 @@ class HangoutsThreadViewManager {
 
 /**
  * removes all non-numeric characters from the number string
- * @param	{string}   number i.e. (123) 456-7890
+ * @param  {string}   number i.e. (123) 456-7890
  * @return {string}         i.e. 1234567890
  */
 function formatNumber(number) {
@@ -382,9 +382,9 @@ function formatNumber(number) {
 
 /**
  * continually calls the given method until successful
- * @param	{Function}   method         should return true when successful, or false when we should give up early
- * @param	{bool}       silenceErrors  true if we should not alert on errors
- * @param	{Function}   cb             to be called with the results from method when we're done trying
+ * @param {Function}   method         should return true when successful, or false when we should give up early
+ * @param {bool}       silenceErrors  true if we should not alert on errors
+ * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
 	const frequency = 200; // try every 200ms
@@ -412,9 +412,9 @@ function keepTrying(method, silenceErrors, cb) {
 /**
  * continually calls the given method until successful
  * Promisified for use with async/await
- * @param	{Function}   method         should return true when successful, or false when we should give up early
- * @param	{bool}       silenceErrors  true if we should not alert on errors
- * @param	{Function}   cb             to be called with the results from method when we're done trying
+ * @param {Function}   method         should return true when successful, or false when we should give up early
+ * @param {bool}       silenceErrors  true if we should not alert on errors
+ * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTryingAsPromised(method, silenceErrors) {
 	return new Promise((resolve, reject) => {
