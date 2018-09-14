@@ -75,6 +75,10 @@ class GoogleVoiceSiteManager {
 		chrome.runtime.onMessage.addListener(function (message, sender, response) {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
 				that.addMessagesToQueue(message.messages);
+		
+				// switch To Text View
+				document.querySelector(selectors.gvMessagesTab).click();
+				
 				that.sendFromQueue();
 			}
 
@@ -112,9 +116,6 @@ class GoogleVoiceSiteManager {
 	}
 
 	async showNumberInput() {
-		// switch To Text View
-		document.querySelector(selectors.gvMessagesTab).click();
-
 		return await keepTryingAsPromised(showNumInput, false);
 		function showNumInput() {
 			var showInputButton = document.querySelector(selectors.gvNumInputButton);
@@ -387,8 +388,8 @@ function formatNumber(number) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 200; // try every 200ms
-	let tryCount = 10 * 1000/frequency; // keep trying for 10 seconds
+	const frequency = 500; // try every 500ms
+	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
 	var keepTryingInterval = setInterval(function() {
 		var successful = method();
 		var giveUp = successful === false || tryCount-- < 0;
@@ -397,7 +398,7 @@ function keepTrying(method, silenceErrors, cb) {
 			// the app failed
 			if (!silenceErrors && tryCount < 1) {
 				if (siteIsGoogleVoice) {
-					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.");
+					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: \"" + method.name + "\" failed.");
 				} else {
 					alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
 				}
