@@ -97,6 +97,25 @@ function addUIListeners() {
 			sendMessagesButton.disabled = true;
 		}
 	});
+	
+	numbersAndNames.addEventListener('change', persistTextFields);
+	message.addEventListener('change', persistTextFields);
+}
+
+function persistTextFields() {
+	var numbersAndNames = document.getElementById('numbers-and-names');
+	var message = document.getElementById('message');
+
+	window.localStorage.setItem('gvbt-numbers-and-names', numbersAndNames.value);
+	window.localStorage.setItem('gvbt-message', message.value);
+}
+
+function restoreTextFields() {
+	var numbersAndNames = document.getElementById('numbers-and-names');
+	var message = document.getElementById('message');
+
+	numbersAndNames.value = window.localStorage.getItem('gvbt-numbers-and-names');
+	message.value = window.localStorage.getItem('gvbt-message') || 'Hi {name}!';
 }
 
 /**
@@ -125,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log('support level', supportLevel);
 		if (supportLevel !== false) {
 			showUI(supportLevel);
+			restoreTextFields();
 			addUIListeners();
 		} else {
 			showUI(false);
