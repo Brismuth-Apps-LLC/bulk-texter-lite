@@ -139,14 +139,14 @@ class GoogleVoiceSiteManager {
 				numInput.value = that.currentNumberSending;
 
 				// this fires the necessary events for Google Voice to pick up
-				setTimeout(function() {
-					numInput.focus();
-					numInput.select();
-					document.execCommand('cut');
-					document.execCommand('paste');
-				}, 10);
-
-				return true;
+				numInput.focus();
+				numInput.select();
+				document.execCommand('cut');
+				document.execCommand('paste');
+			
+				// confirm that the number was added as expected
+				let numInputConfirm = document.querySelector(selectors.gvNumInput);
+				return numInputConfirm.value === that.currentNumberSending;
 			}
 		}
 	}
@@ -398,10 +398,11 @@ function keepTrying(method, silenceErrors, cb) {
 			// the app failed
 			if (!silenceErrors && tryCount < 1) {
 				if (siteIsGoogleVoice) {
-					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: \"" + method.name + "\" failed.");
+					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: \"" + method.name + "\" failed.\n\nWhen you click \"ok\" the page will refresh.");
 				} else {
-					alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
+					alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.\n\nWhen you click \"ok\" the page will refresh.');
 				}
+				window.location.reload();
 			}
 			if (cb) {
 				cb(successful);
