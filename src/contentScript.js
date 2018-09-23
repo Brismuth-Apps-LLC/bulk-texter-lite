@@ -1,4 +1,5 @@
 const siteIsGoogleVoice = window.location.href.startsWith('https://voice.google.com');
+let siteManager;
 
 // selectors
 const selectors = {
@@ -34,8 +35,8 @@ function findGoogleVoice() {
 	var button = document.querySelector(selectors.gvMessagesTab);
 	if (button && siteIsGoogleVoice) {
 		console.log('Bulk SMS - configuring google voice site');
-		const googleVoiceSiteManager = new GoogleVoiceSiteManager();
-		googleVoiceSiteManager.initialize();
+		siteManager = new GoogleVoiceSiteManager();
+		siteManager.initialize();
 		return true;
 	}
 
@@ -43,8 +44,8 @@ function findGoogleVoice() {
 	var button = document.querySelector(selectors.hangoutsNumInputButton);
 	if (button) {
 		console.log('Bulk SMS - configuring list view');
-		const hangoutsListViewManager = new HangoutsListViewManager();
-		hangoutsListViewManager.initialize();
+		siteManager = new HangoutsListViewManager();
+		siteManager.initialize();
 		return true;
 	}
 
@@ -52,8 +53,8 @@ function findGoogleVoice() {
 	var messageEditor = document.querySelector(selectors.hangoutsMessageEditor);
 	if (messageEditor) {
 		console.log('Bulk SMS - configuring thread');
-		const hangoutsThreadViewManager = new HangoutsThreadViewManager();
-		hangoutsThreadViewManager.initialize();
+		siteManager = new HangoutsThreadViewManager();
+		siteManager.initialize();
 		return true;
 	}
 }
@@ -169,10 +170,15 @@ class GoogleVoiceSiteManager {
 		
 		function confirmSwitched() {
 			const numberToSend = that.currentNumberSending;
-			document.querySelector(selectors.gvExpandRecipientButton).click();
-			var numberElem = document.querySelector(selectors.gvRecipientNumber);
-			var number = numberElem.innerText.trim().replace(/\D/g,'');
-			return numberToSend === number;
+			const expandRecipients = document.querySelector(selectors.gvExpandRecipientButton);
+			if (expandRecipients) {
+				expandRecipients.click();
+				var numberElem = document.querySelector(selectors.gvRecipientNumber);
+				if (numberElem) {
+					var number = numberElem.innerText.trim().replace(/\D/g,'');
+					return numberToSend === number;
+				}
+			}
 		}
 	}
 
@@ -419,6 +425,10 @@ function keepTrying(method, silenceErrors, cb) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTryingAsPromised(method, silenceErrors) {
+	console.log('Bulk SMS - Running: ', method.name);
+	if (siteManager) {
+		console.log('Bulk SMS - Current number', siteManager.currentNumberSending);
+	}
 	return new Promise((resolve, reject) => {
 		keepTrying(method, silenceErrors, (successful) => {
 			resolve(successful);
