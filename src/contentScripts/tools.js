@@ -7,6 +7,10 @@ function formatNumber(number) {
 	return number.replace(/\D/g,'');
 }
 
+function getFunctionName(func) {
+	return func.name.replace('bound ', '');
+}
+
 /**
  * continually calls the given method until successful
  * @param {Function}   method         should return true when successful, or false when we should give up early
@@ -24,7 +28,7 @@ function keepTrying(method, silenceErrors, cb) {
 			// the app failed
 			if (!silenceErrors && tryCount < 1) {
 				if (siteIsGoogleVoice) {
-					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${method.name}" failed.`, true);
+					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
 				} else {
 					showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.', false);
 				}
@@ -44,7 +48,7 @@ function keepTrying(method, silenceErrors, cb) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTryingAsPromised(method, silenceErrors) {
-	console.log('Bulk SMS - Running: ', method.name);
+	console.log('Bulk SMS - Running: ', getFunctionName(method));
 	if (siteManager) {
 		console.log('Bulk SMS - Current number', siteManager.currentNumberSending);
 	}
