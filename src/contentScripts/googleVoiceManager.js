@@ -34,6 +34,8 @@ class GoogleVoiceSiteManager {
 	}
 
 	async sendFromQueue() {
+		let silenceErrors = true;
+
 		if (this.numberQueue.length > 0) {
 			this.currentNumberSending = this.numberQueue.shift();
 			
@@ -49,9 +51,12 @@ class GoogleVoiceSiteManager {
 			let previousStep;
 			while (sendExecutionQueue.length) {
 				let currentStep = sendExecutionQueue.shift().bind(this);
-				const result = await keepTryingAsPromised(currentStep);
-				if (result === false) {
-					console.log(`Step failed (${getFunctionName(currentStep)}), going back to previous step (${getFunctionName(previousStep)}).`);
+				const result = await keepTryingAsPromised(currentStep, silenceErrors);
+				if (!result) {
+					console.log(`Bulk SMS - Step failed (${getFunctionName(currentStep)}), going back to previous step (${getFunctionName(previousStep)}).`);
+					silenceErrors = false; // if this happens again, alert on it
+					// try the last two steps again
+					sendExecutionQueue.unshift(currentStep);
 					sendExecutionQueue.unshift(previousStep);
 				} else {
 					previousStep = currentStep;

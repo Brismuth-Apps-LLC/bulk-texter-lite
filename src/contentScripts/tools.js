@@ -8,7 +8,7 @@ function formatNumber(number) {
 }
 
 function getFunctionName(func) {
-	return func.name.replace('bound ', '');
+	return func.name.replace(/bound /g, '');
 }
 
 /**
@@ -49,9 +49,6 @@ function keepTrying(method, silenceErrors, cb) {
  */
 function keepTryingAsPromised(method, silenceErrors) {
 	console.log('Bulk SMS - Running: ', getFunctionName(method));
-	if (siteManager) {
-		console.log('Bulk SMS - Current number', siteManager.currentNumberSending);
-	}
 	return new Promise((resolve, reject) => {
 		keepTrying(method, silenceErrors, (successful) => {
 			resolve(successful);
@@ -69,8 +66,10 @@ function showFatalError(message, reload) {
         siteManager.messagesToSend.length = 0;
     }
     const manifest = chrome.runtime.getManifest();
-    const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
-	alert(`Google Voice bulk texter v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`);
+	const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
+	const fullMessage = `Google Voice bulk texter v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`;
+	console.error('Bulk SMS - ' + fullMessage);
+	alert(fullMessage);
     if (reload) {
         window.location.reload();
     }
