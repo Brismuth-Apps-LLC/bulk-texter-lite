@@ -404,11 +404,10 @@ function keepTrying(method, silenceErrors, cb) {
 			// the app failed
 			if (!silenceErrors && tryCount < 1) {
 				if (siteIsGoogleVoice) {
-					alert("Google Voice bulk texter:\nText failed. Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: \"" + method.name + "\" failed.\n\nWhen you click \"ok\" the page will refresh.");
+					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${method.name}" failed.`);
 				} else {
-					alert('Google Voice bulk texter:\nText failed. Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.\n\nWhen you click \"ok\" the page will refresh.');
+					showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.');
 				}
-				window.location.reload();
 			}
 			if (cb) {
 				cb(successful);
@@ -434,4 +433,10 @@ function keepTryingAsPromised(method, silenceErrors) {
 			resolve(successful);
 		});
 	});
+}
+
+function showFatalError(message) {
+	const manifest = chrome.runtime.getManifest();
+	alert(`Google Voice bulk texter v${manifest.version}:\nText failed. ${message}\n\nWhen you click \"ok\" the page will refresh.`);
+	window.location.reload();
 }

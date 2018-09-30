@@ -56,6 +56,13 @@
 			#hangouts-beta-warning {
 			  display: none;
 			}
+
+			#version-number {
+				color: #ccc;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
 		</style>
 
 		<script src="popup.js"></script>
@@ -91,6 +98,7 @@
 			</div>
 			<div class="input-group">
 				<button class="btn btn-success" id="send-messages-button" title="This will not send messages - it will just get them ready.">Send Messages</button>
+				<div id="version-number">Version Number: </div>
 			</div>
 		</div>
 		<div id="wrong-page-message" style="display: none;">

@@ -120,6 +120,11 @@ function restoreTextFields() {
 	message.value = window.localStorage.getItem('gvbt-message') || 'Hi {name}!';
 }
 
+function showVersionNumber() {
+	const manifest = chrome.runtime.getManifest();
+	document.getElementById('version-number').innerText = `v${manifest.version}`;
+}
+
 /**
  * hides the spinner and shows the relevant UI
  * @param  {string} supportLevel 	'GV', 'HANGOUTS', or false
@@ -148,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			showUI(supportLevel);
 			restoreTextFields();
 			addUIListeners();
+			showVersionNumber();
 		} else {
 			showUI(false);
 		}
