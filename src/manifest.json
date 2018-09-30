@@ -21,8 +21,26 @@
 
   "content_scripts": [
     {
+      "matches": ["https://hangouts.google.com/webchat/*"],
+      "js": [
+        "contentScripts/hangoutsListViewManager.js",
+        "contentScripts/hangoutsThreadViewManager.js"
+      ],
+      "all_frames": true
+    },
+    {
+      "matches": ["https://voice.google.com/*"],
+      "js": [
+        "contentScripts/googleVoiceManager.js"
+      ],
+      "all_frames": true
+    },
+    {
       "matches": ["https://hangouts.google.com/webchat/*", "https://voice.google.com/*"],
-      "js": ["contentScript.js" ],
+      "js": [
+        "contentScripts/tools.js", 
+        "contentScripts/main.js" 
+      ],
       "all_frames": true
     }
   ],
