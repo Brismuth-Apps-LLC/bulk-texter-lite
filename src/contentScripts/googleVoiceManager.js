@@ -101,14 +101,10 @@ class GoogleVoiceSiteManager {
 
 	confirmChatSwitched() {
 		const numberToSend = this.currentNumberSending;
-		const expandRecipients = document.querySelector(selectors.gvExpandRecipientButton);
-		if (expandRecipients) {
-			expandRecipients.click();
-			var numberElem = document.querySelector(selectors.gvRecipientNumber);
-			if (numberElem) {
-				var number = numberElem.innerText.trim().replace(/\D/g,'');
-				return numberToSend === number;
-			}
+		const recipientButton = document.querySelector(selectors.recipientButton);
+		if (recipientButton) {
+			var number = formatNumber(recipientButton.innerText);
+			return numberToSend === number;
 		}
 	}
 

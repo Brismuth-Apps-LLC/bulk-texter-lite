@@ -4,7 +4,7 @@
  * @return {string}         i.e. 1234567890
  */
 function formatNumber(number) {
-	return number.replace(/\D/g,'');
+	return number.trim().replace(/\D/g,'');
 }
 
 function getFunctionName(func) {
@@ -18,7 +18,7 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 500; // try every 500ms
+	const frequency = 50; // try every 50ms
 	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
 	var keepTryingInterval = setInterval(function() {
 		var successful = method();
