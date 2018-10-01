@@ -71,7 +71,7 @@ function clearError() {
  * @return {string}          i.e. 1234567890
  */
 function simplifyNumber(number) {
-	return number.replace(/\D/g,'');
+	return number.trim().replace(/\D/g,'');
 }
 
 /**
