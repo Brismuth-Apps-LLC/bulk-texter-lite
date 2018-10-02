@@ -117,6 +117,12 @@ class GoogleVoiceSiteManager {
 		const message = this.messagesToSend[number];
 	
 		var messageEditor = document.querySelector(selectors.gvMessageEditor);
+		
+		if (messageEditor.value) {
+			console.log('Bulk SMS - Already had value:', messageEditor.value);
+			return;
+		}
+		
 		if (messageEditor) {
 			messageEditor.value = message;
 			return true;
