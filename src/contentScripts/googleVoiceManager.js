@@ -146,7 +146,7 @@ class GoogleVoiceSiteManager {
 			sendButton.click();
 			
 			// continue with queue
-			setTimeout(this.sendFromQueue.bind(this), 300);
+			setTimeout(this.sendFromQueue.bind(this), 500);
 			
 			return true;
 		}
