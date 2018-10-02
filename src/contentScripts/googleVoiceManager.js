@@ -86,7 +86,7 @@ class GoogleVoiceSiteManager {
 		
 			// confirm that the number was added as expected
 			let numInputConfirm = document.querySelector(selectors.gvNumInput);
-			return numInputConfirm.value === this.currentNumberSending;
+			return numInputConfirm && numInputConfirm.value === this.currentNumberSending;
 		}
 	}
 
