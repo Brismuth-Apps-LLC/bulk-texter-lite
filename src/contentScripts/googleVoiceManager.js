@@ -50,6 +50,9 @@ class GoogleVoiceSiteManager {
 					// start over in the execution queue
 					sendExecutionQueue = this.getSendExecutionQueue();
 				}
+				if (getFunctionName(currentStep) === 'sendMessage') {
+					silenceErrors = false; // we don't want to retry the whole pipeline after the send step
+				}
 			}
 		}
 	}
@@ -150,11 +153,12 @@ class GoogleVoiceSiteManager {
 	}
 
 	confirmSent() {
-		let sendingNote = document.querySelector(selectors.gvSendingNote);
-
-		if (!sendingNote) { // this is the note that says "Sending", it will disappear when it is finished
+		let sendingNote = document.querySelector(selectors.gvSendingNote); // this is the note that says "Sending", it will disappear when it is finished
+		let chatLoadedHeader = document.querySelector(selectors.gvChatLoadedHeader); // the header switches to this after sending is complete. If we move on before this, it can break things.
+	
+		if (!sendingNote && chatLoadedHeader) { 
 			// continue with queue
-			setTimeout(this.sendFromQueue.bind(this), 500);
+			setTimeout(this.sendFromQueue.bind(this), 50);
 			return true;
 		}
 	}

@@ -12,6 +12,7 @@ const selectors = {
 	gvMessageEditor: 'textarea[aria-label="Type a message"]',
 	gvSendButton: 'gv-icon-button[icon-name="send"] button[aria-label="Send message"]',
 	gvSendingNote: 'gv-message-item div[ng-if="ctrl.shouldDisplayTransmissionStatus()"] div[ng-if="!ctrl.isFailed()"]',
+	gvChatLoadedHeader: 'gv-message-list-header p[gv-test-id="conversation-title"]',
 
 	// hangouts
 	hangoutsNumInputButton: 'div[googlevoice="nolinks"] button',

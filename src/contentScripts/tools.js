@@ -18,8 +18,8 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 200; // try every 200ms
-	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
+	const frequency = 50; // try every 50ms
+	let tryCount = 10 * 1000/frequency; // keep trying for 10 seconds
 	var keepTryingInterval = setInterval(function() {
 		var successful = method();
 		var giveUp = successful === false || tryCount-- < 0;
