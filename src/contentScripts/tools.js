@@ -18,28 +18,26 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 50; // try every 50ms
+	const frequency = 200; // try every 200ms
 	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
-	setTimeout(function() {
-		var keepTryingInterval = setInterval(function() {
-			var successful = method();
-			var giveUp = successful === false || tryCount-- < 0;
-			if (successful === true || giveUp) {
-				clearInterval(keepTryingInterval);
-				// the app failed
-				if (!silenceErrors && tryCount < 1) {
-					if (siteIsGoogleVoice) {
-						showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
-					} else {
-						showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.', false);
-					}
-				}
-				if (cb) {
-					cb(successful);
+	var keepTryingInterval = setInterval(function() {
+		var successful = method();
+		var giveUp = successful === false || tryCount-- < 0;
+		if (successful === true || giveUp) {
+			clearInterval(keepTryingInterval);
+			// the app failed
+			if (!silenceErrors && tryCount < 1) {
+				if (siteIsGoogleVoice) {
+					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
+				} else {
+					showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.', false);
 				}
 			}
-		}, frequency);
-	}, 500); // wait 500ms before trying the next step
+			if (cb) {
+				cb(successful);
+			}
+		}
+	}, frequency);
 }
 
 /**
