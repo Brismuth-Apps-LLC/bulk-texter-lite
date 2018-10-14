@@ -105,7 +105,7 @@ class GoogleVoiceSiteManager {
 
 	confirmChatSwitched() {
 		const numberToSend = this.currentNumberSending;
-		const recipientButton = document.querySelector(selectors.recipientButton);
+		const recipientButton = document.querySelector(selectors.gvRecipientButton);
 		if (recipientButton && recipientButton.offsetParent !== null) {
 			var number = formatNumber(recipientButton.innerText);
 			return numberToSend === number;
@@ -155,11 +155,24 @@ class GoogleVoiceSiteManager {
 	confirmSent() {
 		let sendingNote = document.querySelector(selectors.gvSendingNote); // this is the note that says "Sending", it will disappear when it is finished
 		let chatLoadedHeader = document.querySelector(selectors.gvChatLoadedHeader); // the header switches to this after sending is complete. If we move on before this, it can break things.
-	
+		
 		if (!sendingNote && chatLoadedHeader) { 
-			// continue with queue
-			setTimeout(this.sendFromQueue.bind(this), 50);
-			return true;
+			// check if the message we sent is showing up in the chat window
+			let mostRecentMessages = document.querySelectorAll(selectors.gvMostRecentMessages);
+			let	sentMessageIsThreaded = false;
+			if (mostRecentMessages && mostRecentMessages.length) {
+				var i = mostRecentMessages.length - 1;
+				for (i; !sentMessageIsThreaded && i >= 0; i--) {
+					let mostRecentMessage = mostRecentMessages[mostRecentMessages.length - 1];
+					sentMessageIsThreaded = mostRecentMessage.innerText === this.messagesToSend[this.currentNumberSending];
+				}
+			}
+
+			if (sentMessageIsThreaded) {
+				// continue with queue
+				setTimeout(this.sendFromQueue.bind(this), 50);
+				return true;
+			}
 		}
 	}
 }
