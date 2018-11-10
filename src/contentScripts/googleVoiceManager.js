@@ -52,6 +52,7 @@ class GoogleVoiceSiteManager {
 				}
 				if (getFunctionName(currentStep) === 'sendMessage') {
 					silenceErrors = false; // we don't want to retry the whole pipeline after the send step
+					// Todo - if it fails here, we should go through a verification queue that opens up the chat again and checks for the body
 				}
 			}
 		}
@@ -146,7 +147,7 @@ class GoogleVoiceSiteManager {
 
 		// click send button
 		let sendButton = document.querySelector(selectors.gvSendButton);
-		if (sendButton && sendButton.offsetParent !== null) {
+		if (sendButton && sendButton.offsetParent !== null && sendButton.getAttribute('aria-disabled') === 'false') {
 			sendButton.click();
 			return true;
 		}

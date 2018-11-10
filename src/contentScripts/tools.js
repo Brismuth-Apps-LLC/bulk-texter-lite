@@ -18,8 +18,8 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 50; // try every 50ms
-	let tryCount = 10 * 1000/frequency; // keep trying for 10 seconds
+	const frequency = 100; // try every 100ms
+	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
 	var keepTryingInterval = setInterval(function() {
 		var successful = method();
 		var giveUp = successful === false || tryCount-- < 0;
@@ -50,9 +50,11 @@ function keepTrying(method, silenceErrors, cb) {
 function keepTryingAsPromised(method, silenceErrors) {
 	console.log('Bulk SMS - Running: ', getFunctionName(method));
 	return new Promise((resolve, reject) => {
-		keepTrying(method, silenceErrors, (successful) => {
-			resolve(successful);
-		});
+		setTimeout(() => {
+			keepTrying(method, silenceErrors, (successful) => {
+				resolve(successful);
+			});
+		}, 200);
 	});
 }
 
