@@ -34,7 +34,8 @@ class GoogleVoiceSiteManager {
 	}
 
 	async sendFromQueue() {
-		let silenceErrors = true;
+		let retryCount = 5;
+		let verifyOnly = false;
 
 		if (this.numberQueue.length > 0) {
 			this.currentNumberSending = this.numberQueue.shift();
@@ -42,22 +43,25 @@ class GoogleVoiceSiteManager {
 			let sendExecutionQueue = this.getSendExecutionQueue();
 			while (sendExecutionQueue.length) {
 				let currentStep = sendExecutionQueue.shift().bind(this);
-				const result = await keepTryingAsPromised(currentStep, silenceErrors);
+				const result = await keepTryingAsPromised(currentStep, retryCount > 0);
 				if (!result) {
 					console.log(`Bulk SMS - Step failed (${getFunctionName(currentStep)}), retrying message.`);
-					silenceErrors = false; // if this happens again, alert on it
+					retryCount--; // if this keeps happening, alert on it
 					
-					// start over in the execution queue
-					sendExecutionQueue = this.getSendExecutionQueue();
+					if (verifyOnly) {
+						sendExecutionQueue = this.getVerificationOnlyExecutionQueue();
+					} else {
+						// otherwise start over in the execution queue
+						sendExecutionQueue = this.getSendExecutionQueue();
+					}
 				}
 				if (getFunctionName(currentStep) === 'sendMessage') {
-					silenceErrors = false; // we don't want to retry the whole pipeline after the send step
-					// Todo - if it fails here, we should go through a verification queue that opens up the chat again and checks for the body
+					verifyOnly = true; // we don't want to risk sending a message twice
 				}
 			}
 		}
 	}
-
+	
 	getSendExecutionQueue() {
 		return [
 			this.showNumberInput,
@@ -66,6 +70,18 @@ class GoogleVoiceSiteManager {
 			this.confirmChatSwitched,
 			this.writeMessage,
 			this.sendMessage,
+			this.confirmThreadHeaderUpdated,
+			this.confirmSent
+		];
+	}
+	
+	// opens up the chat again and checks if the message was sent previously
+	getVerificationOnlyExecutionQueue() {
+		return [
+			this.showNumberInput,
+			this.fillNumberInput,
+			this.startChat,
+			this.confirmChatSwitched,
 			this.confirmSent
 		];
 	}
@@ -153,11 +169,17 @@ class GoogleVoiceSiteManager {
 		}
 	}
 
+	confirmThreadHeaderUpdated() {
+		let chatLoadedHeader = document.querySelector(selectors.gvChatLoadedHeader); // the header switches to this after sending is complete. If we move on before this, it can break things.
+		if (chatLoadedHeader) {
+			return true;
+		}
+	}
+
 	confirmSent() {
 		let sendingNote = document.querySelector(selectors.gvSendingNote); // this is the note that says "Sending", it will disappear when it is finished
-		let chatLoadedHeader = document.querySelector(selectors.gvChatLoadedHeader); // the header switches to this after sending is complete. If we move on before this, it can break things.
 		
-		if (!sendingNote && chatLoadedHeader) { 
+		if (!sendingNote) { 
 			// check if the message we sent is showing up in the chat window
 			let mostRecentMessages = document.querySelectorAll(selectors.gvMostRecentMessages);
 			let	sentMessageIsThreaded = false;
