@@ -9,8 +9,8 @@ function sendMessages(messages) {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'SEND_MESSAGES', messages: messages});
 	});
-	
-	ga('send', 'event', 'Messaging Popup', 'send', 'message count', messages.length);
+
+	ga('send', 'event', 'Messaging Popup', 'send', 'message count', messages.queue.length);
 	return true;
 }
 
@@ -99,7 +99,7 @@ function addUIListeners() {
 			sendMessagesButton.disabled = true;
 		}
 	});
-	
+
 	numbersAndNames.addEventListener('change', persistTextFields);
 	message.addEventListener('change', persistTextFields);
 }
