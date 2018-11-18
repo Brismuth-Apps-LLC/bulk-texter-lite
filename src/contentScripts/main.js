@@ -16,6 +16,7 @@ const selectors = {
 	gvChatLoadedHeader: 'gv-message-list-header p[gv-test-id="conversation-title"]',
 
 	// hangouts
+	hangoutsProfilePictureSelector: 'div[aria-label="Change profile picture"]',
 	hangoutsNumInputButton: 'div[googlevoice="nolinks"] button',
 	hangoutsNumInput: 'div[googlevoice="nolinks"] input[placeholder="Enter name, email, or phone"]',
 	hangoutsStartChat: 'div[googlevoice="nolinks"] a[title="Click to send SMS"]',
@@ -45,7 +46,9 @@ function findGoogleVoice() {
 
 	// check if this is the hangouts conversation list
 	var button = document.querySelector(selectors.hangoutsNumInputButton);
-	if (button) {
+	// this only shows up in the hangouts iframe on gmail.com, which is not currently supported
+	var isOnGmail = document.querySelector(selectors.hangoutsProfilePictureSelector);
+	if (button && !isOnGmail) {
 		console.log('Bulk SMS - configuring list view');
 		siteManager = new HangoutsListViewManager();
 		siteManager.initialize();
