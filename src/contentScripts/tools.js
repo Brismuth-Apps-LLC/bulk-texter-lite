@@ -26,7 +26,7 @@ function keepTrying(method, silenceErrors, cb) {
 		if (successful === true || giveUp) {
 			clearInterval(keepTryingInterval);
 			// the app failed
-			if (!silenceErrors && tryCount < 1) {
+			if (!silenceErrors && giveUp) {
 				if (siteIsGoogleVoice) {
 					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
 				} else {
