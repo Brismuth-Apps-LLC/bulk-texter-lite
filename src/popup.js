@@ -67,11 +67,16 @@ function clearError() {
 
 /**
  * removes all non-numeric characters from the number string
- * @param  {string} number   i.e. (123) 456-7890
- * @return {string}          i.e. 1234567890
+ * @param  {string} number   i.e. +1 (223) 456-7890
+ * @return {string}          i.e. 2234567890
  */
 function simplifyNumber(number) {
-	return number.trim().replace(/\D/g,'');
+	var simplifiedNumber = number.trim().replace(/\D/g,'');
+	// remove international code for US numbers
+	if (simplifiedNumber.length === 11 && simplifiedNumber.charAt(0) === '1') {
+		simplifiedNumber = simplifiedNumber.substr(1);
+	}
+	return simplifiedNumber;
 }
 
 /**

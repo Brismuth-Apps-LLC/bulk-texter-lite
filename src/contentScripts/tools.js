@@ -1,10 +1,15 @@
 /**
  * removes all non-numeric characters from the number string
- * @param  {string}   number i.e. (123) 456-7890
- * @return {string}         i.e. 1234567890
+ * @param  {string}   number i.e. +1 (223) 456-7890
+ * @return {string}         i.e. 2234567890
  */
 function formatNumber(number) {
-	return number.trim().replace(/\D/g,'');
+	var simplifiedNumber = number.trim().replace(/\D/g,'');
+	// remove international code for US numbers
+	if (simplifiedNumber.length === 11 && simplifiedNumber.charAt(0) === '1') {
+		simplifiedNumber = simplifiedNumber.substr(1);
+	}
+	return simplifiedNumber;
 }
 
 function getFunctionName(func) {
@@ -26,7 +31,7 @@ function keepTrying(method, silenceErrors, cb) {
 		if (successful === true || giveUp) {
 			clearInterval(keepTryingInterval);
 			// the app failed
-			if (!silenceErrors && tryCount < 1) {
+			if (!silenceErrors && giveUp) {
 				if (siteIsGoogleVoice) {
 					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
 				} else {
