@@ -37,7 +37,7 @@ function formatMessages(numbersAndNames, message) {
 		var contactDetails = contact.split(',');
 		var number = simplifyNumber(contactDetails[0]);
 		if (number) {
-			var formattedMessage = message.replace("{name}", (contactDetails[1] || '').trim() || 'friend');
+			var formattedMessage = message.replace("{name}", (contactDetails[1] || '').trim() || 'friend').trim();
 			messages[number] = formattedMessage;
 			queue.push(number);
 		} else {
