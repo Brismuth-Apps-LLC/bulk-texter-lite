@@ -14,10 +14,10 @@ class GoogleVoiceSiteManager {
 		chrome.runtime.onMessage.addListener(function (message, sender, response) {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
 				that.addMessagesToQueue(message.messages);
-		
+
 				// switch To Text View
 				document.querySelector(selectors.gvMessagesTab).click();
-				
+
 				that.sendFromQueue();
 			}
 
@@ -39,7 +39,7 @@ class GoogleVoiceSiteManager {
 
 		if (this.numberQueue.length > 0) {
 			this.currentNumberSending = this.numberQueue.shift();
-			
+
 			let sendExecutionQueue = this.getSendExecutionQueue();
 			while (sendExecutionQueue.length) {
 				let currentStep = sendExecutionQueue.shift().bind(this);
@@ -47,7 +47,7 @@ class GoogleVoiceSiteManager {
 				if (!result) {
 					console.log(`Bulk SMS - Step failed (${getFunctionName(currentStep)}), retrying message.`);
 					retryCount--; // if this keeps happening, alert on it
-					
+
 					if (verifyOnly) {
 						sendExecutionQueue = this.getVerificationOnlyExecutionQueue();
 					} else {
@@ -61,7 +61,7 @@ class GoogleVoiceSiteManager {
 			}
 		}
 	}
-	
+
 	getSendExecutionQueue() {
 		return [
 			this.showNumberInput,
@@ -74,7 +74,7 @@ class GoogleVoiceSiteManager {
 			this.confirmSent
 		];
 	}
-	
+
 	// opens up the chat again and checks if the message was sent previously
 	getVerificationOnlyExecutionQueue() {
 		return [
@@ -104,7 +104,7 @@ class GoogleVoiceSiteManager {
 			numInput.select();
 			document.execCommand('cut');
 			document.execCommand('paste');
-		
+
 			// confirm that the number was added as expected
 			let numInputConfirm = document.querySelector(selectors.gvNumInput);
 			return numInputConfirm && numInputConfirm.value === this.currentNumberSending;
@@ -134,16 +134,16 @@ class GoogleVoiceSiteManager {
 		if (!this.messagesToSend[number]) {
 			return false;
 		}
-	
+
 		const message = this.messagesToSend[number];
-	
+
 		var messageEditor = document.querySelector(selectors.gvMessageEditor);
-		
+
 		if (messageEditor.value) {
 			console.log('Bulk SMS - Already had value:', messageEditor.value);
 			return;
 		}
-		
+
 		if (messageEditor && messageEditor.offsetParent !== null) {
 			messageEditor.value = message;
 			return true;
@@ -178,8 +178,8 @@ class GoogleVoiceSiteManager {
 
 	confirmSent() {
 		let sendingNote = document.querySelector(selectors.gvSendingNote); // this is the note that says "Sending", it will disappear when it is finished
-		
-		if (!sendingNote) { 
+
+		if (!sendingNote) {
 			// check if the message we sent is showing up in the chat window
 			let mostRecentMessages = document.querySelectorAll(selectors.gvMostRecentMessages);
 			let	sentMessageIsThreaded = false;
@@ -193,7 +193,8 @@ class GoogleVoiceSiteManager {
 
 			if (sentMessageIsThreaded) {
 				// continue with queue
-				setTimeout(this.sendFromQueue.bind(this), 50);
+				const timeBeforeNextMessage = getRandomWaitTimeMS(6000);
+				setTimeout(this.sendFromQueue.bind(this), timeBeforeNextMessage);
 				return true;
 			}
 		}

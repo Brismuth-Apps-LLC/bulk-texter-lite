@@ -33,7 +33,7 @@ function keepTrying(method, silenceErrors, cb) {
 			// the app failed
 			if (!silenceErrors && giveUp) {
 				if (siteIsGoogleVoice) {
-					showFatalError(`Make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.\n\nIf the error persists, please send this error code to the developer.\n\nError: "${getFunctionName(method)}" failed.`, true);
+					showFatalError(`You can find support resources by opening the Google Voice Bulk Texter popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
 				} else {
 					showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.', false);
 				}
@@ -54,19 +54,28 @@ function keepTrying(method, silenceErrors, cb) {
  */
 function keepTryingAsPromised(method, silenceErrors) {
 	console.log('Bulk SMS - Running: ', getFunctionName(method));
+	const waitTime = getRandomWaitTimeMS(1500)
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			keepTrying(method, silenceErrors, (successful) => {
 				resolve(successful);
 			});
-		}, 200);
+		}, waitTime);
 	});
 }
 
 /**
+ * Gets a random time in ms between 500 and (max + 500) for waiting
+ * @return {Number}
+ */
+function getRandomWaitTimeMS(max) {
+	return Math.floor(Math.random() * max) + 500;
+}
+
+/**
  * shows the message as an alert, reloads the page if instructed to
- * @param {*} message 
- * @param {*} reload 
+ * @param {*} message
+ * @param {*} reload
  */
 function showFatalError(message, reload) {
     if (siteManager) {

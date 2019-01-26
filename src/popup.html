@@ -52,16 +52,20 @@
 			#wrong-page-message a:focus {
 				outline: 0;
 			}
-			
+
 			#hangouts-beta-warning {
 			  display: none;
 			}
 
-			#version-number {
-				color: #ccc;
+			#support-info {
 				position: absolute;
 				right: 0;
 				bottom: 0;
+				text-align: right;
+			}
+
+			#version-number {
+				color: #ccc;
 			}
 		</style>
 
@@ -98,7 +102,12 @@
 			</div>
 			<div class="input-group">
 				<button class="btn btn-success" id="send-messages-button" title="Pressing this will send the composed message to all of the listed contacts.">Send Messages</button>
-				<div id="version-number">Version Number: </div>
+				<div id="support-info">
+					<div>
+						<a href="https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md" target="_blank">Get Help</a>
+					</div>
+					<div id="version-number"></div>
+				</div>
 			</div>
 		</div>
 		<div id="wrong-page-message" style="display: none;">

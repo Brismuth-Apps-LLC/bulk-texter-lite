@@ -11,6 +11,7 @@ function sendMessages(messages) {
 	});
 
 	ga('send', 'event', 'Messaging Popup', 'send', 'message count', messages.queue.length);
+	window.close();
 	return true;
 }
 
