@@ -18,3 +18,11 @@ You can easily install this from source by following these steps:
 5. Click on "Load Unpacked"
 6. Navigate to the `src` folder in this project that you downloaded and select the folder
 7. That's it! It should be installed locally now.
+
+### Donating 
+If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
+
+You can also feel free to leave a review in the Chrome Web store:
+https://chrome.google.com/webstore/detail/google-voice-bulk-texter/gdplkhplnfgmodalfimcondhmokmekka
+
+Thanks!
