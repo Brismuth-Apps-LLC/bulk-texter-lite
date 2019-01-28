@@ -5,6 +5,7 @@
   * See these two Google Voice forum threads:
     1. https://support.google.com/voice/forum/AAAAjq5-_rMCpSfMRYCUpc
     2. https://support.google.com/voice/forum/AAAAjq5-_rMM-d-H28-17k
+  * Google does not publish their algorithm for spam detection. Because of that, I cannot make any guarantees on what will or will not make your messages look like spam.
   * If your messages are not spam but Google thinks they are, it could be because your messages are too long or because they contain a link. Some users have reported that shortening their message or removing links has resolved the issue for them.
   * As mentioned in the above forum threads, this issue will usually clear up after some time passes, although you may need to change the content of the message you're sending as well.
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
