@@ -1,6 +1,8 @@
 # Google Voice Bulk Texter Support
+
 ### Tips
 * To stop the bulk texter at any time, simply refresh the Google Voice tab.
+* **Extension isn't recognizing voice.google.com as valid:** As of February 21, Google appears to be rolling out an update to the Google Voice interface in phases. Until the changes show up for me, I'm not able to update the extension to be compatible with the new interface. In the meantime, you can comment or subscribe to this thread tracking the issue: https://github.com/brismuth/google-voice-bulk-texter/issues/39. If you'd like to show your support for my development and maintenance efforts, see the _Donating_ section below.
 * **Error: "confirmSent" failed:** If the extension was working for you for one or more messages but stopped suddenly, it is likely that Google has flagged your messages as potential spam, which is against Google's terms of service. Continuing to send messages that appear to be spam could result in your account being deactivated. 
   * See these two Google Voice forum threads:
     1. https://support.google.com/voice/forum/AAAAjq5-_rMCpSfMRYCUpc
