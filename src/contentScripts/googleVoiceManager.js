@@ -162,14 +162,16 @@ class GoogleVoiceSiteManager {
 		document.execCommand('paste');
 
 		// click send button
-		let sendButton = document.querySelector(selectors.gvSendButton);
-		if (sendButton && sendButton.offsetParent !== null) {
-			if ((sendButton.disabled === false && sendButton.getAttribute('aria-disabled') === null) // new UI
-				|| sendButton.getAttribute('aria-disabled') === 'false') // old UI
-			{
-				sendButton.click();
-				return true;
-			}
+		let sendButtonOld = document.querySelector(selectors.gvSendButtonOld);
+		let sendButtonNew = document.querySelector(selectors.gvSendButtonNew);
+		if (sendButtonOld && sendButtonOld.offsetParent !== null && sendButtonOld.getAttribute('aria-disabled') === 'false') {
+			sendButtonOld.click();
+			return true;
+		}
+		if (sendButtonNew && sendButtonNew.offsetParent !== null && sendButtonNew.disabled === false) {
+			sendButtonNew.dispatchEvent(new Event('mousedown'));
+			sendButtonNew.dispatchEvent(new Event('mouseup'));
+			return true;
 		}
 	}
 
