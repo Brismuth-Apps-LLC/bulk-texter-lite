@@ -139,7 +139,7 @@ class GoogleVoiceSiteManager {
 
 		var messageEditor = document.querySelector(selectors.gvMessageEditor);
 
-		if (messageEditor.value) {
+		if (messageEditor.value && messageEditor.value !== message) {
 			console.log('Bulk SMS - Already had value:', messageEditor.value);
 			return;
 		}
@@ -162,9 +162,15 @@ class GoogleVoiceSiteManager {
 		document.execCommand('paste');
 
 		// click send button
-		let sendButton = document.querySelector(selectors.gvSendButton);
-		if (sendButton && sendButton.offsetParent !== null && sendButton.getAttribute('aria-disabled') === 'false') {
-			sendButton.click();
+		let sendButtonOld = document.querySelector(selectors.gvSendButtonOld);
+		let sendButtonNew = document.querySelector(selectors.gvSendButtonNew);
+		if (sendButtonOld && sendButtonOld.offsetParent !== null && sendButtonOld.getAttribute('aria-disabled') === 'false') {
+			sendButtonOld.click();
+			return true;
+		}
+		if (sendButtonNew && sendButtonNew.offsetParent !== null && sendButtonNew.disabled === false) {
+			sendButtonNew.dispatchEvent(new Event('mousedown'));
+			sendButtonNew.dispatchEvent(new Event('mouseup'));
 			return true;
 		}
 	}
