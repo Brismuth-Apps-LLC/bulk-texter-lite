@@ -139,7 +139,7 @@ class GoogleVoiceSiteManager {
 
 		var messageEditor = document.querySelector(selectors.gvMessageEditor);
 
-		if (messageEditor.value) {
+		if (messageEditor.value && messageEditor.value !== message) {
 			console.log('Bulk SMS - Already had value:', messageEditor.value);
 			return;
 		}
@@ -163,9 +163,13 @@ class GoogleVoiceSiteManager {
 
 		// click send button
 		let sendButton = document.querySelector(selectors.gvSendButton);
-		if (sendButton && sendButton.offsetParent !== null && sendButton.getAttribute('aria-disabled') === 'false') {
-			sendButton.click();
-			return true;
+		if (sendButton && sendButton.offsetParent !== null) {
+			if ((sendButton.disabled === false && sendButton.getAttribute('aria-disabled') === null) // new UI
+				|| sendButton.getAttribute('aria-disabled') === 'false') // old UI
+			{
+				sendButton.click();
+				return true;
+			}
 		}
 	}
 
