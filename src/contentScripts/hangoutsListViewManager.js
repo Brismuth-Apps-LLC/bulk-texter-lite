@@ -105,6 +105,7 @@ class HangoutsListViewManager {
 		}
 
 		chrome.runtime.sendMessage({
+			source: 'GVBT_HANGOUTS',
 			type: 'SEND_MESSAGE',
 			number: number,
 			message: this.messagesToSend[number]

@@ -114,16 +114,30 @@ function persistTextFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
 
-	window.localStorage.setItem('gvbt-numbers-and-names', numbersAndNames.value);
-	window.localStorage.setItem('gvbt-message', message.value);
+	chrome.storage.sync.set({
+		popupNumbersAndNames: numbersAndNames.value,
+		popupMessage: message.value
+	});
 }
 
 function restoreTextFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
 
-	numbersAndNames.value = window.localStorage.getItem('gvbt-numbers-and-names');
-	message.value = window.localStorage.getItem('gvbt-message') || 'Hi {name}!';
+	chrome.storage.sync.get(['popupNumbersAndNames', 'popupMessage'], function(items){
+		// handle upgrade from v <= v1.1.0
+		if (!items.popupNumbersAndNames && !items.popupMessage) {
+			items.popupNumbersAndNames = window.localStorage.getItem('gvbt-numbers-and-names');
+			items.popupMessage = window.localStorage.getItem('gvbt-message');
+
+			// cleanup
+			window.localStorage.removeItem('gvbt-numbers-and-names');
+			window.localStorage.removeItem('gvbt-message');
+		}
+
+		numbersAndNames.value = items.popupNumbersAndNames || '';
+		message.value = items.popupMessage || 'Hi {name}!';
+	});
 }
 
 function showVersionNumber() {

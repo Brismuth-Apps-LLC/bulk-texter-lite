@@ -25,6 +25,7 @@ class HangoutsThreadViewManager {
 
 	notifyInputReady() {
 		chrome.runtime.sendMessage({
+			source: 'GVBT_HANGOUTS',
 			type: 'THREAD_VIEW_READY',
 			number: this.number,
 		});

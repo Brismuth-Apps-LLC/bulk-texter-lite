@@ -90,3 +90,16 @@ function showFatalError(message, reload) {
         window.location.reload();
     }
 }
+
+/**
+ * Sends a message to background.js for storage (usage tracking for future user-visible dashboards, and anonymous data for developer)
+ * @param  {string} eventType the event type
+ * @param  {number} count     the event count
+ */
+function logEvent(eventType, count) {
+	chrome.runtime.sendMessage({
+		gvbt_logger: true,
+		eventType: eventType,
+		count: count
+	});
+}

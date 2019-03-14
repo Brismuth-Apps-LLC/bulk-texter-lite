@@ -199,6 +199,7 @@ class GoogleVoiceSiteManager {
 
 			if (sentMessageIsThreaded) {
 				// continue with queue
+				logEvent('MESSAGE_SENT', 1);
 				const timeBeforeNextMessage = getRandomWaitTimeMS(6000);
 				setTimeout(this.sendFromQueue.bind(this), timeBeforeNextMessage);
 				return true;
