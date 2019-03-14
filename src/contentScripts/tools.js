@@ -93,13 +93,11 @@ function showFatalError(message, reload) {
 
 /**
  * Sends a message to background.js for storage (usage tracking for future user-visible dashboards, and anonymous data for developer)
- * @param  {string} eventType the event type
- * @param  {number} count     the event count
+ * @param  {object} payload  the google analytics payload
  */
-function logEvent(eventType, count) {
+function logEvent(payload) {
 	chrome.runtime.sendMessage({
 		gvbt_logger: true,
-		eventType: eventType,
-		count: count
+		payload: payload
 	});
 }
