@@ -171,6 +171,7 @@ class GoogleVoiceSiteManager {
 		if (sendButtonNew && sendButtonNew.offsetParent !== null && sendButtonNew.disabled === false) {
 			sendButtonNew.dispatchEvent(new Event('mousedown'));
 			sendButtonNew.dispatchEvent(new Event('mouseup'));
+			sendButtonNew.click();
 			return true;
 		}
 	}
