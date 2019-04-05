@@ -101,36 +101,48 @@ function addUIListeners() {
 	var sendMessagesButton = document.getElementById('send-messages-button');
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
 	sendMessagesButton.addEventListener('click', () => {
 		clearError();
-		var messages = formatMessages(numbersAndNames.value, message.value);
-		if (sendMessages(messages)) {
-			sendMessagesButton.disabled = true;
+
+		var agreedToTerms = tosAgreement.checked;
+		if (agreedToTerms) {
+			var messages = formatMessages(numbersAndNames.value, message.value);
+			if (sendMessages(messages)) {
+				sendMessagesButton.disabled = true;
+			}
 		}
+
+		showError('Please read the Google Voice Acceptable Use Policy and check the box below.');
 	});
 
-	numbersAndNames.addEventListener('change', persistTextFields);
-	message.addEventListener('change', persistTextFields);
+	numbersAndNames.addEventListener('change', persistPopupFields);
+	message.addEventListener('change', persistPopupFields);
+	tosAgreement.addEventListener('change', persistPopupFields);
 }
 
-function persistTextFields() {
+function persistPopupFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
 	chrome.storage.local.set({
 		popupNumbersAndNames: numbersAndNames.value,
-		popupMessage: message.value
+		popupMessage: message.value,
+		tosAgreement: tosAgreement.checked
 	});
 }
 
 function restoreTextFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
-	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage'], function(items){
+	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement'], function(items){
 		numbersAndNames.value = items.popupNumbersAndNames || '';
 		message.value = items.popupMessage || 'Hi {name}!';
+		tosAgreement.checked = items.tosAgreement || false;
 	});
 }
 
