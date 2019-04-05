@@ -22,8 +22,7 @@ class HangoutsListViewManager {
 
 			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
 				var url = window.location.href;
-				response((url.startsWith('https://hangouts.google.com/')
-					|| url.startsWith('https://inbox.google.com/')) ? 'HANGOUTS' : false);
+				response(url.startsWith('https://hangouts.google.com/') ? 'HANGOUTS' : false);
 			}
 
 			if (message.type === 'THREAD_VIEW_READY') {

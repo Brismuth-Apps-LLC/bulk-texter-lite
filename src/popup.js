@@ -85,7 +85,7 @@ function simplifyNumber(number) {
 }
 
 /**
- * uses the chrome tabs API to check if the curren tab is hangouts or inbox
+ * uses the chrome tabs API to check if the curren tab is hangouts
  * @return {[type]} [description]
  */
 function currentlyOnSupportedTab(cb) {
@@ -154,7 +154,7 @@ function showUI(supportLevel) {
 		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
-		document.getElementById('popup-body').style['min-height'] = '275px';
+		document.getElementById('popup-body').style['min-height'] = '180px';
 	}
 
 	document.getElementById('loading-screen').style.display = 'none';
