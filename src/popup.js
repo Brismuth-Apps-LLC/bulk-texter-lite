@@ -107,14 +107,15 @@ function addUIListeners() {
 		clearError();
 
 		var agreedToTerms = tosAgreement.checked;
-		if (agreedToTerms) {
-			var messages = formatMessages(numbersAndNames.value, message.value);
-			if (sendMessages(messages)) {
-				sendMessagesButton.disabled = true;
-			}
+		if  (!agreedToTerms) {
+			showError('Please read the Google Voice Acceptable Use Policy and check the box below.');
+			return;
 		}
 
-		showError('Please read the Google Voice Acceptable Use Policy and check the box below.');
+		var messages = formatMessages(numbersAndNames.value, message.value);
+		if (sendMessages(messages)) {
+			sendMessagesButton.disabled = true;
+		}
 	});
 
 	numbersAndNames.addEventListener('change', persistPopupFields);
