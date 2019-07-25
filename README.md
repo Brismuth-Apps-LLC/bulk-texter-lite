@@ -8,7 +8,8 @@ This is a chrome extension that allows you to write a message once and send it t
 https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md
 
 ### Install it
-https://chrome.google.com/webstore/detail/google-voice-bulk-texter/gdplkhplnfgmodalfimcondhmokmekka
+~https://chrome.google.com/webstore/detail/google-voice-bulk-texter/gdplkhplnfgmodalfimcondhmokmekka~
+It appears that the Google web store link no longer works (see [#73](https://github.com/brismuth/google-voice-bulk-texter/issues/73)). Please see the instructions for installing from source below.
 
 ### Install it from source
 You can easily install this from source by following these steps:
@@ -21,8 +22,5 @@ You can easily install this from source by following these steps:
 
 ### Donating 
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
-
-You can also leave a review in the Chrome Web store:
-https://chrome.google.com/webstore/detail/google-voice-bulk-texter/gdplkhplnfgmodalfimcondhmokmekka
 
 Thanks!
