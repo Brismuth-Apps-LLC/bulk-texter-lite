@@ -6,9 +6,19 @@ function getRandomWaitTime2(min, max) {
 	return Math.floor(Math.random() * (max-min)) + min;
 }
 /**
- * Pattern 1 for sending messages: send message randomly each 200 ms - 2 s. Pause for 1 minutes after 20 messages.
+ * Pattern 1 for sending messages: send message at some time between 1 s - 20 s.
  */
 function delayPatternFn1(){
+	const t1 = 1*1000;
+	const t2 = 20*000;
+	return function {
+		return getRandomWaitTime2(t1, t2);
+	}
+}
+/**
+ * Pattern 2 for sending messages: send message randomly each 200 ms - 2 s. Pause for 1 minutes after 20 messages.
+ */
+function delayPatternFn2(){
 	var counter = 0;
 	const groupSize = 20;
 	const shortDelay = 2*1000; //2 s
@@ -17,16 +27,6 @@ function delayPatternFn1(){
 	return function(){
 		if (counter <= groupSize) return (counter++, getRandomWaitTime2(200, shortDelay));
 		return (counter = 0, longDelay);
-	}
-}
-/**
- * Pattern 2 for sending messages: send message at some time between 1 s - 20 s.
- */
-function delayPatternFn2(){
-	const t1 = 1*1000;
-	const t2 = 20*000;
-	return function {
-		return getRandomWaitTime2(t1, t2);
 	}
 }
 const patterns = {
