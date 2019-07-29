@@ -9,7 +9,8 @@
 				white-space: nowrap;
 				font-size: 14px;
 				min-height: 465px;
-				width: 300px;
+				width: 415px;
+				padding: 4px;
 			}
 
 			h1, h2 {
@@ -28,17 +29,28 @@
 			.input-group {
 				margin-bottom: 12px;
 			}
+			.input-group.delayer {
+				white-space: initial;
+			}
 			textarea {
 				display: block;
-				width: 300px;
+				width: 415px;
 				min-height: 100px;
 				resize: vertical;
 			}
 			.input-group textarea#numbers-and-names {
 				font-family: monospace;
 			}
+			div.tos-text {
+				white-space: initial;
+				display: inline-block;
+				vertical-align: top;
+				margin-left: 2px;
+			}
 			div.errors {
 				color: red;
+				white-space: initial;
+				width: 100%;
 			}
 			div.tip {
 				font-style: italic;
@@ -54,7 +66,8 @@
 			}
 
 			#hangouts-beta-warning {
-			  display: none;
+				display: none;
+				white-space: initial;
 			}
 
 			#support-info {
@@ -70,6 +83,7 @@
 		</style>
 
 		<script src="popup.js"></script>
+		<script src="contentScripts/tools.js"></script>
 	</head>
 
 	<body id="popup-body">
@@ -93,12 +107,26 @@
 (987) 654 3210, Jane</pre>
 				</div>
 			</div>
+			<div class="input-group delayer">
+				<h2>Choose a delaying pattern. This may help you not be marked as spammer</h2>
+				<form id="delayer" action="" method="post">
+					<label name="delayer"><input type="radio" name="delayer" value="0" checked/> send message at some time between 0 s - 6 s.</br></label>
+					<label name="delayer"><input type="radio" name="delayer" value="1" /> send message at some time between 1 s - 20 s.</br></label>
+					<label name="delayer"><input type="radio" name="delayer" value="2" /> send message randomly each 200 ms - 2 s. Pause for 1 minutes after 20 messages.</br></label>
+				</form>
+			</div>
+			<div class="input-group">
+				<label name="gv-tos">
+					<input id="gv-tos-agreement" type="checkbox" name="gv-tos" />
+					<div class="tos-text">
+						I have read the Google Voice <a target="blank" href="https://support.google.com/voice/answer/9230450?hl=en&ref_topic=9273222">Acceptable Use Policy</a> and accept full responsibity for my use of this extension.
+					</div>
+				</label>
+			</div>
 			<div id="hangouts-beta-warning">
-			  <p>
-			    Support for messaging via Hangouts is in beta.<br>
-			    For the best experience, use this extension on <br>
-			    <a href="https://voice.google.com" target="_blank">voice.google.com</a>.
-		    </p>
+				<p>
+					Support for messaging via Hangouts is in beta. For the best experience, use this extension on <a href="https://voice.google.com" target="_blank">voice.google.com</a>.
+				</p>
 			</div>
 			<div class="input-group">
 				<button class="btn btn-success" id="send-messages-button" title="Pressing this will send the composed message to all of the listed contacts.">Send Messages</button>
@@ -118,18 +146,11 @@
 				Try some of the following options:
 				<ul>
 					<li>Make sure you are currently on
-						<a href="https://voice.google.com/messages" target="_blank">Google Voice</a>,
-						<a href="https://inbox.google.com" target="_blank">Google Inbox</a>,
-						or <a href="https://hangouts.google.com" target="_blank">Google Hangouts</a></li>
-					<li>
-						If you are using Google Voice via Hangouts:
-						<ul>
-							<li>Make sure the Hangouts interface is on the page and finished loading</li>
-							<li>Make sure Google Voice via Hangouts is enabled (<a href="https://support.google.com/voice/answer/6023920?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">instructions</a>)</li>
-						</ul>
+						<a href="https://voice.google.com/messages" target="_blank">Google Voice</a>
+						or <a href="https://hangouts.google.com" target="_blank">Google Hangouts</a>
 					</li>
 					<li>Try refreshing the page</li>
-					<li>If it still isn't working for you, please report the issue <a href="https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md" target="_blank">here</a></li>
+					<li>If it still isn't working for you, see additional troubleshooting tips <a href="https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md" target="_blank">here</a></li>
 				</ul>
 			</div>
 		</div>
