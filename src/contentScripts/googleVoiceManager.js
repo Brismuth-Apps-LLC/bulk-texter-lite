@@ -1,4 +1,40 @@
 /**
+ * Gets a random time in ms between min and max
+ * @return {Number}
+ */
+function getRandomWaitTime2(min, max) {
+	return Math.floor(Math.random() * (max-min)) + min;
+}
+/**
+ * Pattern 1 for sending messages: send message randomly each 200 ms - 2 s. Pause for 1 minutes after 20 messages.
+ */
+function delayPatternFn1(){
+	var counter = 0;
+	const groupSize = 20;
+	const shortDelay = 2*1000; //2 s
+	const longDelay = 1*60*1000; //1 min
+	
+	return function(){
+		if (counter <= groupSize) return (counter++, getRandomWaitTime2(200, shortDelay));
+		return (counter = 0, longDelay);
+	}
+}
+/**
+ * Pattern 2 for sending messages: send message at some time between 1 s - 20 s.
+ */
+function delayPatternFn2(){
+	const t1 = 1*1000;
+	const t2 = 20*000;
+	return function {
+		return getRandomWaitTime2(t1, t2);
+	}
+}
+const patterns = {
+	0: function() { return () => getRandomWaitTimeMS(6000) },
+	1: delayPatternFn1,
+	2: delayPatternFn2,
+}
+/**
  * This runs on voice.google.com
  */
 class GoogleVoiceSiteManager {
@@ -6,16 +42,20 @@ class GoogleVoiceSiteManager {
 		this.messagesToSend = {};
 		this.numberQueue = [];
 		this.currentNumberSending = '';
+		this.delayPattern = delayPatternFn2();
 	}
 
 	initialize() {
 		var that = this;
-
+		
 		chrome.runtime.onMessage.addListener(function (message, sender, response) {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
 				that.addMessagesToQueue(message.messages);
-
-				// switch To Text View
+				
+				//get sending pattern
+				that.delayPattern = patterns[message.delayer || 0]();
+				
+				//switch To Text View
 				document.querySelector(selectors.gvMessagesTab).click();
 
 				that.sendFromQueue();
@@ -199,7 +239,7 @@ class GoogleVoiceSiteManager {
 
 			if (sentMessageIsThreaded) {
 				// continue with queue
-				const timeBeforeNextMessage = getRandomWaitTimeMS(6000);
+				const timeBeforeNextMessage = this.delayPattern();
 				setTimeout(this.sendFromQueue.bind(this), timeBeforeNextMessage);
 				return true;
 			}
