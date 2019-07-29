@@ -10,7 +10,7 @@ function getRandomWaitTime2(min, max) {
  */
 function delayPatternFn1(){
 	const t1 = 1*1000;
-	const t2 = 20*000;
+	const t2 = 20*1000;
 	return function(){
 		return getRandomWaitTime2(t1, t2);
 	}
