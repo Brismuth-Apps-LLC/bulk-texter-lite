@@ -11,7 +11,7 @@ function getRandomWaitTime2(min, max) {
 function delayPatternFn1(){
 	const t1 = 1*1000;
 	const t2 = 20*000;
-	return function {
+	return function(){
 		return getRandomWaitTime2(t1, t2);
 	}
 }
@@ -42,7 +42,7 @@ class GoogleVoiceSiteManager {
 		this.messagesToSend = {};
 		this.numberQueue = [];
 		this.currentNumberSending = '';
-		this.delayPattern = delayPatternFn2();
+		this.delayPattern = null;
 	}
 
 	initialize() {
@@ -53,7 +53,7 @@ class GoogleVoiceSiteManager {
 				that.addMessagesToQueue(message.messages);
 				
 				//get sending pattern
-				that.delayPattern = patterns[message.delayer || 0]();
+				that.delayPattern = patterns[message.messages.delayer || 0]();
 				
 				//switch To Text View
 				document.querySelector(selectors.gvMessagesTab).click();
