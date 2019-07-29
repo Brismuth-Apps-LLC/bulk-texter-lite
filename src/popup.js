@@ -10,7 +10,11 @@ function sendMessages(messages) {
 		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'SEND_MESSAGES', messages: messages});
 	});
 
-	ga('send', 'event', 'Messaging Popup', 'send', 'message count', messages.queue.length);
+	logEvent({
+		eventLabel: 'MESSAGE_ATTEMPT',
+		eventValue: messages.queue.length
+	});
+
 	window.close();
 	return true;
 }
@@ -22,7 +26,7 @@ function sendMessages(messages) {
  * @return {array}                    False if there are format errors.
  *                                      Otherwise returns an array of message objects like {number: '(123)-456-7890', message: "Hey John, this is a test."}
  */
-function formatMessages(numbersAndNames, message) {
+function formatMessages(numbersAndNames, message, delayer) {
 	var messages = {};
 	var queue = [];
 	var errors = '';
@@ -38,7 +42,7 @@ function formatMessages(numbersAndNames, message) {
 		var contactDetails = contact.split(',');
 		var number = simplifyNumber(contactDetails[0]);
 		if (number) {
-			var formattedMessage = message.replace("{name}", (contactDetails[1] || '').trim() || 'friend').trim();
+			var formattedMessage = message.replace(/\{name\}/g, (contactDetails[1] || '').trim() || 'friend').trim();
 			messages[number] = formattedMessage;
 			queue.push(number);
 		} else {
@@ -53,7 +57,8 @@ function formatMessages(numbersAndNames, message) {
 
 	return {
 		messages,
-		queue
+		queue,
+		delayer
 	};
 }
 
@@ -81,7 +86,7 @@ function simplifyNumber(number) {
 }
 
 /**
- * uses the chrome tabs API to check if the curren tab is hangouts or inbox
+ * uses the chrome tabs API to check if the curren tab is hangouts
  * @return {[type]} [description]
  */
 function currentlyOnSupportedTab(cb) {
@@ -97,33 +102,51 @@ function addUIListeners() {
 	var sendMessagesButton = document.getElementById('send-messages-button');
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var delayer = document.getElementById('delayer')
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
 	sendMessagesButton.addEventListener('click', () => {
 		clearError();
-		var messages = formatMessages(numbersAndNames.value, message.value);
+
+		var agreedToTerms = tosAgreement.checked;
+		if  (!agreedToTerms) {
+			showError('Please read the Google Voice Acceptable Use Policy and check the box below.');
+			return;
+		}
+
+		var messages = formatMessages(numbersAndNames.value, message.value, delayer.delayer.value);
 		if (sendMessages(messages)) {
 			sendMessagesButton.disabled = true;
 		}
 	});
 
-	numbersAndNames.addEventListener('change', persistTextFields);
-	message.addEventListener('change', persistTextFields);
+	numbersAndNames.addEventListener('change', persistPopupFields);
+	message.addEventListener('change', persistPopupFields);
+	tosAgreement.addEventListener('change', persistPopupFields);
 }
 
-function persistTextFields() {
+function persistPopupFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
-	window.localStorage.setItem('gvbt-numbers-and-names', numbersAndNames.value);
-	window.localStorage.setItem('gvbt-message', message.value);
+	chrome.storage.local.set({
+		popupNumbersAndNames: numbersAndNames.value,
+		popupMessage: message.value,
+		tosAgreement: tosAgreement.checked
+	});
 }
 
 function restoreTextFields() {
 	var numbersAndNames = document.getElementById('numbers-and-names');
 	var message = document.getElementById('message');
+	var tosAgreement = document.getElementById('gv-tos-agreement');
 
-	numbersAndNames.value = window.localStorage.getItem('gvbt-numbers-and-names');
-	message.value = window.localStorage.getItem('gvbt-message') || 'Hi {name}!';
+	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement'], function(items){
+		numbersAndNames.value = items.popupNumbersAndNames || '';
+		message.value = items.popupMessage || 'Hi {name}!';
+		tosAgreement.checked = items.tosAgreement || false;
+	});
 }
 
 function showVersionNumber() {
@@ -146,7 +169,7 @@ function showUI(supportLevel) {
 		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
-		document.getElementById('popup-body').style['min-height'] = '275px';
+		document.getElementById('popup-body').style['min-height'] = '180px';
 	}
 
 	document.getElementById('loading-screen').style.display = 'none';
@@ -155,7 +178,11 @@ function showUI(supportLevel) {
 // configure popup button event listener
 document.addEventListener('DOMContentLoaded', () => {
 	currentlyOnSupportedTab(function(supportLevel) {
-		ga('set', 'support-level', supportLevel);
+		logEvent({
+			hitType: 'pageview',
+			page: '/' + (supportLevel || 'UNSUPPORTED')
+		});
+
 		if (supportLevel !== false) {
 			showUI(supportLevel);
 			restoreTextFields();
@@ -166,13 +193,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
-
-/* google analytics */
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-50081113-4', 'auto');
-ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
-ga('send', 'pageview', '/popup.html');
