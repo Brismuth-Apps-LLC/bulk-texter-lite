@@ -6,7 +6,7 @@
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
 * If you are using https://voice.google.com for texting, make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.
 
-#### Error: "confirmSent" failed / Account suspension
+#### Account suspension / Error: "confirmSent" failed
 If the extension was working for you for one or more messages but stopped suddenly, it is likely that Google has flagged your messages as potential spam, which is against Google's terms of service. Continuing to send messages that appear to be spam could result in your account being deactivated. 
 * See the Google Voice [Acceptable Use Policy](https://support.google.com/voice/answer/9230450?hl=en&ref_topic=9273222)
 * See these two Google Voice forum threads:
