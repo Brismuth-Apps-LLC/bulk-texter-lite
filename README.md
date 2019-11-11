@@ -19,7 +19,9 @@ This is a chrome extension that allows you to write a message once and send it t
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/master/demo/demo-hangouts.jpg)
 
 ### Install it
-You can easily install this from source by following these steps:
+You can easily install this from source by following the instructions for your browser:
+
+#### Chrome
 1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/master.zip
 2. Extract the zip file on your computer
 3. Open chrome://extensions in Chrome
@@ -27,6 +29,10 @@ You can easily install this from source by following these steps:
 5. Click on "Load Unpacked"
 6. Navigate to the extracted project folder from step #2 and select the folder `src`
 7. That's it! It should be installed locally now.
+
+#### Firefox
+Visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ in your browser and click "+ Add to Firefox"
+
 
 ### Update it
 To update the extension, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
