@@ -9,8 +9,6 @@
 #### Extension is looping on a single number and failing with an error message
 This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md#support).
 
-_Note: As of August 17th, Google is rolling out breaking changes: see [#87](https://github.com/brismuth/google-voice-bulk-texter/issues/87)._
-
 #### Account suspension / Error: "confirmSent" failed
 If the extension was working for you for one or more messages but stopped suddenly, it is likely that Google has flagged your messages as potential spam, which is against Google's terms of service. Continuing to send messages that appear to be spam could result in your account being deactivated. 
 * See the Google Voice [Acceptable Use Policy](https://support.google.com/voice/answer/9230450?hl=en&ref_topic=9273222)
