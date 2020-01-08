@@ -17,9 +17,9 @@ This is a chrome extension that allows you to write a message once and send it t
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/master/demo/demo-google-voice.jpg)
 
 ### Install it
-You can easily install this from source by following the instructions for your browser:
+You can easily install this extension by following the instructions for your browser:
 
-#### Chrome
+#### Chrome (install from source)
 1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/master.zip
 2. Extract the zip file on your computer
 3. Open chrome://extensions in Chrome
