@@ -33,7 +33,9 @@ Visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ in your browse
 
 
 ### Update it
-Firefox will automatically keep your add-on up to date. To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
+Firefox will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
+
+To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
 
 ### Permissions
 * Change data on hangouts.com and voice.google.com
