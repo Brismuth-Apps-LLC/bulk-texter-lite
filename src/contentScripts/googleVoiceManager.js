@@ -138,7 +138,9 @@ class GoogleVoiceSiteManager {
 		const message = this.messagesToSend[number];
 		var messageEditor = document.querySelector(selectors.gvMessageEditor);
 		if (messageEditor && messageEditor.offsetParent !== null) {
+			// support both div and textarea
 			messageEditor.value = message;
+			messageEditor.innerText = message;
 			return true;
 		}
 	}
