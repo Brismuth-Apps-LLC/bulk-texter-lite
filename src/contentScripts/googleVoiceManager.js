@@ -152,7 +152,11 @@ class GoogleVoiceSiteManager {
 		}
 
 		messageEditor.focus();
-		messageEditor.select();
+		if (messageEditor.select) {
+			messageEditor.select();
+		} else {
+			document.execCommand('selectAll',false,null)
+		}
 		document.execCommand('cut');
 		document.execCommand('paste');
 
