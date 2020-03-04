@@ -1,6 +1,6 @@
 # Google Voice Bulk Texter Support
 
-### Current issue: error: "writeMessage" failed
+### Current issue: extension fills in the message but doesn't send it (error: "sendMessage" failed)
 Subscribe to [this thread (#111)](https://github.com/brismuth/google-voice-bulk-texter/issues/111) to be updated when this issue is resolved. Google is updating the interface for Google Voice and the extension will need to be updated as well. Once the Google Voice update shows up on my account, or if someone with the update submits a pull request fixing the issue, I'll release the update and comment on [#111](https://github.com/brismuth/google-voice-bulk-texter/issues/111).
 
 ### Tips
