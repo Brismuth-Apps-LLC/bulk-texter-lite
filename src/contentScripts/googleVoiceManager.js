@@ -192,8 +192,9 @@ class GoogleVoiceSiteManager {
 			if (mostRecentMessages && mostRecentMessages.length) {
 				var i = mostRecentMessages.length - 1;
 				for (i; !sentMessageIsThreaded && i >= 0; i--) {
-					let mostRecentMessage = mostRecentMessages[mostRecentMessages.length - 1];
-					sentMessageIsThreaded = mostRecentMessage.innerText === this.messagesToSend[this.currentNumberSending];
+					let messageIntended = removeWhitespace(removeUnicode(this.messagesToSend[this.currentNumberSending]));
+					let messageSent = removeWhitespace(removeUnicode(mostRecentMessages[mostRecentMessages.length - 1].innerText));
+					sentMessageIsThreaded = messageSent === messageIntended;
 				}
 			}
 
