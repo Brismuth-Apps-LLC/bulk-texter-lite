@@ -78,6 +78,11 @@ function sendMessages(messages, sendInterval) {
 		eventValue: messages.queue.length
 	});
 
+	logEvent({
+		eventLabel: 'SEND_INTERVAL',
+		eventValue: sendInterval
+	});
+
 	window.close();
 	return true;
 }
