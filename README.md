@@ -48,7 +48,7 @@ To update the extension in Chrome, follow the above installation instructions ag
 #### Google Analytics Tracking
 * Contact information and messages are NOT collected. 
 * None of the information collected can be linked to your account or person, and the collected information is only used to improve the application. 
-* Data collected: an event each time the popup is shown, and an event each time the popup button is clicked, which includes the "to" count. An event each time a message is successfully sent via the extension.
+* Data collected: an event each time the popup is shown, and an event each time the popup button is clicked, which includes the "to" count and the delay interval. An event each time a message is successfully sent via the extension.
 
 ### Get support or report an issue
 https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md
