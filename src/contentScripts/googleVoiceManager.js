@@ -4,21 +4,21 @@
 class GoogleVoiceSiteManager {
 	constructor() {
 		this.messagesToSend = {};
+		this.sendInterval = 5000;
 		this.numberQueue = [];
 		this.currentNumberSending = '';
 	}
 
 	initialize() {
-		var that = this;
-
-		chrome.runtime.onMessage.addListener(function (message, sender, response) {
+		chrome.runtime.onMessage.addListener((message, sender, response) => {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
-				that.addMessagesToQueue(message.messages);
+				this.addMessagesToQueue(message.messages);
+				this.sendInterval = message.sendInterval;
 
 				// switch To Text View
 				document.querySelector(selectors.gvMessagesTab).click();
 
-				that.sendFromQueue();
+				this.sendFromQueue();
 			}
 
 			if (message.from === 'popup' && message.type === 'CHECK_GOOGLE_VOICE_SUPPORT') {
@@ -204,8 +204,7 @@ class GoogleVoiceSiteManager {
 					eventValue: 1
 				});
 				// continue with queue
-				const timeBeforeNextMessage = getRandomWaitTimeMS(6000);
-				setTimeout(this.sendFromQueue.bind(this), timeBeforeNextMessage);
+				setTimeout(this.sendFromQueue.bind(this), this.sendInterval);
 				return true;
 			}
 		}

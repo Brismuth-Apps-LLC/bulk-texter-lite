@@ -54,7 +54,7 @@ function keepTrying(method, silenceErrors, cb) {
  */
 function keepTryingAsPromised(method, silenceErrors) {
 	console.log('Bulk SMS - Running: ', getFunctionName(method));
-	const waitTime = getRandomWaitTimeMS(300)
+	const waitTime = 400; // 400ms
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			keepTrying(method, silenceErrors, (successful) => {
@@ -62,14 +62,6 @@ function keepTryingAsPromised(method, silenceErrors) {
 			});
 		}, waitTime);
 	});
-}
-
-/**
- * Gets a random time in ms between 500 and (max + 500) for waiting
- * @return {Number}
- */
-function getRandomWaitTimeMS(max) {
-	return Math.floor(Math.random() * max) + 500;
 }
 
 /**

@@ -32,12 +32,20 @@
 			textarea {
 				display: block;
 				width: 415px;
-				min-height: 100px;
+				min-height: 60px;
 				resize: vertical;
 			}
 			.input-group textarea#numbers-and-names {
 				font-family: monospace;
 			}
+
+			#send-interval-slider {
+				width: 155px;
+			}
+			#send-interval-output {
+				padding-left: 8px;
+			}
+
 			div.tos-text {
 				white-space: initial;
 				display: inline-block;
@@ -78,9 +86,7 @@
 				color: #ccc;
 			}
 		</style>
-
-		<script src="popup.js"></script>
-		<script src="contentScripts/tools.js"></script>
+		<meta charset="UTF-8">
 	</head>
 
 	<body id="popup-body">
@@ -102,6 +108,13 @@
 					<pre>(123) 456-7890, John Smith
 (111) 111 1111
 (987) 654 3210, Jane</pre>
+				</div>
+			</div>
+			<div class="input-group" id="send-interval-block">
+				<h2>Delay between sends</h2>
+				<input id="send-interval-slider" type="range" min="0" value="0" step="1">
+				<div id="send-interval-output"></div>
+				<div class="tip">Longer delays may make sending more reliable.</pre>
 				</div>
 			</div>
 			<div class="input-group">
@@ -144,4 +157,6 @@
 			</div>
 		</div>
 	</body>
+	<script src="popup.js"></script>
+	<script src="contentScripts/tools.js"></script>
 </html>

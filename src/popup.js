@@ -1,13 +1,76 @@
+const defaultSendInterval = 3;
+const sendIntervalOptions = [
+	{
+		delay: 500,
+		label: '1/2 second (may be unstable)'
+	},
+	{
+		delay: 1000,
+		label: '1 second (may be unstable)'
+	},
+	{
+		delay: 2000,
+		label: '2 seconds'
+	},
+	{
+		delay: 5000,
+		label: '5 seconds'
+	},
+	{
+		delay: 10000,
+		label: '10 seconds'
+	},
+	{
+		delay: 15000,
+		label: '15 seconds'
+	},
+	{
+		delay: 30000,
+		label: '30 seconds'
+	},
+	{
+		delay: 45000,
+		label: '45 seconds'
+	},
+	{
+		delay: 60000,
+		label: '1 minute'
+	},
+	{
+		delay: 120000,
+		label: '2 minutes'
+	},
+	{
+		delay: 300000,
+		label: '5 minutes'
+	},
+	{
+		delay: 600000,
+		label: '10 minutes'
+	}
+];
+
+const message = document.getElementById('message');
+const numbersAndNames = document.getElementById('numbers-and-names');
+const sendMessagesButton = document.getElementById('send-messages-button');
+const tosAgreement = document.getElementById('gv-tos-agreement');
+const sendIntervalSlider = document.getElementById('send-interval-slider');
+
 /**
  * Sends message to the content script to search for the hangouts elements and send messages
  */
-function sendMessages(messages) {
+function sendMessages(messages, sendInterval) {
 	if (!messages) {
 		return false;
 	}
 
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'SEND_MESSAGES', messages: messages});
+		chrome.tabs.sendMessage(tabs[0].id, {
+			from: 'popup',
+			type: 'SEND_MESSAGES',
+			messages: messages,
+			sendInterval: sendInterval
+		});
 	});
 
 	logEvent({
@@ -98,11 +161,6 @@ function currentlyOnSupportedTab(cb) {
  * configures the appropriate UI listeners for sending messages
  */
 function addUIListeners() {
-	var sendMessagesButton = document.getElementById('send-messages-button');
-	var numbersAndNames = document.getElementById('numbers-and-names');
-	var message = document.getElementById('message');
-	var tosAgreement = document.getElementById('gv-tos-agreement');
-
 	sendMessagesButton.addEventListener('click', () => {
 		clearError();
 
@@ -113,7 +171,8 @@ function addUIListeners() {
 		}
 
 		var messages = formatMessages(numbersAndNames.value, message.value);
-		if (sendMessages(messages)) {
+		var sendInterval = sendIntervalOptions[sendIntervalSlider.value].delay;
+		if (sendMessages(messages, sendInterval)) {
 			sendMessagesButton.disabled = true;
 		}
 	});
@@ -121,29 +180,33 @@ function addUIListeners() {
 	numbersAndNames.addEventListener('change', persistPopupFields);
 	message.addEventListener('change', persistPopupFields);
 	tosAgreement.addEventListener('change', persistPopupFields);
+	sendIntervalSlider.addEventListener('change', persistPopupFields);
 }
 
 function persistPopupFields() {
-	var numbersAndNames = document.getElementById('numbers-and-names');
-	var message = document.getElementById('message');
-	var tosAgreement = document.getElementById('gv-tos-agreement');
-
 	chrome.storage.local.set({
 		popupNumbersAndNames: numbersAndNames.value,
 		popupMessage: message.value,
-		tosAgreement: tosAgreement.checked
+		tosAgreement: tosAgreement.checked,
+		sendInterval: sendIntervalOptions[sendIntervalSlider.value].delay
 	});
 }
 
 function restoreTextFields() {
-	var numbersAndNames = document.getElementById('numbers-and-names');
-	var message = document.getElementById('message');
-	var tosAgreement = document.getElementById('gv-tos-agreement');
-
-	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement'], function(items){
+	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement', 'sendInterval'], function(items){
 		numbersAndNames.value = items.popupNumbersAndNames || '';
 		message.value = items.popupMessage || 'Hi {name}!';
 		tosAgreement.checked = items.tosAgreement || false;
+
+		// set the send interval slider
+		let setIndexTo = defaultSendInterval;
+		sendIntervalOptions.forEach((value, index) => {
+			if (value.delay === items.sendInterval) {
+				setIndexTo = index;
+			}
+		});
+		sendIntervalSlider.value = setIndexTo;
+		sendIntervalSlider.oninput();
 	});
 }
 
@@ -160,10 +223,10 @@ function showUI(supportLevel) {
 	if (supportLevel) {
 		document.getElementById('ui-wrapper').style.display = 'block';
 		if (supportLevel === 'HANGOUTS') {
-			var sendMessagesButton = document.getElementById('send-messages-button');
 			sendMessagesButton.innerText = 'Prepare Messages';
 			sendMessagesButton.title = 'This will not send messages - it will just get them ready.';
 			document.getElementById('hangouts-beta-warning').style.display = 'block';
+			document.getElementById('send-interval-block').style.display = 'none';
 		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
@@ -171,6 +234,15 @@ function showUI(supportLevel) {
 	}
 
 	document.getElementById('loading-screen').style.display = 'none';
+}
+
+function configureIntervalSlider() {
+	sendIntervalSlider.setAttribute('max', sendIntervalOptions.length - 1);
+
+	let output = document.getElementById('send-interval-output');
+	sendIntervalSlider.oninput = function(){
+		output.innerHTML = `Delay ${sendIntervalOptions[this.value].label}`;
+	};
 }
 
 // configure popup button event listener
@@ -183,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (supportLevel !== false) {
 			showUI(supportLevel);
+			configureIntervalSlider();
 			restoreTextFields();
 			addUIListeners();
 			showVersionNumber();
