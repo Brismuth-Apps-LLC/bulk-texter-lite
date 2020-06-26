@@ -85,7 +85,7 @@ function showFatalError(message, reload) {
 
 /**
  * Sends a message to background.js for storage (usage tracking for future user-visible dashboards, and anonymous data for developer)
- * @param  {object} payload  the google analytics payload
+ * @param  {object} payload  value to be logged
  */
 function logEvent(payload) {
 	chrome.runtime.sendMessage({
