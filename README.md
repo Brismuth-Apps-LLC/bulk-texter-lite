@@ -45,6 +45,11 @@ To update the extension in Chrome, follow the above installation instructions ag
 * Storage
   * This is for persisting extension data across all Chrome browsers that you sign into 
 
+#### Analytics & Tracking  
+* Contact information and messages are NOT collected.   
+* None of the information collected can be linked to your account or person, and the collected information is only used to improve the application.
+* Data collected: Number of messages sent and the extension version number that is in use.
+
 ### Get support or report an issue
 https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md
 
