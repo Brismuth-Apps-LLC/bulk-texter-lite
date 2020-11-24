@@ -27,8 +27,9 @@ If the extension was working for you for one or more messages but stopped sudden
 * A process for repealing an account ban can be found here: https://github.com/brismuth/google-voice-bulk-texter/issues/65
 
 #### Sending via Hangouts isn't working
-* Make sure the Hangouts interface is on the page and finished loading
-* Make sure Google Voice via Hangouts is enabled ([instructions](https://support.google.com/voice/answer/6023920?co=GENIE.Platform%3DDesktop&hl=en))
+I decided to deprecate support for Google Hangouts with the rollout of Google Voice Bulk Texter v2. The Hangouts integration was never as good as the Google Voice integration, and I didn't want to have to continue maintaining it.
+
+Feel free to use (v1.3.2)[https://github.com/brismuth/google-voice-bulk-texter/releases/tag/v1.3.2] of the extension if you want to hang on to Hangouts support.
 
 ### Support
 If you are experiencing issues with Google Voice Bulk Texter and the above tips didn't help you out, please file an issue here:
