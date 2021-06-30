@@ -1,13 +1,11 @@
 # Google Voice Bulk Texter Support
 
-### Current issue: extension fills in the message but doesn't send it (error: "sendMessage" failed)
-Subscribe to [this thread (#111)](https://github.com/brismuth/google-voice-bulk-texter/issues/111) to be updated when this issue is resolved. Google is updating the interface for Google Voice and the extension will need to be updated as well. Once the Google Voice update shows up on my account, or if someone with the update submits a pull request fixing the issue, I'll release the update and comment on [#111](https://github.com/brismuth/google-voice-bulk-texter/issues/111).
-
 ### Tips
 * To stop the bulk texter at any time, simply refresh the Google Voice tab.
 * Currently the extension [doesn't support sending emojis](https://github.com/brismuth/google-voice-bulk-texter/issues/61).
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
 * If you are using https://voice.google.com for texting, make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.
+* If you have a feature request that you would like to be developed, you can help get it prioritized by funding it here: https://issuehunt.io/r/brismuth/google-voice-bulk-texter
 
 #### Extension is looping on a single number and failing with an error message
 This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md#support).
