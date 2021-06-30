@@ -13,7 +13,7 @@ Subscribe to [this thread (#111)](https://github.com/brismuth/google-voice-bulk-
 This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md#support).
 
 ##### "Error: "fillNumberInput" failed."
-See issue [#102](https://github.com/brismuth/google-voice-bulk-texter/issues/102).
+See issue [#102](https://github.com/brismuth/google-voice-bulk-texter/issues/102) - this was historically caused by FireFox browser changes, which broke the clipboard APIs this extension uses.
 
 #### Account suspension / Error: "confirmSent" failed
 If the extension was working for you for one or more messages but stopped suddenly, it is likely that Google has flagged your messages as potential spam, which is against Google's terms of service. Continuing to send messages that appear to be spam could result in your account being deactivated. 
@@ -25,6 +25,9 @@ If the extension was working for you for one or more messages but stopped sudden
 * If your messages are not spam but Google thinks they are, it could be because your messages are too long or because they contain a link. Some users have reported that shortening their message or removing links has resolved the issue for them.
 * As mentioned in the above forum threads, this issue will usually clear up after some time passes, although you may need to change the content of the message you're sending as well.
 * A process for repealing an account ban can be found here: https://github.com/brismuth/google-voice-bulk-texter/issues/65
+
+#### Error: "startChat" failed
+See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
 #### Sending via Hangouts isn't working
 * Make sure the Hangouts interface is on the page and finished loading
