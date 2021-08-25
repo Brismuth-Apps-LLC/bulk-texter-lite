@@ -16,6 +16,12 @@ function getFunctionName(func) {
 	return func.name.replace(/bound /g, '');
 }
 
+}
+
+function getFunctionAddress(func) {
+	return func.address.replace(/bound /g, '');
+}
+
 /**
  * continually calls the given method until successful
  * @param {Function}   method         should return true when successful, or false when we should give up early
