@@ -13,7 +13,7 @@ const selectors = {
 	gvSendButtonOld: 'gv-icon-button[icon-name="send"] button[aria-label="Send message"]',
 	gvSendButtonNew: 'gv-icon-button-ng2[icon-name="send"][label="Send message"] button',
 	gvSendingNote: 'gv-message-item div[ng-if="ctrl.shouldDisplayTransmissionStatus()"] div[ng-if="!ctrl.isFailed()"]',
-	gvMostRecentMessages: 'div[gv-id="content"] div[gv-test-id="bubble"] gv-annotation',
+	gvMostRecentMessages: 'div[gv-id="content"] div[gv-test-id="bubble"] gv-annotation, gv-text-message-item gv-annotation',
 	gvChatLoadedHeader: 'gv-message-list-header p[gv-test-id="conversation-title"]',
 
 	// hangouts
