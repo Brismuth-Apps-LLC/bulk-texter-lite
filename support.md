@@ -38,7 +38,7 @@ https://github.com/brismuth/google-voice-bulk-texter/issues/new/choose
 You can see currently open issues here:
 https://github.com/brismuth/google-voice-bulk-texter/issues
 
-### Donating 
+### Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
 
 Thanks!

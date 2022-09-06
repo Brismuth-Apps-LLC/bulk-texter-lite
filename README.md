@@ -3,7 +3,7 @@ A Firefox/Chrome extension that can send personalized bulk SMS messages via [Goo
 
 It is available as a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#install-it) to install it manually in Chrome.
 
-## What is it? 
+## What is it?
 This is a chrome extension that allows you to write a message once and send it to a list of numbers and names (names are optional). It is a huge time saver if you need to send the same message to a lot of people and you already have a list of phone numbers and names. It is useful for things like planning events, sending announcements to your church group, or sending reminders to your clients. 
 
 
@@ -48,7 +48,7 @@ To update the extension in Chrome, follow the above installation instructions ag
 ### Get support or report an issue
 https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md
 
-### Donating 
+### Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
 
 Thanks!
