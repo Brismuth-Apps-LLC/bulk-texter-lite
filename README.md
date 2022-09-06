@@ -25,7 +25,7 @@ You can easily install this extension by following the instructions for your bro
 3. Open chrome://extensions in Chrome
 4. Turn on "Developer mode" at the top right
 5. Click on "Load Unpacked"
-6. Navigate to the extracted project folder from step #2 and select the folder `src`
+6. Navigate to the extracted project folder from step #2 and select the folder `src`. If you get a "missing manifest" error, make sure you selected the `src` folder, rather than the folder that contains it.
 7. That's it! It should be installed locally now.
 
 #### Firefox
