@@ -1,3 +1,8 @@
+// Microsoft Edge compatibility
+if (chrome == null) {
+	chrome = browser;
+}
+
 /**
  * removes all non-numeric characters from the number string
  * @param  {string}   number i.e. +1 (223) 456-7890

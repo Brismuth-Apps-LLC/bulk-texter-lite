@@ -1,3 +1,8 @@
+// Microsoft Edge compatibility
+if (chrome == null) {
+	chrome = browser;
+}
+
 /**
  * This runs on voice.google.com
  */

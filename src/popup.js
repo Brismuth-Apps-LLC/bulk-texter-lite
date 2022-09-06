@@ -1,3 +1,8 @@
+// Microsoft Edge compatibility
+if (chrome == null) {
+	chrome = browser;
+}
+
 const defaultSendInterval = 3;
 const sendIntervalOptions = [
 	{
