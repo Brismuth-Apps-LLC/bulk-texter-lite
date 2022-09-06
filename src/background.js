@@ -1,3 +1,8 @@
+// Microsoft Edge compatibility
+if (chrome == null) {
+	chrome = browser;
+}
+
 // For logging
 chrome.runtime.onMessage.addListener(function (message, sender, response) {
 	if (message.gvbt_logger === true) {

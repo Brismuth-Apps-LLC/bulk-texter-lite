@@ -1,3 +1,8 @@
+// Microsoft Edge compatibility
+if (chrome == null) {
+	chrome = browser;
+}
+
 /**
  * There are two components for hangouts messaging, the HangoutsListViewManager and the HangoutsThreadViewManager.
  * The HangoutsListViewManager runs on the Hangouts conversation listview.
