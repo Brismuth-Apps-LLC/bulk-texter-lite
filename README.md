@@ -14,13 +14,13 @@ This is a chrome extension that allows you to write a message once and send it t
 | [hangouts.google.com](https://hangouts.google.com/)  | Yes  | No _(does not actually send the messages, it just prepares them so you can easily review and send them by pressing "Enter")_  |
 
 #### Google Voice Demo
-![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/master/demo/demo-google-voice.jpg)
+![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/main/demo/demo-google-voice.jpg)
 
 ### Install it
 You can easily install this extension by following the instructions for your browser:
 
 #### Chrome (install from source)
-1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/master.zip
+1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/main.zip
 2. Extract the zip file on your computer
 3. Open chrome://extensions in Chrome
 4. Turn on "Developer mode" at the top right
@@ -46,7 +46,7 @@ To update the extension in Chrome, follow the above installation instructions ag
   * This is for persisting extension data across all Chrome browsers that you sign into 
 
 ### Get support or report an issue
-https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md
+https://github.com/brismuth/google-voice-bulk-texter/blob/main/support.md
 
 ### Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).

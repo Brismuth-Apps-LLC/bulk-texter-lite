@@ -8,7 +8,7 @@
 * If you have a feature request that you would like to be developed, you can help get it prioritized by funding it here: https://issuehunt.io/r/brismuth/google-voice-bulk-texter
 
 #### Extension is looping on a single number and failing with an error message
-This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/master/support.md#support).
+This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/main/support.md#support).
 
 ##### "Error: "fillNumberInput" failed."
 See issue [#102](https://github.com/brismuth/google-voice-bulk-texter/issues/102) - this was historically caused by FireFox browser changes, which broke the clipboard APIs this extension uses.
