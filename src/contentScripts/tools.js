@@ -78,15 +78,44 @@ function showFatalError(message, reload) {
     if (siteManager) {
         siteManager.messagesToSend.length = 0;
     }
+	
     const manifest = chrome.runtime.getManifest();
-	const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
-	const fullMessage = `Google Voice bulk texter v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`;
-	console.error('Bulk SMS - ' + fullMessage);
-	alert(fullMessage);
-    if (reload) {
-        window.location.reload();
-    }
+	let fullMessage = `Google Voice bulk texter v${manifest.version}:\nText failed. ${message}`;
+	
+	if (!reload) {
+		console.error('Bulk SMS - ' + fullMessage);
+		return alert(fullMessage);
+	}
+
+	fullMessage +=  '\nWhen you click "ok" or "cancel", the page will refresh.';
+	fullMessage += '\nClick "ok" to download a copy of this Google Voice webpage for troubleshooting purposes. Do not share this file publicly, as it contains your text messages and contact information!';
+	const shouldDownloadPage = confirm(fullMessage);
+
+	if (shouldDownloadPage) {
+		const htmlPageExport = document.getElementsByTagName('html')[0].outerHTML;
+		download('GoogleVoicePage-Error.html', htmlPageExport);
+	}
+
+	window.location.reload();
 }
+
+/**
+ * downloads the provided text as a new file 
+ * @param {*} filename 
+ * @param {*} text 
+ */
+function download(filename, text) {
+	var element = document.createElement('a');
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+  
+	element.style.display = 'none';
+	document.body.appendChild(element);
+  
+	element.click();
+  
+	document.body.removeChild(element);
+  }
 
 /**
  * Sends a message to background.js for storage (usage tracking for future user-visible dashboards, and anonymous data for developer)
