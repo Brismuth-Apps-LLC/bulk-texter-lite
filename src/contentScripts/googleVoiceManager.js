@@ -129,9 +129,13 @@ class GoogleVoiceSiteManager {
 		const numberToSend = this.currentNumberSending;
 		const recipientButton = document.querySelector(selectors.gvRecipientButton);
 		if (recipientButton && recipientButton.offsetParent !== null) {
-			var number = formatNumber(recipientButton.innerText);
-			return numberToSend === number;
+			const label = recipientButton.getAttribute('aria-label');
+			if (label && label.replaceAll(' ','').indexOf(numberToSend) >= 0) {
+				return true;
+			}
 		}
+
+		return false;
 	}
 
 	writeMessage() {
