@@ -16,7 +16,14 @@ This is a chrome extension that allows you to write a message once and send it t
 ### Install it
 You can easily install this extension by following the instructions for your browser:
 
-#### Chrome (install from source)
+#### Firefox (recommended)
+Visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ in your browser and click "Add to Firefox". 
+
+This is the recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
+
+#### Chrome (manual installation from source code)
+This method is not recommended, as it will not automatically stay up to date, and is more complicated.
+
 1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/main.zip
 2. Extract the zip file on your computer
 3. Open chrome://extensions in Chrome
@@ -24,9 +31,6 @@ You can easily install this extension by following the instructions for your bro
 5. Click on "Load Unpacked"
 6. Navigate to the extracted project folder from step #2 and select the folder `src`. If you get a "missing manifest" error, make sure you selected the `src` folder, rather than the folder that contains it.
 7. That's it! It should be installed locally now.
-
-#### Firefox
-Visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ in your browser and click "+ Add to Firefox"
 
 
 ### Update it
