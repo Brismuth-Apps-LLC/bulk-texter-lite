@@ -23,65 +23,51 @@ function getFunctionName(func) {
 
 /**
  * continually calls the given method until successful
- * @param {Function}   method         should return true when successful, or false when we should give up early
- * @param {bool}       silenceErrors  true if we should not alert on errors
- * @param {Function}   cb             to be called with the results from method when we're done trying
- */
-function keepTrying(method, silenceErrors, cb) {
-  const frequency = 100; // try every 100ms
-  let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
-  var keepTryingInterval = setInterval(function() {
-    var successful = method();
-    var giveUp = successful === false || tryCount-- < 0;
-    if (successful === true || giveUp) {
-      clearInterval(keepTryingInterval);
-      // the app failed
-      if (!silenceErrors && giveUp) {
-        showFatalError(`You can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
-      }
-      if (cb) {
-        cb(successful);
-      }
-    }
-  }, frequency);
-}
-
-/**
- * continually calls the given method until successful
  * Promisified for use with async/await
  * @param {Function}   method         should return true when successful, or false when we should give up early
  * @param {bool}       silenceErrors  true if we should not alert on errors
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
-function keepTryingAsPromised(method, silenceErrors) {
-  console.log('Bulk SMS - Running: ', getFunctionName(method));
-  const waitTime = 400; // 400ms
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      keepTrying(method, silenceErrors, (successful) => {
-        resolve(successful);
-      });
-    }, waitTime);
-  });
+async function keepTrying(method, silenceErrors) {
+  function fatalErrorHandler() {
+    if (!silenceErrors) {
+      const manifest = chrome.runtime.getManifest();
+      const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. "${getFunctionName(method)}" failed.\n\nYou can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nWhen you click "ok" the page will refresh.`;
+      
+      if (siteManager) {
+        siteManager.messagesToSend.length = 0;
+      }
+      console.error(fullMessage);
+      alert(fullMessage);
+      window.location.reload();
+    }
+  }
+
+  console.log('BulkTexterLite: Running: ', getFunctionName(method));
+  const frequency = 200; // try every 200ms
+  let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
+  
+  while (tryCount-- > 0) {
+    await sleep(frequency);
+
+    let successful = method();
+    if (successful === true) {
+      return true;
+    }
+
+    let giveUp = successful === false;
+    if (giveUp) {
+      fatalErrorHandler();
+      return successful;
+    }
+  }
+
+  fatalErrorHandler();
+  return false;
 }
 
-/**
- * shows the message as an alert, reloads the page if instructed to
- * @param {*} message
- * @param {*} reload
- */
-function showFatalError(message, reload) {
-    if (siteManager) {
-        siteManager.messagesToSend.length = 0;
-    }
-    const manifest = chrome.runtime.getManifest();
-    const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
-    const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`;
-    console.error('Bulk SMS - ' + fullMessage);
-    alert(fullMessage);
-    if (reload) {
-        window.location.reload();
-    }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 /**

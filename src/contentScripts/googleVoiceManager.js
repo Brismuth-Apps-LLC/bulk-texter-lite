@@ -20,9 +20,6 @@ class GoogleVoiceSiteManager {
 				this.addMessagesToQueue(message.messages);
 				this.sendInterval = message.sendInterval;
 
-				// switch To Text View
-				document.querySelector(selectors.gvMessagesTab).click();
-
 				this.sendFromQueue();
 			}
 
@@ -48,7 +45,7 @@ class GoogleVoiceSiteManager {
 			let sendExecutionQueue = this.getSendExecutionQueue();
 			while (sendExecutionQueue.length) {
 				let currentStep = sendExecutionQueue.shift().bind(this);
-				const result = await keepTryingAsPromised(currentStep, retryCount > 0);
+				const result = await keepTrying(currentStep, retryCount > 0);
 				if (!result) {
 					console.log(`Bulk SMS - Step failed (${getFunctionName(currentStep)}), retrying message.`);
 					retryCount--; // if this keeps happening, alert on it
@@ -69,6 +66,7 @@ class GoogleVoiceSiteManager {
 
 	getSendExecutionQueue() {
 		return [
+			this.switchToMessagesTab,
 			this.showNumberInput,
 			this.fillNumberInput,
 			this.startChat,
@@ -83,12 +81,21 @@ class GoogleVoiceSiteManager {
 	// opens up the chat again and checks if the message was sent previously
 	getVerificationOnlyExecutionQueue() {
 		return [
+			this.switchToMessagesTab,
 			this.showNumberInput,
 			this.fillNumberInput,
 			this.startChat,
 			this.confirmChatSwitched,
 			this.confirmSent
 		];
+	}
+
+ 	switchToMessagesTab() {
+		var messagesTabButton = document.querySelector(selectors.gvMessagesTab);
+		if (messagesTabButton && messagesTabButton.offsetParent !== null) {
+			messagesTabButton.click();
+			return true;
+		}
 	}
 
 	showNumberInput() {

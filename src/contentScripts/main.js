@@ -20,7 +20,7 @@ const selectors = {
 /********************************************************************************************************
 ********* Identifies whether we're on voice.google.com, configures appropriately ************************
 ********************************************************************************************************/
-keepTryingAsPromised(findGoogleVoice, true);
+keepTrying(findGoogleVoice, true);
 
 function findGoogleVoice() {
 	// stop looking, wrong url
