@@ -27,10 +27,6 @@ If the extension was working for you for one or more messages but stopped sudden
 #### Error: "startChat" failed
 See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
-#### Sending via Hangouts isn't working
-* Make sure the Hangouts interface is on the page and finished loading
-* Make sure Google Voice via Hangouts is enabled ([instructions](https://support.google.com/voice/answer/6023920?co=GENIE.Platform%3DDesktop&hl=en))
-
 ### Support
 If you are experiencing issues with Google Voice Bulk Texter and the above tips didn't help you out, please file an issue here:
 https://github.com/brismuth/google-voice-bulk-texter/issues/new/choose

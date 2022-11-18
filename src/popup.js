@@ -62,7 +62,7 @@ const tosAgreement = document.getElementById('gv-tos-agreement');
 const sendIntervalSlider = document.getElementById('send-interval-slider');
 
 /**
- * Sends message to the content script to search for the hangouts elements and send messages
+ * Sends message to the content script to search for the google voice elements and send messages
  */
 function sendMessages(messages, sendInterval) {
 	if (!messages) {
@@ -158,7 +158,7 @@ function simplifyNumber(number) {
 }
 
 /**
- * uses the chrome tabs API to check if the curren tab is hangouts
+ * uses the chrome tabs API to check if the current tab is google voice
  * @return {[type]} [description]
  */
 function currentlyOnSupportedTab(cb) {
@@ -227,17 +227,11 @@ function showVersionNumber() {
 
 /**
  * hides the spinner and shows the relevant UI
- * @param  {string} supportLevel 	'GV', 'HANGOUTS', or false
+ * @param  {string} supportLevel 	'GV', or false
  */
 function showUI(supportLevel) {
-	if (supportLevel) {
+	if (supportLevel === 'GV') {
 		document.getElementById('ui-wrapper').style.display = 'block';
-		if (supportLevel === 'HANGOUTS') {
-			sendMessagesButton.innerText = 'Prepare Messages';
-			sendMessagesButton.title = 'This will not send messages - it will just get them ready.';
-			document.getElementById('hangouts-beta-warning').style.display = 'block';
-			document.getElementById('send-interval-block').style.display = 'none';
-		}
 	} else {
 		document.getElementById('wrong-page-message').style.display = 'block';
 		document.getElementById('popup-body').style['min-height'] = '180px';

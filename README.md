@@ -1,17 +1,10 @@
 # Google Voice Bulk Texter
-A Firefox/Chrome extension that can send personalized bulk SMS messages via [Google Voice](https://voice.google.com) or [Google Hangouts](https://hangouts.google.com/).
+A Firefox/Chrome extension that can send personalized bulk SMS messages via [Google Voice](https://voice.google.com).
 
 It is available as a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#install-it) to install it manually in Chrome.
 
 ## What is it?
 This is a chrome extension that allows you to write a message once and send it to a list of numbers and names (names are optional). It is a huge time saver if you need to send the same message to a lot of people and you already have a list of phone numbers and names. It is useful for things like planning events, sending announcements to your church group, or sending reminders to your clients. 
-
-
-### Site Functionality
-| Site  | Bulk message templating  | Automated message sending  |
-|---|---|---|
-| [voice.google.com](https://voice.google.com)  | Yes  | Yes  |
-| [hangouts.google.com](https://hangouts.google.com/)  | Yes  | No _(does not actually send the messages, it just prepares them so you can easily review and send them by pressing "Enter")_  |
 
 #### Google Voice Demo
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/main/demo/demo-google-voice.jpg)
@@ -38,7 +31,7 @@ Firefox will automatically keep your add-on up to date, but it can take 24-48 ho
 To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
 
 ### Permissions
-* Change data on hangouts.com and voice.google.com
+* Change data on voice.google.com
   * This is for sending messages.
 * Clipboard access
   * This is necessary in order to automate the message preparation and sending.

@@ -37,11 +37,7 @@ function keepTrying(method, silenceErrors, cb) {
 			clearInterval(keepTryingInterval);
 			// the app failed
 			if (!silenceErrors && giveUp) {
-				if (siteIsGoogleVoice) {
-					showFatalError(`You can find support resources by opening the Google Voice Bulk Texter popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
-				} else {
-					showFatalError('Are you sure Google Voice texting via Hangouts is enabled?\nAlso, be aware that this extension is not compatible with the Google Hangouts Chrome extension. If you have the Hangouts extension installed you\'ll need to temporarily disable it.', false);
-				}
+				showFatalError(`You can find support resources by opening the Google Voice Bulk Texter popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
 			}
 			if (cb) {
 				cb(successful);
