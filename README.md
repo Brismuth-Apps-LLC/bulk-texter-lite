@@ -17,7 +17,8 @@ This is a chrome extension that allows you to write a message once and send it t
 You can easily install this extension by following the instructions for your browser:
 
 #### Firefox (recommended)
-Visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ in your browser and click "Add to Firefox". 
+1. Install [Firefox](https://www.mozilla.org/en-US/firefox/new/), if you haven't already
+2. In Firefox, visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ and click "Add to Firefox". 
 
 This is the recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
 
