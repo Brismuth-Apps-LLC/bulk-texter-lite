@@ -1,6 +1,6 @@
 // Microsoft Edge compatibility
 if (chrome == null) {
-	chrome = browser;
+  chrome = browser;
 }
 
 /**
@@ -9,16 +9,16 @@ if (chrome == null) {
  * @return {string}         i.e. 2234567890
  */
 function formatNumber(number) {
-	var simplifiedNumber = number.trim().replace(/\D/g,'');
-	// remove international code for US numbers
-	if (simplifiedNumber.length === 11 && simplifiedNumber.charAt(0) === '1') {
-		simplifiedNumber = simplifiedNumber.substr(1);
-	}
-	return simplifiedNumber;
+  var simplifiedNumber = number.trim().replace(/\D/g,'');
+  // remove international code for US numbers
+  if (simplifiedNumber.length === 11 && simplifiedNumber.charAt(0) === '1') {
+    simplifiedNumber = simplifiedNumber.substr(1);
+  }
+  return simplifiedNumber;
 }
 
 function getFunctionName(func) {
-	return func.name.replace(/bound /g, '');
+  return func.name.replace(/bound /g, '');
 }
 
 /**
@@ -28,22 +28,22 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTrying(method, silenceErrors, cb) {
-	const frequency = 100; // try every 100ms
-	let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
-	var keepTryingInterval = setInterval(function() {
-		var successful = method();
-		var giveUp = successful === false || tryCount-- < 0;
-		if (successful === true || giveUp) {
-			clearInterval(keepTryingInterval);
-			// the app failed
-			if (!silenceErrors && giveUp) {
-				showFatalError(`You can find support resources by opening the Google Voice Bulk Texter popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
-			}
-			if (cb) {
-				cb(successful);
-			}
-		}
-	}, frequency);
+  const frequency = 100; // try every 100ms
+  let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
+  var keepTryingInterval = setInterval(function() {
+    var successful = method();
+    var giveUp = successful === false || tryCount-- < 0;
+    if (successful === true || giveUp) {
+      clearInterval(keepTryingInterval);
+      // the app failed
+      if (!silenceErrors && giveUp) {
+        showFatalError(`You can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nError: "${getFunctionName(method)}" failed.`, true);
+      }
+      if (cb) {
+        cb(successful);
+      }
+    }
+  }, frequency);
 }
 
 /**
@@ -54,15 +54,15 @@ function keepTrying(method, silenceErrors, cb) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 function keepTryingAsPromised(method, silenceErrors) {
-	console.log('Bulk SMS - Running: ', getFunctionName(method));
-	const waitTime = 400; // 400ms
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			keepTrying(method, silenceErrors, (successful) => {
-				resolve(successful);
-			});
-		}, waitTime);
-	});
+  console.log('Bulk SMS - Running: ', getFunctionName(method));
+  const waitTime = 400; // 400ms
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      keepTrying(method, silenceErrors, (successful) => {
+        resolve(successful);
+      });
+    }, waitTime);
+  });
 }
 
 /**
@@ -75,10 +75,10 @@ function showFatalError(message, reload) {
         siteManager.messagesToSend.length = 0;
     }
     const manifest = chrome.runtime.getManifest();
-	const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
-	const fullMessage = `Google Voice bulk texter v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`;
-	console.error('Bulk SMS - ' + fullMessage);
-	alert(fullMessage);
+    const reloadMessage = '\n\nWhen you click "ok" the page will refresh.';
+    const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. ${message} ${reload ? reloadMessage : ''}`;
+    console.error('Bulk SMS - ' + fullMessage);
+    alert(fullMessage);
     if (reload) {
         window.location.reload();
     }
@@ -89,23 +89,23 @@ function showFatalError(message, reload) {
  * @param  {object} payload  value to be logged
  */
 function logEvent(payload) {
-	chrome.runtime.sendMessage({
-		gvbt_logger: true,
-		payload: payload
-	});
+  chrome.runtime.sendMessage({
+    gvbt_logger: true,
+    payload: payload
+  });
 }
 
 /**
  * Removes unicode characters from the text
  */
 function removeUnicode(text) {
-	return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+  return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
 }
 
 /**
  * Removes whitespace from the text
  */
 function removeWhitespace(text) {
-	return text.replace(/\s/g,'');
+  return text.replace(/\s/g,'');
 
 }

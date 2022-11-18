@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "Google Voice Bulk Texter",
+  "name": "Bulk Texter Lite",
 
   "short_name": "Bulk Texter",
 
-  "description": "Send personalized bulk SMS messages via Google Voice.",
+  "description": "Send personalized bulk SMS messages via Google Voice. This is the same software that was previously called \"Google Voice Bulk Texter\". It has been renamed to avoid confusion - this software is not affiliated with Google or Google Voice. Check out https://www.bulktexterpro.com for our more advanced software.",
 
-  "version": "2.0.6",
+  "version": "2.0.7",
 
   "background": {
     "scripts": ["background.js"]

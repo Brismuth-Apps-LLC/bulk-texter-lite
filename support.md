@@ -1,4 +1,4 @@
-# Google Voice Bulk Texter Support
+# Bulk Texter Lite - Support
 
 ### Tips
 * To stop the bulk texter at any time, simply refresh the Google Voice tab.
@@ -28,7 +28,7 @@ If the extension was working for you for one or more messages but stopped sudden
 See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
 ### Support
-If you are experiencing issues with Google Voice Bulk Texter and the above tips didn't help you out, please file an issue here:
+If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, please file an issue here:
 https://github.com/brismuth/google-voice-bulk-texter/issues/new/choose
 
 You can see currently open issues here:
