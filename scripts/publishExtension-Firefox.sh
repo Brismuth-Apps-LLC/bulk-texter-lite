@@ -6,8 +6,8 @@ cp src/manifest-v2.json src/manifest.json
 
 cd src
 
-zip -r -FS extensionFirefox.zip * --exclude '*.git*' --exclude '*manifest-*' --exclude '*.DS_Store'
-mv extensionFirefox.zip ../
+zip -r -FS bulk-texter-lite-firefox.zip * --exclude '*.git*' --exclude '*manifest-*' --exclude '*.DS_Store'
+mv bulk-texter-lite-firefox.zip ../
 
 cd ../
 

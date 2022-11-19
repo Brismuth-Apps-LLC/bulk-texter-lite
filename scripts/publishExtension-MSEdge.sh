@@ -2,7 +2,7 @@
 
 cd src
 
-zip -r -FS extensionEdge.zip * --exclude '*.git*' --exclude '*manifest-*' --exclude '*.DS_Store'
-mv extensionEdge.zip ../
+zip -r -FS bulk-texter-lite-edge.zip * --exclude '*.git*' --exclude '*manifest-*' --exclude '*.DS_Store'
+mv bulk-texter-lite-edge.zip ../
 
 cd ../
