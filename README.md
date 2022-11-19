@@ -17,10 +17,15 @@ This is a chrome extension that allows you to write a message once and send it t
 You can easily install this extension by following the instructions for your browser:
 
 #### Firefox (recommended)
-1. Install [Firefox](https://www.mozilla.org/en-US/firefox/new/), if you haven't already
-2. In Firefox, visit https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/ and click "Add to Firefox". 
+1. Install [Firefox](https://www.mozilla.org/en-US/firefox/new/), if you haven't already.
+2. In Firefox, visit the official [Firefox store listing](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) and click "Add to Firefox". 
 
-This is the recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
+This is a recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
+
+#### Microsoft Edge (recommended)
+In Microsoft Edge, visit the official [Edge store listing](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl) and click "Get". 
+
+This is a recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
 
 #### Chrome (manual installation from source code)
 This method is not recommended, as it will not automatically stay up to date, and is more complicated.
@@ -35,7 +40,7 @@ This method is not recommended, as it will not automatically stay up to date, an
 
 
 ### Update it
-Firefox will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
+Firefox and Edge will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
 
 To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
 
