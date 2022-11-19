@@ -7,7 +7,7 @@
 
   "description": "Send personalized bulk SMS text messages via Google Voice. This software is not affiliated with Google or Google Voice.",
 
-  "version": "2.0.8",
+  "version": "2.0.9",
 
   "background": {
     "scripts": ["background.js"]
