@@ -47,7 +47,7 @@ class GoogleVoiceSiteManager {
 				let currentStep = sendExecutionQueue.shift().bind(this);
 				const result = await keepTrying(currentStep, retryCount > 0);
 				if (!result) {
-					console.log(`Bulk SMS - Step failed (${getFunctionName(currentStep)}), retrying message.`);
+					console.log(`Bulk Texter Lite - Step failed (${getFunctionName(currentStep)}), retrying message.`);
 					retryCount--; // if this keeps happening, alert on it
 
 					if (verifyOnly) {

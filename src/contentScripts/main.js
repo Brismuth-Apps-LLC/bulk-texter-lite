@@ -31,7 +31,7 @@ function findGoogleVoice() {
 	// check if this is the google voice site
 	var button = document.querySelector(selectors.gvMessagesTab);
 	if (button && siteIsGoogleVoice) {
-		console.log('Bulk SMS - configuring google voice site');
+		console.log('Bulk Texter Lite - configuring google voice site');
 		siteManager = new GoogleVoiceSiteManager();
 		siteManager.initialize();
 		return true;

@@ -1,5 +1,5 @@
 # Bulk Texter Lite
-A Firefox/Chrome extension that can send personalized bulk SMS messages via [Google Voice](https://voice.google.com).
+A Firefox/Chrome extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
 
 It is available as a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#install-it) to install it manually in Chrome.
 

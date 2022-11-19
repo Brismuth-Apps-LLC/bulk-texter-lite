@@ -5,7 +5,7 @@
 
   "short_name": "Bulk Texter",
 
-  "description": "Send personalized bulk SMS messages via Google Voice. This software is not affiliated with Google or Google Voice.",
+  "description": "Send personalized bulk SMS text messages via Google Voice. This software is not affiliated with Google or Google Voice.",
 
   "version": "2.0.8",
 
@@ -14,7 +14,7 @@
   },
 
   "action": {
-    "default_title": "Bulk SMS",
+    "default_title": "Bulk Texter Lite",
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
