@@ -13,21 +13,21 @@ This is a chrome extension that allows you to write a message once and send it t
 #### Google Voice Demo
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/main/demo/demo-google-voice.jpg)
 
-### Install it
+## Install it
 You can easily install this extension by following the instructions for your browser:
 
-#### Firefox (recommended)
+### Firefox (recommended)
 1. Install [Firefox](https://www.mozilla.org/en-US/firefox/new/), if you haven't already.
 2. In Firefox, visit the official [Firefox store listing](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) and click "Add to Firefox". 
 
 This is a recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
 
-#### Microsoft Edge (recommended)
+### Microsoft Edge (recommended)
 In Microsoft Edge, visit the official [Edge store listing](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl) and click "Get". 
 
 This is a recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
 
-#### Chrome (manual installation from source code)
+### Chrome (manual installation from source code)
 This method is not recommended, as it will not automatically stay up to date, and is more complicated.
 
 1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/main.zip
@@ -39,12 +39,12 @@ This method is not recommended, as it will not automatically stay up to date, an
 7. That's it! It should be installed locally now.
 
 
-### Update it
+## Update it
 Firefox and Edge will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
 
 To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
 
-### Permissions
+## Permissions
 * Change data on voice.google.com
   * This is for sending messages.
 * Clipboard access
@@ -52,10 +52,10 @@ To update the extension in Chrome, follow the above installation instructions ag
 * Storage
   * This is for persisting extension data across all Chrome browsers that you sign into 
 
-### Get support or report an issue
+## Get support or report an issue
 https://github.com/brismuth/google-voice-bulk-texter/blob/main/support.md
 
-### Donating
+## Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
 
 Thanks!
