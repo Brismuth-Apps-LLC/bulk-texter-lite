@@ -30,7 +30,7 @@ This is a recommended way to install Bulk Texter Lite, because it will keep your
 ### Chrome (manual installation from source code)
 This method is not recommended, as it will not automatically stay up to date, and is more complicated.
 
-1. Download the zip: https://github.com/brismuth/google-voice-bulk-texter/archive/main.zip
+1. Download the zip: https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/archive/main.zip
 2. Extract the zip file on your computer
 3. Open chrome://extensions in Chrome
 4. Turn on "Developer mode" at the top right
@@ -42,7 +42,17 @@ This method is not recommended, as it will not automatically stay up to date, an
 ## Update it
 Firefox and Edge will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
 
-To update the extension in Chrome, follow the above installation instructions again, making sure to choose the correct extracted project folder in step #6.
+If you previously installed the extension manually in Chrome and would like to switch to FireFox or Edge (recommended), you would just need to remove the extension on the chrome://extensions page and follow the instructions above for FireFox/Edge.
+
+You can follow these instructions to update Bulk Texter Lite if you installed it manually:
+1. Download the zip: https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/archive/main.zip
+2. Extract the zip file on your computer
+3. Delete the contents of your previously installed Bulk Texter Lite / Google Voice Bulk Texter folder (but not the folder itself)
+4. Move the contents of your newly extracted folder from step #2 into the existing installation folder from step #3
+5. Open chrome://extensions in Chrome
+6. Turn on "Developer mode" with the toggle at the top right, if it is not already enabled
+7. Click the "refresh" icon at the bottom right of the Bulk Texter Lite / Google Voice Bulk Texter card
+8. That's it! It should now be fully up to date.
 
 ## Permissions
 * Change data on voice.google.com
@@ -53,7 +63,7 @@ To update the extension in Chrome, follow the above installation instructions ag
   * This is for persisting extension data across all Chrome browsers that you sign into 
 
 ## Get support or report an issue
-https://github.com/brismuth/google-voice-bulk-texter/blob/main/support.md
+https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md
 
 ## Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
