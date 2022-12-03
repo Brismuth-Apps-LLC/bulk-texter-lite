@@ -44,7 +44,7 @@ Firefox and Edge will automatically keep your add-on up to date, but it can take
 
 If you previously installed the extension manually in Chrome and would like to switch to FireFox or Edge (recommended), you would just need to remove the extension on the chrome://extensions page and follow the instructions above for FireFox/Edge.
 
-You can follow these instructions to update Bulk Texter Lite if you installed it manually:
+You can follow these instructions to update Bulk Texter Lite if you installed it manually, and want to keep a manual installation (not recommended):
 1. Download the zip: https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/archive/main.zip
 2. Extract the zip file on your computer
 3. Delete the contents of your previously installed Bulk Texter Lite / Google Voice Bulk Texter folder (but not the folder itself)
