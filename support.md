@@ -5,13 +5,15 @@
 * Currently the extension [doesn't support sending emojis](https://github.com/brismuth/google-voice-bulk-texter/issues/61).
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
 * If you are using https://voice.google.com for texting, make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.
-* If you have a feature request that you would like to be developed, you can help get it prioritized by funding it here: https://issuehunt.io/r/brismuth/google-voice-bulk-texter
 
 #### Extension is looping on a single number and failing with an error message
-This is usually caused by Google Voice rolling out website changes in phases. Check if there are any [open issues](https://github.com/brismuth/google-voice-bulk-texter/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. If there are no issues already reported, open a new one by following the instructions [below](https://github.com/brismuth/google-voice-bulk-texter/blob/main/support.md#support).
+This is usually caused by Google Voice rolling out website changes in phases. 
 
-##### "Error: "fillNumberInput" failed."
-See issue [#102](https://github.com/brismuth/google-voice-bulk-texter/issues/102) - this was historically caused by FireFox browser changes, which broke the clipboard APIs this extension uses.
+First, make sure that you are running the latest version of the extension by following the [update guide](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/README.md#update-it).
+
+If it's still not working on the latest version, Check if there are any [open issues](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues) reporting the issue already, and if there are, feel free to subscribe to them or comment on them. 
+
+If there are no issues already reported, open a new one by following the instructions [below](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md#support).
 
 #### Account suspension / Error: "confirmSent" failed
 If the extension was working for you for one or more messages but stopped suddenly, it is likely that Google has flagged your messages as potential spam, which is against Google's terms of service. Continuing to send messages that appear to be spam could result in your account being deactivated. 
@@ -22,17 +24,17 @@ If the extension was working for you for one or more messages but stopped sudden
 * Google does not publish their algorithm for spam detection. Because of that, I cannot make any guarantees on what will or will not make your messages look like spam.
 * If your messages are not spam but Google thinks they are, it could be because your messages are too long or because they contain a link. Some users have reported that shortening their message or removing links has resolved the issue for them.
 * As mentioned in the above forum threads, this issue will usually clear up after some time passes, although you may need to change the content of the message you're sending as well.
-* A process for repealing an account ban can be found here: https://github.com/brismuth/google-voice-bulk-texter/issues/65
+* A process for repealing an account ban can be found here: https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/65
 
 #### Error: "startChat" failed
 See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
 ### Support
 If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, please file an issue here:
-https://github.com/brismuth/google-voice-bulk-texter/issues/new/choose
+https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/new/choose
 
 You can see currently open issues here:
-https://github.com/brismuth/google-voice-bulk-texter/issues
+https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues
 
 ### Donating
 If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
