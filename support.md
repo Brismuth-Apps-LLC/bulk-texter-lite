@@ -2,7 +2,6 @@
 
 ### Tips
 * To stop the bulk texter at any time, simply refresh the Google Voice tab.
-* Currently the extension [doesn't support sending emojis](https://github.com/brismuth/google-voice-bulk-texter/issues/61).
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
 * If you are using https://voice.google.com for texting, make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.
 
