@@ -1,11 +1,9 @@
 # Bulk Texter Lite / Google Voice Bulk Texter
-A Firefox/Chrome extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
+A browser extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
 
 It is available as an [Edge add-on](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl), a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#install-it) to install it manually in Chrome.
 
 This is the same software that was previously called "Google Voice Bulk Texter". It has been renamed to avoid confusion - this software is not affiliated with Google or Google Voice. 
-
-Want more features? Check out [Bulk Texter Pro](https://www.bulktexterpro.com)!
 
 ## What is it?
 This is a chrome extension that allows you to write a message once and send it to a list of numbers and names (names are optional). It is a huge time saver if you need to send the same message to a lot of people and you already have a list of phone numbers and names. It is useful for things like planning events, sending announcements to your church group, or sending reminders to your clients. 
@@ -13,7 +11,32 @@ This is a chrome extension that allows you to write a message once and send it t
 #### Google Voice Demo
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/main/demo/demo-google-voice.jpg)
 
-## Install it
+## Want more features? Check out [Bulk Texter Pro](https://www.bulktexterpro.com)!
+
+Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well as all the items that are currently on our roadmap!
+
+|  | Bulk Texter Lite | Bulk Texter Pro |
+| --- | --- | --- |
+| Cost | Free forever | $4.95 / month |
+| Bulk send messages | ✅ | ✅ |
+| Customize each message with recipient name | ✅ | ✅ |
+| Schedule messages in advance | ❌ | ✅ |
+| Preview generated messages pre-send | ❌ | ✅ |
+| CSV Upload with unlimited columns/variables | ❌ | ✅ |
+| View / download previously sent messages | ❌ | ✅ |
+| Dark Mode :) | ❌ | ✅ |
+| Sending images | ❌ | On the roadmap! |
+| Send MMS/group texts | ❌ | On the roadmap! |
+| Browser integration with Google Messages / Android phones | ❌ | On the roadmap! |
+| MacOS integration with iMessage | ❌ | On the roadmap! |
+| Support for Spin Syntax / Spintax | ❌ | On the roadmap! |
+| Save and use quick replies / snippets within Google Voice | ❌ | On the roadmap! |
+| Integrate with Google Contacts | ❌ | On the roadmap! |
+| Save favorite message templates and contact lists | ❌ | On the roadmap! |
+| Full export/import for all app data | ❌ | On the roadmap! |
+| Support | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) | Personal support via [email](mailto:support@bulktexterpro.com) |
+
+## Installing Bulk Texter Lite
 You can easily install this extension by following the instructions for your browser:
 
 ### Firefox (recommended)
