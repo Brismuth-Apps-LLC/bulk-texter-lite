@@ -15,26 +15,29 @@ This is a chrome extension that allows you to write a message once and send it t
 
 Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well as all the items that are currently on our roadmap!
 
-|  | Bulk Texter Lite | Bulk Texter Pro |
+|  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost | Free forever | $4.95 / month |
+| Cost | $4.95 / month | Free forever |
 | Bulk send messages | ✅ | ✅ |
 | Customize each message with recipient name | ✅ | ✅ |
-| Schedule messages in advance | ❌ | ✅ |
-| Preview generated messages pre-send | ❌ | ✅ |
-| CSV Upload with unlimited columns/variables | ❌ | ✅ |
-| View / download previously sent messages | ❌ | ✅ |
-| Dark Mode :) | ❌ | ✅ |
-| Sending images | ❌ | On the roadmap! |
-| Send MMS/group texts | ❌ | On the roadmap! |
-| Browser integration with Google Messages / Android phones | ❌ | On the roadmap! |
-| MacOS integration with iMessage | ❌ | On the roadmap! |
-| Support for Spin Syntax / Spintax | ❌ | On the roadmap! |
-| Save and use quick replies / snippets within Google Voice | ❌ | On the roadmap! |
-| Integrate with Google Contacts | ❌ | On the roadmap! |
-| Save favorite message templates and contact lists | ❌ | On the roadmap! |
-| Full export/import for all app data | ❌ | On the roadmap! |
-| Support | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) | Personal support via [email](mailto:support@bulktexterpro.com) |
+| Schedule messages in advance | ✅ | ❌ |
+| Previewing generated messages pre-send | ✅ | ❌ |
+| [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload) with unlimited columns/variables | ✅ | ❌ |
+| View / download previously sent messages | ✅ | ❌ |
+| Dark Mode :) | ✅ | ❌ |
+| Sending images | On the roadmap! | ❌ |
+| Send MMS/group texts | On the roadmap! | ❌ |
+| Send via [Google Messages](https://messages.google.com/web/) / Android phones | On the roadmap! | ❌ |
+| Send via iMessage (for MacOS) | On the roadmap! | ❌ |
+| Send via [TextNow.com](https://www.textnow.com/) | On the roadmap! | ❌ |
+| MacOS integration with iMessage | On the roadmap! | ❌ |
+| Support for Spin Syntax / Spintax | On the roadmap! | ❌ |
+| Save and use quick replies / snippets within Google Voice | On the roadmap! | ❌ |
+| Integrate with Google Contacts | On the roadmap! | ❌ |
+| Save favorite message templates and contact lists | On the roadmap! | ❌ |
+| Full export/import for all app data | On the roadmap! | ❌ |
+| Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
+
 
 ## Installing Bulk Texter Lite
 You can easily install this extension by following the instructions for your browser:
