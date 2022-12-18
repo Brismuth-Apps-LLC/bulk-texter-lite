@@ -4,6 +4,7 @@
 * To stop the bulk texter at any time, simply refresh the Google Voice tab.
 * If you are unable to send a message manually (without the extension), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that the extension can help with.
 * If you are using https://voice.google.com for texting, make sure you haven't enabled texting via Hangouts, as that will disable sending messages via the Google Voice app.
+* Although text messages can be in any language, Bulk Texter Lite requires that the Google Voice interface be in English - make sure that both your Google Account and your browser settings are set to English for the Google Voice page.
 
 #### Extension is looping on a single number and failing with an error message
 This is usually caused by Google Voice rolling out website changes in phases. 
