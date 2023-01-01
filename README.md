@@ -25,7 +25,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Schedule messages in advance | ✅ | ❌ |
 | Previewing generated messages pre-send | ✅ | ❌ |
 | [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload) with unlimited columns/variables | ✅ | ❌ |
-| Send MMS/group texts | ✅ | ❌ |
+| Send group texts | ✅ | ❌ |
 | View / download previously sent messages | ✅ | ❌ |
 | Dark Mode :) | ✅ | ❌ |
 | Sending images | On the roadmap! | ❌ |
