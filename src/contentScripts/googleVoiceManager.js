@@ -37,7 +37,6 @@ class GoogleVoiceSiteManager {
 
 	async sendFromQueue() {
 		let retryCount = 5;
-		let verifyOnly = false;
 
 		if (this.numberQueue.length > 0) {
 			this.currentNumberSending = this.numberQueue.shift();
@@ -46,19 +45,14 @@ class GoogleVoiceSiteManager {
 			while (sendExecutionQueue.length) {
 				let currentStep = sendExecutionQueue.shift().bind(this);
 				const result = await keepTrying(currentStep, retryCount > 0);
-				if (!result) {
+				if (getFunctionName(currentStep) === 'sendMessage') {
+					// we only try the sendMessage step once, no matter the result, to avoid the chance of duplicate messages.
+					sendExecutionQueue.length = 0; // reset the send queue
+					setTimeout(this.sendFromQueue.bind(this), this.sendInterval); // continue with next message
+				} else if (!result) { // retry
 					console.log(`Bulk Texter Lite - Step failed (${getFunctionName(currentStep)}), retrying message.`);
 					retryCount--; // if this keeps happening, alert on it
-
-					if (verifyOnly) {
-						sendExecutionQueue = this.getVerificationOnlyExecutionQueue();
-					} else {
-						// otherwise start over in the execution queue
-						sendExecutionQueue = this.getSendExecutionQueue();
-					}
-				}
-				if (getFunctionName(currentStep) === 'sendMessage') {
-					verifyOnly = true; // we don't want to risk sending a message twice
+					sendExecutionQueue = this.getSendExecutionQueue();
 				}
 			}
 		}
@@ -72,21 +66,7 @@ class GoogleVoiceSiteManager {
 			this.startChat,
 			this.confirmChatSwitched,
 			this.writeMessage,
-			this.sendMessage,
-			this.confirmThreadHeaderUpdated,
-			this.confirmSent
-		];
-	}
-
-	// opens up the chat again and checks if the message was sent previously
-	getVerificationOnlyExecutionQueue() {
-		return [
-			this.switchToMessagesTab,
-			this.showNumberInput,
-			this.fillNumberInput,
-			this.startChat,
-			this.confirmChatSwitched,
-			this.confirmSent
+			this.sendMessage
 		];
 	}
 
@@ -188,41 +168,6 @@ class GoogleVoiceSiteManager {
 			sendButtonNew.dispatchEvent(new Event('mouseup'));
 			sendButtonNew.click();
 			return true;
-		}
-	}
-
-	confirmThreadHeaderUpdated() {
-		let chatLoadedHeader = document.querySelector(selectors.gvChatLoadedHeader); // the header switches to this after sending is complete. If we move on before this, it can break things.
-		if (chatLoadedHeader) {
-			return true;
-		}
-	}
-
-	confirmSent() {
-		let sendingNote = document.querySelector(selectors.gvSendingNote); // this is the note that says "Sending", it will disappear when it is finished
-
-		if (!sendingNote) {
-			// check if the message we sent is showing up in the chat window
-			let mostRecentMessages = document.querySelectorAll(selectors.gvMostRecentMessages);
-			let	sentMessageIsThreaded = false;
-			if (mostRecentMessages && mostRecentMessages.length) {
-				var i = mostRecentMessages.length - 1;
-				for (i; !sentMessageIsThreaded && i >= 0; i--) {
-					let messageIntended = removeWhitespace(removeUnicode(this.messagesToSend[this.currentNumberSending]));
-					let messageSent = removeWhitespace(removeUnicode(mostRecentMessages[mostRecentMessages.length - 1].innerText));
-					sentMessageIsThreaded = messageSent === messageIntended;
-				}
-			}
-
-			if (sentMessageIsThreaded) {
-				logEvent({
-					eventLabel: 'MESSAGE_SENT',
-					eventValue: 1
-				});
-				// continue with queue
-				setTimeout(this.sendFromQueue.bind(this), this.sendInterval);
-				return true;
-			}
 		}
 	}
 }
