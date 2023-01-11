@@ -91,8 +91,3 @@ You can follow these instructions to update Bulk Texter Lite if you installed it
 
 ## Get support or report an issue
 https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md
-
-## Donating
-If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
-
-Thanks!
