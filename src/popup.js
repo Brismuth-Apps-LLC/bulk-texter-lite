@@ -6,52 +6,56 @@ if (chrome == null) {
 const defaultSendInterval = 3;
 const sendIntervalOptions = [
 	{
-		delay: 500,
-		label: '1/2 second (may be unstable)'
+		delay: 5 * 1000,
+		label: '5 seconds <br/>(more prone to being rate limited)'
 	},
 	{
-		delay: 1000,
-		label: '1 second (may be unstable)'
+		delay: 10 * 1000,
+		label: '10 seconds <br/>(more prone to being rate limited)'
 	},
 	{
-		delay: 2000,
-		label: '2 seconds'
+		delay: 15 * 1000,
+		label: '15 seconds <br/>(more prone to being rate limited)'
 	},
 	{
-		delay: 5000,
-		label: '5 seconds'
-	},
-	{
-		delay: 10000,
-		label: '10 seconds'
-	},
-	{
-		delay: 15000,
-		label: '15 seconds'
-	},
-	{
-		delay: 30000,
+		delay: 30 * 1000,
 		label: '30 seconds'
 	},
 	{
-		delay: 45000,
+		delay: 45 * 1000,
 		label: '45 seconds'
 	},
 	{
-		delay: 60000,
+		delay: 60 * 1000,
 		label: '1 minute'
 	},
 	{
-		delay: 120000,
+		delay: 1.5 * 60 * 1000,
+		label: '1.5 minutes'
+	},
+	{
+		delay: 2 * 60 * 1000,
 		label: '2 minutes'
 	},
 	{
-		delay: 300000,
+		delay: 3 * 60 * 1000,
+		label: '3 minutes'
+	},
+	{
+		delay: 4 * 60 * 1000,
+		label: '4 minutes'
+	},
+	{
+		delay: 5 * 60 * 1000,
 		label: '5 minutes'
 	},
 	{
-		delay: 600000,
+		delay: 10 * 60 * 1000,
 		label: '10 minutes'
+	},
+	{
+		delay: 15 * 60 * 1000,
+		label: '15 minutes'
 	}
 ];
 
