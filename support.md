@@ -16,7 +16,7 @@ Here are some tips that may help you avoid being rate limited or blocked by Goog
 * This one may seem obvious, but don't send spam. If you're looking for a solution for prospecting or marketing, Google Voice and Bulk Texter Lite probably aren't the right choice.
 * Avoid sending more than ~50 messages per hour.
 * Ensure that each message is unique (i.e. use the name field) and conversational. [Bulk Texter Pro](https://www.bulktexterpro.com/) supports [CSV Upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/), which can make your messages even more customized.
-* Some users have reported that when recipients are responsive and text back, they are less likely to * experience message blocks from Google.
+* Some users have reported that when recipients are responsive and text back, they are less likely to experience message blocks from Google.
 * Some users have reported that removing URLs/website links has helped them - but it often does not cause any problem.
 * Try increasing the time between messages, if you're using a shorter delay.
 * Longer messages may be more likely to be blocked as well.
