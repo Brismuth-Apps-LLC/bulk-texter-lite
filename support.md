@@ -35,8 +35,3 @@ https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/new/choose
 
 You can see currently open issues here:
 https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues
-
-### Donating
-If you'd like to donate to show your appreciation for this extension, you can do so on PayPal (https://paypal.me/brismuth) or Venmo (@brismuth).
-
-Thanks!
