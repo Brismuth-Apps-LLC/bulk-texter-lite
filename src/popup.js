@@ -7,15 +7,15 @@ const defaultSendInterval = 3;
 const sendIntervalOptions = [
 	{
 		delay: 5 * 1000,
-		label: '5 seconds <br/>(more prone to being rate limited)'
+		label: '5 seconds <br/>(more prone to rate limiting)'
 	},
 	{
 		delay: 10 * 1000,
-		label: '10 seconds <br/>(more prone to being rate limited)'
+		label: '10 seconds <br/>(more prone to rate limiting)'
 	},
 	{
 		delay: 15 * 1000,
-		label: '15 seconds <br/>(more prone to being rate limited)'
+		label: '15 seconds <br/>(more prone to rate limiting)'
 	},
 	{
 		delay: 30 * 1000,
