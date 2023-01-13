@@ -70,11 +70,17 @@ class GoogleVoiceSiteManager {
 		];
 	}
 
- 	switchToMessagesTab() {
-		var messagesTabButton = document.querySelector(selectors.gvMessagesTab);
+	switchToMessagesTab() {
+		const messagesTabButton = document.querySelector(selectors.gvMessagesTab);
 		if (messagesTabButton && messagesTabButton.offsetParent !== null) {
 			messagesTabButton.click();
 			return true;
+		} else {
+			const messagesTabButtonBackup = document.querySelector('a[aria-label^="Message"][role="tab"]');
+			if (messagesTabButtonBackup && messagesTabButtonBackup.offsetParent !== null) {
+				messagesTabButtonBackup.click();
+				return true;
+			}
 		}
 	}
 
