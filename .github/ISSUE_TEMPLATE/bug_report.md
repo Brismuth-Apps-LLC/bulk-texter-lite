@@ -4,17 +4,11 @@ about: Create a report to help us improve
 
 ---
 
+**Did the issue suddenly begin happening, or is this your first time using Bulk Texter Lite?**
+
+
 **Describe the bug**
-A clear and concise description of what the bug is.
 
-**URL**
-The URL you were on when the problem occurred. 
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
 
-**Additional context**
-Add any other context about the problem here.
