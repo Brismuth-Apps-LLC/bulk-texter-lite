@@ -29,10 +29,11 @@ function getFunctionName(func) {
  * @param {Function}   cb             to be called with the results from method when we're done trying
  */
 async function keepTrying(method, silenceErrors) {
+  const methodName = getFunctionName(method);
   function fatalErrorHandler() {
     if (!silenceErrors) {
       const manifest = chrome.runtime.getManifest();
-      const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. "${getFunctionName(method)}" failed.\n\nYou can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nWhen you click "ok" the page will refresh.`;
+      const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. "${methodName}" failed.\n\nYou can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nWhen you click "ok" the page will refresh.`;
       
       if (siteManager) {
         siteManager.messagesToSend.length = 0;
@@ -43,12 +44,16 @@ async function keepTrying(method, silenceErrors) {
     }
   }
 
-  console.log('BulkTexterLite: Running: ', getFunctionName(method));
-  const frequency = 200; // try every 200ms
+  console.log('BulkTexterLite: Running: ', methodName);
+  const frequency = 300; // try every 200ms
   let tryCount = 5 * 1000/frequency; // keep trying for 5 seconds
   
   while (tryCount-- > 0) {
     await sleep(frequency);
+
+    if (methodName === 'sendMessage') {
+      await sleep(2000); // to make sure Google Voice has time to switch threads for MMS
+    }
 
     let successful = method();
     if (successful === true) {

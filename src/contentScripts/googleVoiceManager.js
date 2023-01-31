@@ -72,16 +72,10 @@ class GoogleVoiceSiteManager {
 
 	switchToMessagesTab() {
 		const messagesTabButton = document.querySelector(selectors.gvMessagesTab);
-		if (messagesTabButton && messagesTabButton.offsetParent !== null) {
+		if (messagesTabButton) {
 			messagesTabButton.click();
-			return true;
-		} else {
-			const messagesTabButtonBackup = document.querySelector('a[aria-label^="Message"][role="tab"]');
-			if (messagesTabButtonBackup && messagesTabButtonBackup.offsetParent !== null) {
-				messagesTabButtonBackup.click();
-				return true;
-			}
-		}
+		} 
+		return true;
 	}
 
 	showNumberInput() {

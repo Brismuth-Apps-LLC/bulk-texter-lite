@@ -4,7 +4,7 @@ let siteManager; // globally available
 // all of the selectors used for automation
 const selectors = {
 	// google voice (in cases where there are two selectors, it is to support newer versions to older versions, left to right)
-	gvMessagesTab: 'div[gv-test-id="send-new-message"], div[aria-label^="Message"][role="tab"]',
+	gvMessagesTab: 'a[gv-test-id="sidenav-messages"]',
 	gvNumInputButton: 'div[gv-id="send-new-message"]',
 	gvNumInput: 'gv-recipient-picker input[ng-show="ctrl.allowToAddRecipients()"], gv-recipient-picker input[placeholder="Type a name or phone number"]',
 	gvStartChatButton: 'gv-contact-list div[ng-class="::ctrl.CSS.SEND_TO_PHONE_NUMBER"]',
