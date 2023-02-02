@@ -82,8 +82,6 @@ You can follow these instructions to update Bulk Texter Lite if you installed it
 ## Permissions
 * Change data on voice.google.com
   * This is for sending messages.
-* Clipboard access
-  * This is necessary in order to automate the message preparation and sending.
 * Storage
   * This is for persisting extension data across all Chrome browsers that you sign into 
 

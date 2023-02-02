@@ -98,5 +98,11 @@ function removeUnicode(text) {
  */
 function removeWhitespace(text) {
   return text.replace(/\s/g,'');
+}
 
+const simulateKeyPress = (element) => {
+  element.dispatchEvent(new Event('change', {
+    bubbles: true,
+    cancelable: true
+  }));
 }

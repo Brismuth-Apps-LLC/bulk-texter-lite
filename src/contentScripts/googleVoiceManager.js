@@ -90,12 +90,7 @@ class GoogleVoiceSiteManager {
 		let numInput = document.querySelector(selectors.gvNumInput);
 		if (numInput && numInput.offsetParent !== null) {
 			numInput.value = this.currentNumberSending;
-
-			// this fires the necessary events for Google Voice to pick up
-			numInput.focus();
-			numInput.select();
-			document.execCommand('cut');
-			document.execCommand('paste');
+			simulateKeyPress(numInput);
 
 			// confirm that the number was added as expected
 			let numInputConfirm = document.querySelector(selectors.gvNumInput);
@@ -147,14 +142,7 @@ class GoogleVoiceSiteManager {
 			return;
 		}
 
-		messageEditor.focus();
-		if (messageEditor.select) {
-			messageEditor.select();
-		} else {
-			document.execCommand('selectAll',false,null)
-		}
-		document.execCommand('cut');
-		document.execCommand('paste');
+		simulateKeyPress(messageEditor);
 
 		// click send button
 		let sendButtonOld = document.querySelector(selectors.gvSendButtonOld);
