@@ -28,7 +28,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Send group texts | ✅ | ❌ |
 | View / download previously sent messages | ✅ | ❌ |
 | Dark Mode :) | ✅ | ❌ |
-| Sending images | In beta testing! | ❌ |
+| Sending photos | ✅ | ❌ |
 | Send via [Google Messages](https://messages.google.com/web/) / Android phones | On the roadmap! | ❌ |
 | Send via iMessage (for MacOS) | On the roadmap! | ❌ |
 | Send via [TextNow.com](https://www.textnow.com/) | On the roadmap! | ❌ |
