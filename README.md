@@ -17,14 +17,14 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost | $4.95 / month | Free forever |
+| Cost | $4.95 / month <br/> $49.95 / year <br/> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | Free forever |
 | Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
 | Bulk send text messages | ✅ | ✅ |
 | Customize each message with recipient name | ✅ | ✅ |
 | Unlimited messages <br/> *(limited only by Google, not by us)* | ✅ | ✅ |
 | Schedule messages in advance | ✅ | ❌ |
 | Previewing generated messages pre-send | ✅ | ❌ |
-| [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload) with unlimited columns/variables | ✅ | ❌ |
+| [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables | ✅ | ❌ |
 | Send group texts | ✅ | ❌ |
 | View / download previously sent messages | ✅ | ❌ |
 | Dark Mode :) | ✅ | ❌ |
