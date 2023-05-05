@@ -12,15 +12,8 @@ If Bulk Texter Lite worked for you for one or more messages but not for others, 
 
 We can not comment on Google Voice's limits, as they are not published, and Bulk Texter Lite is not affiliated with Google/Google Voice.
 
-Here are some tips that may help you avoid being rate limited or blocked by Google:
-* This one may seem obvious, but don't send spam. If you're looking for a solution for prospecting or marketing, Google Voice and Bulk Texter Lite probably aren't the right choice.
-* Avoid sending more than ~50 messages per hour.
-* Ensure that each message is unique (i.e. use the name field) and conversational. [Bulk Texter Pro](https://www.bulktexterpro.com/) supports [CSV Upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/), which can make your messages even more customized.
-* Some users have reported that when recipients are responsive and text back, they are less likely to experience message blocks from Google.
-* Some users have reported that removing URLs/website links has helped them - but it often does not cause any problem.
-* Try increasing the time between messages, if you're using a shorter delay.
-* Longer messages may be more likely to be blocked as well.
-* If you feel your account has been blocked in error, you can fill out Google's support form here: https://support.google.com/accounts/contact/suspended
+You can find tips and best practices in the Bulk Texter Pro [FAQ](https://www.bulktexterpro.com/docs/faq/#what-are-the-recommended-best-practices-for-using-bulk-texter-pro) that may help you avoid being rate limited or blocked by Google:
+https://www.bulktexterpro.com/docs/faq/#what-are-the-recommended-best-practices-for-using-bulk-texter-pro
 
 ## Error: "startChat" failed.
 See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
