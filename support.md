@@ -16,7 +16,9 @@ You can find tips and best practices in the Bulk Texter Pro [FAQ](https://www.bu
 https://www.bulktexterpro.com/docs/faq/#what-are-the-recommended-best-practices-for-using-bulk-texter-pro
 
 ## Error: "startChat" failed.
-See issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
+Make sure you are on v2.1.4 or higher, as some changes on Google's side necessitated an update to Bulk Texter Lite.
+
+If you are still experiencing this issue, see issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
 ## Bulk Texter Lite is looping on a single number and failing with an error message.
 This is usually caused by Google Voice rolling out website changes in phases. 
