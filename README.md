@@ -17,7 +17,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost | $4.95 / month <br/> $49.95 / year <br/> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | Free forever |
+| Cost | $4.99 / month <br/> $49.99 / year <br/> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | Free forever |
 | Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
 | Bulk send text messages | ✅ | ✅ |
 | Customize each message with recipient name | ✅ | ✅ |
@@ -27,9 +27,9 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables | ✅ | ❌ |
 | Send group texts | ✅ | ❌ |
 | View / download previously sent messages | ✅ | ❌ |
-| Dark Mode :) | ✅ | ❌ |
 | Send photos with your texts | ✅ | ❌ |
 | Retry failed or cancelled messages | ✅ | ❌ |
+| Dark Mode | ✅ | ❌ |
 | Send via [Google Messages](https://messages.google.com/web/) / Android phones | On the roadmap! | ❌ |
 | Send via iMessage (for MacOS) | On the roadmap! | ❌ |
 | Send via [TextNow.com](https://www.textnow.com/) | On the roadmap! | ❌ |
