@@ -17,11 +17,12 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost | $4.99 / month <br/> $49.99 / year <br/> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | Free forever |
+| Cost | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year| Free forever |
 | Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
+| Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow.com](https://www.textnow.com/)| –<br/>✅<br/>✅<br/>✅<br/>On the roadmap! | –<br/>✅<br/>❌<br/>❌<br/>❌|
 | Bulk send text messages | ✅ | ✅ |
 | Customize each message with recipient name | ✅ | ✅ |
-| Unlimited messages <br/> *(limited only by Google, not by us)* | ✅ | ✅ |
+| Unlimited messages <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
 | Schedule messages in advance | ✅ | ❌ |
 | Preview generated messages before you send them | ✅ | ❌ |
 | [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables | ✅ | ❌ |
@@ -30,9 +31,6 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Send photos with your texts | ✅ | ❌ |
 | Retry failed or cancelled messages | ✅ | ❌ |
 | Dark Mode | ✅ | ❌ |
-| Send via [Google Messages](https://messages.google.com/web/) / Android phones | On the roadmap! | ❌ |
-| Send via iMessage (for MacOS) | On the roadmap! | ❌ |
-| Send via [TextNow.com](https://www.textnow.com/) | On the roadmap! | ❌ |
 | Save recent message templates and contact lists | On the roadmap! | ❌ |
 | Full export/import for all app data | On the roadmap! | ❌ |
 | Remind previous recipients that haven't yet responded | On the roadmap! | ❌ |
