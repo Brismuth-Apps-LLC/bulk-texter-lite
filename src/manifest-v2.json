@@ -23,8 +23,8 @@
     {
       "matches": ["https://voice.google.com/*"],
       "js": [
-        "contentScripts/googleVoiceManager.js",
         "contentScripts/tools.js",
+        "contentScripts/googleVoiceManager.js",
         "contentScripts/main.js"
       ],
       "all_frames": true

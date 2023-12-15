@@ -1,8 +1,3 @@
-// Microsoft Edge compatibility
-if (chrome == null) {
-	chrome = browser;
-}
-
 const defaultSendInterval = 3;
 const sendIntervalOptions = [
 	{
@@ -73,8 +68,8 @@ function sendMessages(messages, sendInterval) {
 		return false;
 	}
 
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {
+	browser_polyfill.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		browser_polyfill.tabs.sendMessage(tabs[0].id, {
 			from: 'popup',
 			type: 'SEND_MESSAGES',
 			messages: messages,
@@ -162,12 +157,12 @@ function simplifyNumber(number) {
 }
 
 /**
- * uses the chrome tabs API to check if the current tab is google voice
+ * uses the browser_polyfill tabs API to check if the current tab is google voice
  * @return {[type]} [description]
  */
 function currentlyOnSupportedTab(cb) {
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'CHECK_GOOGLE_VOICE_SUPPORT'}, cb);
+	browser_polyfill.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		browser_polyfill.tabs.sendMessage(tabs[0].id, {from: 'popup', type: 'CHECK_GOOGLE_VOICE_SUPPORT'}, cb);
 	});
 }
 
@@ -198,7 +193,7 @@ function addUIListeners() {
 }
 
 function persistPopupFields() {
-	chrome.storage.local.set({
+	browser_polyfill.storage.local.set({
 		popupNumbersAndNames: numbersAndNames.value,
 		popupMessage: message.value,
 		tosAgreement: tosAgreement.checked,
@@ -207,7 +202,7 @@ function persistPopupFields() {
 }
 
 function restoreTextFields() {
-	chrome.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement', 'sendInterval'], function(items){
+	browser_polyfill.storage.local.get(['popupNumbersAndNames', 'popupMessage', 'tosAgreement', 'sendInterval'], function(items){
 		numbersAndNames.value = items.popupNumbersAndNames || '';
 		message.value = items.popupMessage || 'Hi {name}!';
 		tosAgreement.checked = items.tosAgreement || false;
@@ -225,7 +220,7 @@ function restoreTextFields() {
 }
 
 function showVersionNumber() {
-	const manifest = chrome.runtime.getManifest();
+	const manifest = browser_polyfill.runtime.getManifest();
 	document.getElementById('version-number').innerText = `v${manifest.version}`;
 }
 

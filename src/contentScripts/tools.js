@@ -1,6 +1,9 @@
-// Microsoft Edge compatibility
-if (chrome == null) {
-  chrome = browser;
+let browser_polyfill;
+
+if (typeof browser !== 'undefined') {
+  browser_polyfill = browser;
+} else if (typeof chrome !== 'undefined') {
+  browser_polyfill = chrome;
 }
 
 /**
@@ -32,7 +35,7 @@ async function keepTrying(method, silenceErrors) {
   const methodName = getFunctionName(method);
   function fatalErrorHandler() {
     if (!silenceErrors) {
-      const manifest = chrome.runtime.getManifest();
+      const manifest = browser_polyfill.runtime.getManifest();
       const fullMessage = `Bulk Texter Lite v${manifest.version}:\nText failed. "${methodName}" failed.\n\nYou can find support resources by opening the Bulk Texter Lite popup and clicking "Get Help" at the bottom.\n\nWhen you click "ok" the page will refresh.`;
       
       if (siteManager) {
@@ -80,7 +83,7 @@ function sleep(ms) {
  * @param  {object} payload  value to be logged
  */
 function logEvent(payload) {
-  chrome.runtime.sendMessage({
+  browser_polyfill.runtime.sendMessage({
     gvbt_logger: true,
     payload: payload
   });

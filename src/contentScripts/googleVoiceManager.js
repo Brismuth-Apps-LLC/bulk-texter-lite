@@ -1,8 +1,3 @@
-// Microsoft Edge compatibility
-if (chrome == null) {
-	chrome = browser;
-}
-
 /**
  * This runs on voice.google.com
  */
@@ -15,7 +10,7 @@ class GoogleVoiceSiteManager {
 	}
 
 	initialize() {
-		chrome.runtime.onMessage.addListener((message, sender, response) => {
+		browser_polyfill.runtime.onMessage.addListener((message, sender, response) => {
 			if (message.from === 'popup' && message.type === 'SEND_MESSAGES') {
 				this.addMessagesToQueue(message.messages);
 				this.sendInterval = message.sendInterval;

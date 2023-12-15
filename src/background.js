@@ -1,10 +1,13 @@
-// Microsoft Edge compatibility
-if (chrome == null) {
-	chrome = browser;
+let browser_polyfill;
+
+if (typeof browser !== 'undefined') {
+  browser_polyfill = browser;
+} else if (typeof chrome !== 'undefined') {
+  browser_polyfill = chrome;
 }
 
 // For logging
-chrome.runtime.onMessage.addListener(function (message, sender, response) {
+browser_polyfill.runtime.onMessage.addListener(function (message, sender, response) {
 	if (message.gvbt_logger === true) {
 		console.log(message.payload);
 	}
@@ -18,12 +21,12 @@ chrome.runtime.onMessage.addListener(function (message, sender, response) {
  * @return {[type]} [description]
  */
 recordMessageSent = () => {
-	chrome.storage.sync.get('sendCounts', function(items) {
+	browser_polyfill.storage.sync.get('sendCounts', function(items) {
 		items.sendCounts = items.sendCounts || {};
 		const thisMonth = getYearAndMonth(new Date());
 		const thisMonthCount = (items.sendCounts[thisMonth] || 0) + 1;
 
-		chrome.storage.sync.set({
+		browser_polyfill.storage.sync.set({
 			sendCounts: {
 				...items.sendCounts,
 				[thisMonth]: thisMonthCount
