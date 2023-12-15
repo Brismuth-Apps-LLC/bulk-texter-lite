@@ -1,5 +1,10 @@
 # Bulk Texter Lite - Support
 
+## Current Issue: fillNumberInput
+Google recently made some changes to Google Voice which required an update to the code in Bulk Texter Lite. The changes are currently in progress for Bulk Texter Lite, but the issue is now resolved in [Bulk Texter Pro](https://www.bulktexterpro.com).
+
+See https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/236 for more info.
+
 ## General Tips
 * To stop Bulk Texter Lite at any time, simply refresh the Google Voice tab.
 * If you are unable to send a message manually (without Bulk Texter Lite), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that Bulk Texter Lite can help with. If Bulk Texter Lite isn't working, try sending a message manually and see if that works.
@@ -14,11 +19,6 @@ We can not comment on Google Voice's limits, as they are not published, and Bulk
 
 You can find tips and best practices in the Bulk Texter Pro [FAQ](https://www.bulktexterpro.com/docs/faq/#what-are-the-recommended-best-practices-for-using-bulk-texter-pro) that may help you avoid being rate limited or blocked by Google:
 https://www.bulktexterpro.com/docs/faq/#what-are-the-recommended-best-practices-for-using-bulk-texter-pro
-
-## Error: "startChat" failed.
-Make sure you are on v2.1.4 or higher, as some changes on Google's side necessitated an update to Bulk Texter Lite.
-
-If you are still experiencing this issue, see issue [#149](https://github.com/brismuth/google-voice-bulk-texter/issues/149) - this can be caused by incorrectly formatted phone numbers. Double check the phone number that it's failing on.
 
 ## Bulk Texter Lite is looping on a single number and failing with an error message.
 This is usually caused by Google Voice rolling out website changes in phases. 
