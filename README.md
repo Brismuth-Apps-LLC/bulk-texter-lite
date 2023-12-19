@@ -1,7 +1,7 @@
 # Bulk Texter Lite / Google Voice Bulk Texter
 A browser extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
 
-It is available as an [Edge add-on](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl), a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#install-it) to install it manually in Chrome.
+It is available as an [Edge add-on](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl), a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#installing-bulk-texter-lite) to install it manually in Chrome.
 
 This is the same software that was previously called "Google Voice Bulk Texter". It has been renamed to avoid confusion - this software is not affiliated with Google or Google Voice. 
 
