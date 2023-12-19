@@ -52,7 +52,7 @@ In Microsoft Edge, visit the official [Edge store listing](https://microsoftedge
 
 This is a recommended way to install Bulk Texter Lite, because it will keep your software up to data automatically, helping you avoid issues with old versions of the software.
 
-### Chrome (manual installation from source code)
+### Chrome (manual installation)
 This method is not recommended, as it will not automatically stay up to date, and is more complicated.
 
 1. Download the zip: https://www.bulktexterpro.com/releases/bulk-texter-lite-chrome.zip
@@ -67,6 +67,22 @@ This method is not recommended, as it will not automatically stay up to date, an
 ## Update it
 Firefox and Edge will automatically keep your add-on up to date, but it can take 24-48 hours for the update to arrive on your computer.
 
+If you want your browser to immediately update to the latest version, you can follow the steps below for your specific browser.
+
+### Updating in Firefox
+1. Go to [about:addons](about:addons) in Firefox.
+2. Click the Settings icon at the top right of the page.
+3. Click "Check for Updates".
+4. Click "Update Now".
+
+For more detailed instructions, see [Mozilla's official wiki](https://support.mozilla.org/en-US/kb/re-enable-add-ons-disabled-when-updating).
+
+### Updating in Microsoft Edge
+1. Go to [edge://extensions](edge://extensions) in Edge.
+2. Toggle on Developer mode on the left, if it's not on already.
+3. Click the "Update" button at the top right of the page.
+
+### Updating a manual installation in Chrome
 If you previously installed the extension manually in Chrome and would like to switch to FireFox or Edge (recommended), you would just need to remove the extension on the chrome://extensions page and follow the instructions above for FireFox/Edge.
 
 You can follow these instructions to update Bulk Texter Lite if you installed it manually, and want to keep a manual installation (not recommended):
