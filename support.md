@@ -1,7 +1,7 @@
 # Bulk Texter Lite - Support
 
 ## Current Issue: fillNumberInput
-Google recently made some changes to Google Voice which required an update to the code in Bulk Texter Lite. The changes are currently in progress for Bulk Texter Lite, but the issue is now resolved in [Bulk Texter Pro](https://www.bulktexterpro.com).
+Google made some changes to Google Voice which required an update to the code in Bulk Texter Lite. The issue is now resolved in both [Bulk Texter Pro](https://www.bulktexterpro.com) and in the latest version of [Bulk Texter Lite](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/README.md#update-it).
 
 See https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/236 for more info.
 
