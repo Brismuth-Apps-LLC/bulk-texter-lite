@@ -19,7 +19,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | --- | --- | --- |
 | Cost | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year | Free |
 | Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
-| Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.textnow.com/)<br />[Dialpad](https://www.dialpad.com/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>On the roadmap! | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
+| Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.textnow.com/)<br />[Dialpad](https://www.dialpad.com/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
 | Bulk send text messages | ✅ | ✅ |
 | Customize each message with recipient name | ✅ | ✅ |
 | Unlimited messages <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
