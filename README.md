@@ -28,7 +28,6 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables | ✅ | ❌ |
 | Send group texts | ✅ | ❌ |
 | Track which texts were successfully sent | ✅ | ❌ |
-
 | View / download previously sent messages | ✅ | ❌ |
 | Send photos with your texts | ✅ | ❌ |
 | Retry failed or cancelled messages | ✅ | ❌ |
