@@ -17,26 +17,28 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year | Free |
-| Support | Personal support via [email](mailto:support@bulktexterpro.com) | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md) |
-| Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.textnow.com/)<br />[Dialpad](https://www.dialpad.com/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
-| Bulk send text messages | ✅ | ✅ |
-| Customize each message with recipient name | ✅ | ✅ |
-| Unlimited messages <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
-| Schedule messages in advance | ✅ | ❌ |
-| Preview generated messages before you send them | ✅ | ❌ |
-| [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables | ✅ | ❌ |
-| Send group texts | ✅ | ❌ |
-| Track which texts were successfully sent | ✅ | ❌ |
-| View / download previously sent messages | ✅ | ❌ |
-| Send photos with your texts | ✅ | ❌ |
-| Retry failed or cancelled messages | ✅ | ❌ |
-| Dark Mode | ✅ | ❌ |
-| Save recent message templates and contact lists | On the roadmap! | ❌ |
-| Full export/import for all app data | On the roadmap! | ❌ |
-| Remind previous recipients that haven't yet responded | On the roadmap! | ❌ |
-| Auto-reply / out of office responder | On the roadmap! | ❌ |
-| Integrate with Google Contacts | On the roadmap! | ❌ |
+| Cost: | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year <br /><br /> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | Free! |
+| Support: | Personal support via [email](mailto:support@bulktexterpro.com). | Community support on [Github](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md). |
+| Supported Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
+| Bulk send text messages. | ✅ | ✅ |
+| Customize each message with recipient name. | ✅ | ✅ |
+| Unlimited messages. <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
+| Schedule messages in advance.† | ✅ | ❌ |
+| Preview generated messages before you send them. | ✅ | ❌ |
+| [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables. | ✅ | ❌ |
+| Send group texts. | ✅ | ❌ |
+| Track which texts were successfully sent.† | ✅ | ❌ |
+| View / download previously sent messages. | ✅ | ❌ |
+| Send photos with your texts.† | ✅ | ❌ |
+| Retry failed or cancelled messages. | ✅ | ❌ |
+| Dark Mode. | ✅ | ❌ |
+| Full export of all app data. | ✅ | ❌ |
+| Save recent message templates and contact lists. | On the roadmap! | ❌ |
+| Remind previous recipients that haven't yet responded. | On the roadmap! | ❌ |
+| Auto-reply / out of office responder. | On the roadmap! | ❌ |
+| Integrate with Google Contacts. | On the roadmap! | ❌ |
+
+*† Some features are not currently supported in our iMessage integration, but are supported in our other integrations.*
 
 
 ## Installing Bulk Texter Lite
