@@ -74,7 +74,7 @@ Firefox and Edge will automatically keep your add-on up to date, but it can take
 If you want your browser to immediately update to the latest version, you can follow the steps below for your specific browser.
 
 ### Updating in Firefox
-1. Go to [about:addons](about:addons) in Firefox.
+1. Go to **[about:addons](about:addons)** in Firefox.
 2. Click the Settings icon at the top right of the page.
 3. Click "Check for Updates".
 4. Click "Update Now".
@@ -82,7 +82,7 @@ If you want your browser to immediately update to the latest version, you can fo
 For more detailed instructions, see [Mozilla's official wiki](https://support.mozilla.org/en-US/kb/re-enable-add-ons-disabled-when-updating).
 
 ### Updating in Microsoft Edge
-1. Go to [edge://extensions](edge://extensions) in Edge.
+1. Go to **[edge://extensions](edge://extensions)** in Edge.
 2. Toggle on Developer mode on the left, if it's not on already.
 3. Click the "Update" button at the top right of the page.
 
