@@ -1,10 +1,5 @@
 # Bulk Texter Lite - Support
 
-## Current Issue: fillNumberInput
-Google made some changes to Google Voice which required an update to the code in Bulk Texter Lite. The issue is now resolved in both [Bulk Texter Pro](https://www.bulktexterpro.com) and in the latest version of [Bulk Texter Lite](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/README.md#update-it).
-
-See https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/236 for more info.
-
 ## General Tips
 * To stop Bulk Texter Lite at any time, simply refresh the Google Voice tab.
 * If you are unable to send a message manually (without Bulk Texter Lite), then that is an issue with your Google Voice account or the number you're sending to, and is not an issue that Bulk Texter Lite can help with. If Bulk Texter Lite isn't working, try sending a message manually and see if that works.
