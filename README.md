@@ -61,7 +61,7 @@ This method is not recommended, as it will not automatically stay up to date, an
 
 1. Download the zip: https://www.bulktexterpro.com/releases/bulk-texter-lite-chrome.zip
 2. Extract the zip file on your computer
-3. Open chrome://extensions in Chrome
+3. Open **chrome://extensions** in Chrome
 4. Turn on "Developer mode" at the top right
 5. Click on "Load Unpacked"
 6. Navigate to the extracted extension folder from step #2 and select it. If you get a "missing manifest" error, make sure you've selected the folder you just extracted, rather than one of the subfolders inside it.
@@ -87,14 +87,14 @@ For more detailed instructions, see [Mozilla's official wiki](https://support.mo
 3. Click the "Update" button at the top right of the page.
 
 ### Updating a manual installation in Chrome
-If you previously installed the extension manually in Chrome and would like to switch to FireFox or Edge (recommended), you would just need to remove the extension on the chrome://extensions page and follow the instructions above for FireFox/Edge.
+If you previously installed the extension manually in Chrome and would like to switch to FireFox or Edge (recommended), you would just need to remove the extension on the **chrome://extensions** page and follow the instructions above for FireFox/Edge.
 
 You can follow these instructions to update Bulk Texter Lite if you installed it manually, and want to keep a manual installation (not recommended):
 1. Download the zip: https://www.bulktexterpro.com/releases/bulk-texter-lite-chrome.zip
 2. Extract the zip file on your computer
 3. Delete the contents of your previously installed Bulk Texter Lite / Google Voice Bulk Texter folder (but not the folder itself)
 4. Move the contents of your newly extracted folder from step #2 into the existing installation folder from step #3
-5. Open chrome://extensions in Chrome
+5. Open **chrome://extensions** in Chrome
 6. Turn on "Developer mode" with the toggle at the top right, if it is not already enabled
 7. Click the "refresh" icon at the bottom right of the Bulk Texter Lite / Google Voice Bulk Texter card
 8. That's it! It should now be fully up to date.
