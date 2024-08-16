@@ -1,12 +1,16 @@
-# Bulk Texter Lite / Google Voice Bulk Texter
+<img src="https://www.bulktexterpro.com/img/icon-lite.png" width="200">
+
+# Bulk Texter Lite (formerly Google Voice Bulk Texter)
 A browser extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
 
 It is available as an [Edge add-on](https://microsoftedge.microsoft.com/addons/detail/google-voice-bulk-texter/olokpmeifgmfmhdnpfllllfnakdakldl), a [Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/bulk-texter/) or you can follow the [instructions below](#installing-bulk-texter-lite) to install it manually in Chrome.
 
+There is also a pro version, [Bulk Texter Pro](https://www.bulktexterpro.com), which has [many additional features](https://www.bulktexterpro.com/docs/features/).
+
 This is the same software that was previously called "Google Voice Bulk Texter". It has been renamed to avoid confusion - this software is not affiliated with Google or Google Voice. 
 
 ## What is it?
-This is a chrome extension that allows you to write a message once and send it to a list of numbers and names (names are optional). It is a huge time saver if you need to send the same message to a lot of people and you already have a list of phone numbers and names. It is useful for things like reminding your students to turn in assignments, planning events, or sending announcements to your church group. 
+Bulk Texter Lite is a browser extension that allows you to write a message once and send it to a list of numbers and names (names are optional). It is a huge time saver if you need to send the same message to a lot of people and you already have a list of phone numbers and names. It is useful for things like reminding your students to turn in assignments, planning events, or sending announcements to your church group. 
 
 #### Google Voice Demo
 ![](https://raw.githubusercontent.com/brismuth/google-voice-bulk-texter/main/demo/demo-google-voice.jpg)
