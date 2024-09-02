@@ -25,8 +25,6 @@ If it's still not working on the latest version, Check if there are any [open is
 If there are no issues already reported, open a new one by following the instructions [below](https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/blob/main/support.md#support).
 
 ## Support
-If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, please file an issue here:
-https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues/new/choose
+Note that we can only resolve issues with Bulk Texter Lite. If you are experiencing issues with your Google Voice account, or with sending texts manually, without Bulk Texter Lite, that is not something that we'll be able to resolve.
 
-You can see currently open issues here:
-https://github.com/Brismuth-Apps-LLC/bulk-texter-lite/issues
+If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, you can email us at support@bulktexterpro.com.
