@@ -27,4 +27,4 @@ If there are no issues already reported, open a new one by following the instruc
 ## Support
 Note that we can only resolve issues with Bulk Texter Lite. If you are experiencing issues with your Google Voice account, or with sending texts manually, without Bulk Texter Lite, that is not something that we'll be able to resolve.
 
-If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, you can email us at support@bulktexterpro.com.
+If you are experiencing issues with Bulk Texter Lite and the above tips didn't help you out, please email us at support@bulktexterpro.com.
