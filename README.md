@@ -22,7 +22,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
 | Cost: | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year <br /><br /> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | $10 lifetime license |
-| Support: | Personal support via [email](mailto:support@bulktexterpro.com). | Personal support via [email](mailto:support@bulktexterpro.com). |
+| Support: | Personal support via [email](mailto:support@bulktexterpro.com) | Personal support via [email](mailto:support@bulktexterpro.com) |
 | Supported Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
 | Bulk send text messages. | ✅ | ✅ |
 | Customize each message with recipient name. | ✅ | ✅ |
