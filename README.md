@@ -34,7 +34,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Send photos with your texts.† | ✅ | ❌ |
 | Live progress report as texts are sent.† | ✅ | ❌ |
 | Track which texts were successfully sent.† | ✅ | ❌ |
-| Send while screen is locked / browser in background | ✅ | ❌ |
+| Send while screen is locked / browser in background. | ✅ | ❌ |
 | View or download previously sent messages. | ✅ | ❌ |
 | Retry failed or cancelled messages. | ✅ | ❌ |
 | Dark Mode. | ✅ | ❌ |
