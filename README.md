@@ -39,7 +39,7 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Retry failed or cancelled messages. | ✅ | ❌ |
 | Dark Mode. | ✅ | ❌ |
 | Full export of all app data. | ✅ | ❌ |
-| Save recent message templates and contact lists. | On the roadmap! | ❌ |
+| Save recent message templates and contact lists. | ✅ | ❌ |
 | Remind previous recipients that haven't yet responded. | On the roadmap! | ❌ |
 | Auto-reply / out of office responder. | On the roadmap! | ❌ |
 | Integrate with Google Contacts. | On the roadmap! | ❌ |
