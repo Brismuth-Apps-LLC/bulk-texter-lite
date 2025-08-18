@@ -1,5 +1,7 @@
 <img src="https://www.bulktexterpro.com/img/icon-lite.png" width="200">
 
+# Our documentation has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/introduction/.
+
 # Bulk Texter Lite (formerly Google Voice Bulk Texter)
 A browser extension that can send personalized bulk SMS text messages via [Google Voice](https://voice.google.com).
 
