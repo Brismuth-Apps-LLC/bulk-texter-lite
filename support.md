@@ -1,5 +1,7 @@
 # Bulk Texter Lite - Support
 
+## Our troubleshooting guide has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/troubleshooting-guide/.
+
 ## General Tips
 * To stop Bulk Texter Lite at any time, simply close or refresh the Google Voice tab.
 * If Bulk Texter Lite is failing to send texts, try sending the same exact message to the same exact recipient manually, without Bulk Texter Lite, and see if that works.
