@@ -1,6 +1,6 @@
 # Bulk Texter Lite - Support
 
-## Our troubleshooting guide has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/troubleshooting-guide/.
+# Our troubleshooting guide has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/troubleshooting-guide/.
 
 ## General Tips
 * To stop Bulk Texter Lite at any time, simply close or refresh the Google Voice tab.
