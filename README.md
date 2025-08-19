@@ -47,3 +47,5 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Integrate with Google Contacts. | On the roadmap! | ❌ |
 
 *† Some features are not currently supported in our iMessage integration, but are supported in our other integrations.*
+
+# Our documentation has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/introduction/.
