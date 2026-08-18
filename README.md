@@ -23,9 +23,9 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 
 |  | Bulk Texter Pro | Bulk Texter Lite |
 | --- | --- | --- |
-| Cost: | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year <br /><br /> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-license-pricing) | $10 lifetime license |
+| Cost: | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year <br /><br /> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-licenses) | $10 lifetime license |
 | Support: | Personal support via [email](mailto:support@bulktexterpro.com) | Personal support via [email](mailto:support@bulktexterpro.com) |
-| Supported Texting Platforms: <br/>[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)<br />[Zoom Phone](https://www.bulktexterpro.com/docs/texting-platforms/zoom/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌<br/>❌|
+| Supported Texting Platforms: <br/>[8x8](https://www.bulktexterpro.com/docs/texting-platforms/8x8/)<br />[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)<br />[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[RingCentral](https://www.bulktexterpro.com/docs/texting-platforms/ringcentral/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Zoom Phone](https://www.bulktexterpro.com/docs/texting-platforms/zoom/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>❌<br/>❌<br/>❌<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
 | Bulk send text messages. | ✅ | ✅ |
 | Customize each message with recipient name. | ✅ | ✅ |
 | Unlimited messages. <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
@@ -38,13 +38,12 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Track which texts were successfully sent.† | ✅ | ❌ |
 | Send while screen is locked / browser in background. | ✅ | ❌ |
 | View or download previously sent messages. | ✅ | ❌ |
+| Save recent message templates and contact lists. | ✅ | ❌ |
 | Retry failed or cancelled messages. | ✅ | ❌ |
 | Dark Mode. | ✅ | ❌ |
 | Full export of all app data. | ✅ | ❌ |
-| Save recent message templates and contact lists. | ✅ | ❌ |
+| [Autoresponder](https://www.bulktexterpro.com/docs/getting-started/autoresponder/) / out-of-office auto reply. | ✅ | ❌ |
 | Remind previous recipients that haven't yet responded. | On the roadmap! | ❌ |
-| Auto-reply / out of office responder. | On the roadmap! | ❌ |
-| Integrate with Google Contacts. | On the roadmap! | ❌ |
 
 *† Some features are not currently supported in our iMessage integration, but are supported in our other integrations.*
 
