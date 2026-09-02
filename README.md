@@ -25,17 +25,17 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | --- | --- | --- |
 | Cost: | One texting platform: <br/> - $4.99 / month <br/> - $49.99 / year <br/><br/> All texting platforms: <br/> - $9.95 / month <br/> - $99.95 / year <br /><br /> [Multi-seat license discounts](https://www.bulktexterpro.com/docs/features/#multi-seat-licenses) | $10 lifetime license |
 | Support: | Personal support via [email](mailto:support@bulktexterpro.com) | Personal support via [email](mailto:support@bulktexterpro.com) |
-| Supported Texting Platforms: <br/>[8x8](https://www.bulktexterpro.com/docs/texting-platforms/8x8/)<br />[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)<br />[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[RingCentral](https://www.bulktexterpro.com/docs/texting-platforms/ringcentral/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Zoom Phone](https://www.bulktexterpro.com/docs/texting-platforms/zoom/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>❌<br/>❌<br/>❌<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌|
+| Supported Texting Platforms: <br/>[8x8](https://www.bulktexterpro.com/docs/texting-platforms/8x8/)<br />[Android](https://www.bulktexterpro.com/docs/texting-platforms/android/)<br />[Dialpad](https://www.bulktexterpro.com/docs/texting-platforms/dialpad/)<br />[Google Voice](https://www.bulktexterpro.com/docs/texting-platforms/google-voice/) <br/>[iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/) <br/>[Microsoft Teams](https://www.bulktexterpro.com/docs/texting-platforms/microsoft-teams/) <br/>[RingCentral](https://www.bulktexterpro.com/docs/texting-platforms/ringcentral/)<br />[TextNow](https://www.bulktexterpro.com/docs/texting-platforms/textnow/)<br />[Zoom Phone](https://www.bulktexterpro.com/docs/texting-platforms/zoom/)| –<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅<br/>✅ | –<br/>❌<br/>❌<br/>❌<br/>✅<br/>❌<br/>❌<br/>❌<br/>❌<br/>❌|
 | Bulk send text messages. | ✅ | ✅ |
 | Customize each message with recipient name. | ✅ | ✅ |
 | Unlimited messages. <br/> *(limited only by your texting platform, not by us)* | ✅ | ✅ |
-| Schedule messages in advance.† | ✅ | ❌ |
+| Schedule messages in advance. | ✅ ¹ | ❌ |
 | Preview generated messages before you send them. | ✅ | ❌ |
 | [CSV upload](https://www.bulktexterpro.com/docs/getting-started/using-csv-upload/) with unlimited columns/variables. | ✅ | ❌ |
-| Send group texts. | ✅ | ❌ |
-| Send photos with your texts.† | ✅ | ❌ |
-| Live progress report as texts are sent.† | ✅ | ❌ |
-| Track which texts were successfully sent.† | ✅ | ❌ |
+| Send group texts. | ✅ ² | ❌ |
+| Send photos with your texts. | ✅ ² | ❌ |
+| Live progress report as texts are sent. | ✅ ¹ | ❌ |
+| Track which texts were successfully sent. | ✅ ¹ | ❌ |
 | Send while screen is locked / browser in background. | ✅ | ❌ |
 | View or download previously sent messages. | ✅ | ❌ |
 | Save recent message templates and contact lists. | ✅ | ❌ |
@@ -43,8 +43,9 @@ Here are the differences between Bulk Texter Lite and Bulk Texter Pro, as well a
 | Dark Mode. | ✅ | ❌ |
 | Full export of all app data. | ✅ | ❌ |
 | [Autoresponder](https://www.bulktexterpro.com/docs/getting-started/autoresponder/) / out-of-office auto reply. | ✅ | ❌ |
-| Remind previous recipients that haven't yet responded. | On the roadmap! | ❌ |
 
-*† Some features are not currently supported in our iMessage integration, but are supported in our other integrations.*
+*¹ Scheduling messages, live progress reporting, and delivery tracking aren't currently supported by [iMessage](https://www.bulktexterpro.com/docs/texting-platforms/imessage/)'s underlying automation platform (Apple Shortcuts), so they aren't available in our iMessage integration either. We'll add support if Apple's platform allows it.*
+
+*² Group texts and photos aren't currently supported by [Microsoft Teams](https://www.bulktexterpro.com/docs/texting-platforms/microsoft-teams/) itself, so they aren't available in our Microsoft Teams integration either. We'll add support if Microsoft does.*
 
 # Our documentation has moved to https://www.bulktexterpro.com/docs/bulk-texter-lite/introduction/.
